@@ -1,0 +1,782 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="Online_Railway_reservation_systemEntities">
+    <EntitySetMapping Name="Coaches">
+      <EntityTypeMapping TypeName="Model.Coach">
+        <MappingFragment StoreEntitySet="Coaches">
+          <ScalarProperty Name="Coach_ID" ColumnName="Coach_ID" />
+          <ScalarProperty Name="Coach_Type" ColumnName="Coach_Type" />
+          <ScalarProperty Name="Train_ID" ColumnName="Train_ID" />
+          <ScalarProperty Name="Number_Of_Seats" ColumnName="Number_Of_Seats" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Passengers">
+      <EntityTypeMapping TypeName="Model.Passenger">
+        <MappingFragment StoreEntitySet="Passengers">
+          <ScalarProperty Name="PNR" ColumnName="PNR" />
+          <ScalarProperty Name="Passenger_Name" ColumnName="Passenger_Name" />
+          <ScalarProperty Name="Date_Of_Birth" ColumnName="Date_Of_Birth" />
+          <ScalarProperty Name="Card_Code" ColumnName="Card_Code" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Phone_Number" ColumnName="Phone_Number" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Roles">
+      <EntityTypeMapping TypeName="Model.Role">
+        <MappingFragment StoreEntitySet="Roles">
+          <ScalarProperty Name="Role_ID" ColumnName="Role_ID" />
+          <ScalarProperty Name="Role_Name" ColumnName="Role_Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Stations">
+      <EntityTypeMapping TypeName="Model.Station">
+        <MappingFragment StoreEntitySet="Stations">
+          <ScalarProperty Name="Station_ID" ColumnName="Station_ID" />
+          <ScalarProperty Name="Station_Name" ColumnName="Station_Name" />
+          <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+          <ScalarProperty Name="Longtitude" ColumnName="Longtitude" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tickets">
+      <EntityTypeMapping TypeName="Model.Ticket">
+        <MappingFragment StoreEntitySet="Tickets">
+          <ScalarProperty Name="Ticket_ID" ColumnName="Ticket_ID" />
+          <ScalarProperty Name="PNR" ColumnName="PNR" />
+          <ScalarProperty Name="Passenger_type" ColumnName="Passenger_type" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Train_ID" ColumnName="Train_ID" />
+          <ScalarProperty Name="Departure_Date" ColumnName="Departure_Date" />
+          <ScalarProperty Name="Departure_Time" ColumnName="Departure_Time" />
+          <ScalarProperty Name="Coach_Type" ColumnName="Coach_Type" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Timetables">
+      <EntityTypeMapping TypeName="Model.Timetable">
+        <MappingFragment StoreEntitySet="Timetables">
+          <ScalarProperty Name="Timetable_ID" ColumnName="Timetable_ID" />
+          <ScalarProperty Name="Departure_Date" ColumnName="Departure_Date" />
+          <ScalarProperty Name="Departure_Time" ColumnName="Departure_Time" />
+          <ScalarProperty Name="Arrival_Date" ColumnName="Arrival_Date" />
+          <ScalarProperty Name="Arrival_Time" ColumnName="Arrival_Time" />
+          <ScalarProperty Name="Distance" ColumnName="Distance" />
+          <ScalarProperty Name="Train_ID" ColumnName="Train_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Trains">
+      <EntityTypeMapping TypeName="Model.Train">
+        <MappingFragment StoreEntitySet="Trains">
+          <ScalarProperty Name="Train_ID" ColumnName="Train_ID" />
+          <ScalarProperty Name="Train_Name" ColumnName="Train_Name" />
+          <ScalarProperty Name="Origin_Station_ID" ColumnName="Origin_Station_ID" />
+          <ScalarProperty Name="Destination_Station_ID" ColumnName="Destination_Station_ID" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Train_Type" ColumnName="Train_Type" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="Model.User">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Phone_Number" ColumnName="Phone_Number" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="Security_Code" ColumnName="Security_Code" />
+          <ScalarProperty Name="Role_ID" ColumnName="Role_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="Add_Coaches" FunctionName="Model.Store.Add_Coaches" />
+    <FunctionImportMapping FunctionImportName="Add_Passengers" FunctionName="Model.Store.Add_Passengers" />
+    <FunctionImportMapping FunctionImportName="Add_Roles" FunctionName="Model.Store.Add_Roles" />
+    <FunctionImportMapping FunctionImportName="Add_Stations" FunctionName="Model.Store.Add_Stations" />
+    <FunctionImportMapping FunctionImportName="Add_Timetables" FunctionName="Model.Store.Add_Timetables" />
+    <FunctionImportMapping FunctionImportName="Add_Trains" FunctionName="Model.Store.Add_Trains" />
+    <FunctionImportMapping FunctionImportName="Add_Users" FunctionName="Model.Store.Add_Users" />
+    <FunctionImportMapping FunctionImportName="Cancel_Ticket" FunctionName="Model.Store.Cancel_Ticket" />
+    <FunctionImportMapping FunctionImportName="Delete_Coaches" FunctionName="Model.Store.Delete_Coaches" />
+    <FunctionImportMapping FunctionImportName="Delete_Passengers" FunctionName="Model.Store.Delete_Passengers" />
+    <FunctionImportMapping FunctionImportName="Delete_Roles" FunctionName="Model.Store.Delete_Roles" />
+    <FunctionImportMapping FunctionImportName="Delete_Stations" FunctionName="Model.Store.Delete_Stations" />
+    <FunctionImportMapping FunctionImportName="Delete_Tickets" FunctionName="Model.Store.Delete_Tickets" />
+    <FunctionImportMapping FunctionImportName="Delete_Timetables" FunctionName="Model.Store.Delete_Timetables" />
+    <FunctionImportMapping FunctionImportName="Delete_Trains" FunctionName="Model.Store.Delete_Trains" />
+    <FunctionImportMapping FunctionImportName="Delete_Users" FunctionName="Model.Store.Delete_Users" />
+    <FunctionImportMapping FunctionImportName="Get_All_Coaches" FunctionName="Model.Store.Get_All_Coaches">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Model.Get_All_Coaches_Result">
+          <ScalarProperty Name="Coach_ID" ColumnName="Coach_ID" />
+          <ScalarProperty Name="Coach_Type" ColumnName="Coach_Type" />
+          <ScalarProperty Name="Train_ID" ColumnName="Train_ID" />
+          <ScalarProperty Name="Number_Of_Seats" ColumnName="Number_Of_Seats" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Train_Name" ColumnName="Train_Name" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Get_All_Ticket_v2" FunctionName="Model.Store.Get_All_Ticket_v2">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Model.Get_All_Ticket_v2_Result">
+          <ScalarProperty Name="Ticket_ID" ColumnName="Ticket_ID" />
+          <ScalarProperty Name="PNR" ColumnName="PNR" />
+          <ScalarProperty Name="Passenger_type" ColumnName="Passenger_type" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Train_ID" ColumnName="Train_ID" />
+          <ScalarProperty Name="Departure_Date" ColumnName="Departure_Date" />
+          <ScalarProperty Name="Departure_Time" ColumnName="Departure_Time" />
+          <ScalarProperty Name="Coach_Type" ColumnName="Coach_Type" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="Train_Name" ColumnName="Train_Name" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="get_All_Timetables_v2" FunctionName="Model.Store.get_All_Timetables_v2">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Model.get_All_Timetables_v2_Result">
+          <ScalarProperty Name="Train_Name" ColumnName="Train_Name" />
+          <ScalarProperty Name="Timetable_ID" ColumnName="Timetable_ID" />
+          <ScalarProperty Name="Departure_Date" ColumnName="Departure_Date" />
+          <ScalarProperty Name="Departure_Time" ColumnName="Departure_Time" />
+          <ScalarProperty Name="Arrival_Date" ColumnName="Arrival_Date" />
+          <ScalarProperty Name="Arrival_Time" ColumnName="Arrival_Time" />
+          <ScalarProperty Name="Distance" ColumnName="Distance" />
+          <ScalarProperty Name="Train_ID" ColumnName="Train_ID" />
+          <ScalarProperty Name="origin_station" ColumnName="origin_station" />
+          <ScalarProperty Name="destination_station" ColumnName="destination_station" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Get_All_Train_v2" FunctionName="Model.Store.Get_All_Train_v2">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Model.Get_All_Train_v2_Result">
+          <ScalarProperty Name="Train_ID" ColumnName="Train_ID" />
+          <ScalarProperty Name="Train_Name" ColumnName="Train_Name" />
+          <ScalarProperty Name="Origin_Station_ID" ColumnName="Origin_Station_ID" />
+          <ScalarProperty Name="Destination_Station_ID" ColumnName="Destination_Station_ID" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Train_Type" ColumnName="Train_Type" />
+          <ScalarProperty Name="origin_station" ColumnName="origin_station" />
+          <ScalarProperty Name="destin_station" ColumnName="destin_station" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Get_All_User_v2" FunctionName="Model.Store.Get_All_User_v2">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Model.Get_All_User_v2_Result">
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Phone_Number" ColumnName="Phone_Number" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="Security_Code" ColumnName="Security_Code" />
+          <ScalarProperty Name="Role_ID" ColumnName="Role_ID" />
+          <ScalarProperty Name="Role_Name" ColumnName="Role_Name" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="get_Coach_By_ID" FunctionName="Model.Store.get_Coach_By_ID">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Model.get_Coach_By_ID_Result">
+          <ScalarProperty Name="Coach_ID" ColumnName="Coach_ID" />
+          <ScalarProperty Name="Coach_Type" ColumnName="Coach_Type" />
+          <ScalarProperty Name="Train_ID" ColumnName="Train_ID" />
+          <ScalarProperty Name="Number_Of_Seats" ColumnName="Number_Of_Seats" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Get_Coach_By_Train" FunctionName="Model.Store.Get_Coach_By_Train">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Model.Get_Coach_By_Train_Result">
+          <ScalarProperty Name="Coach_ID" ColumnName="Coach_ID" />
+          <ScalarProperty Name="Coach_Type" ColumnName="Coach_Type" />
+          <ScalarProperty Name="Train_ID" ColumnName="Train_ID" />
+          <ScalarProperty Name="Number_Of_Seats" ColumnName="Number_Of_Seats" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Train_Name" ColumnName="Train_Name" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Get_Coach_By_Train_ID" FunctionName="Model.Store.Get_Coach_By_Train_ID">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Model.Get_Coach_By_Train_ID_Result">
+          <ScalarProperty Name="Coach_ID" ColumnName="Coach_ID" />
+          <ScalarProperty Name="Coach_Type" ColumnName="Coach_Type" />
+          <ScalarProperty Name="Train_ID" ColumnName="Train_ID" />
+          <ScalarProperty Name="Number_Of_Seats" ColumnName="Number_Of_Seats" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Train_Name" ColumnName="Train_Name" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="get_Passenger_By_Email" FunctionName="Model.Store.get_Passenger_By_Email">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Model.get_Passenger_By_Email_Result">
+          <ScalarProperty Name="PNR" ColumnName="PNR" />
+          <ScalarProperty Name="Passenger_Name" ColumnName="Passenger_Name" />
+          <ScalarProperty Name="Date_Of_Birth" ColumnName="Date_Of_Birth" />
+          <ScalarProperty Name="Card_Code" ColumnName="Card_Code" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Phone_Number" ColumnName="Phone_Number" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="get_Passenger_By_PNR" FunctionName="Model.Store.get_Passenger_By_PNR">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Model.get_Passenger_By_PNR_Result">
+          <ScalarProperty Name="PNR" ColumnName="PNR" />
+          <ScalarProperty Name="Passenger_Name" ColumnName="Passenger_Name" />
+          <ScalarProperty Name="Date_Of_Birth" ColumnName="Date_Of_Birth" />
+          <ScalarProperty Name="Card_Code" ColumnName="Card_Code" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Phone_Number" ColumnName="Phone_Number" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="get_Role_By_ID" FunctionName="Model.Store.get_Role_By_ID">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Model.get_Role_By_ID_Result">
+          <ScalarProperty Name="Role_ID" ColumnName="Role_ID" />
+          <ScalarProperty Name="Role_Name" ColumnName="Role_Name" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="get_Station_By_ID" FunctionName="Model.Store.get_Station_By_ID">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Model.get_Station_By_ID_Result">
+          <ScalarProperty Name="Station_ID" ColumnName="Station_ID" />
+          <ScalarProperty Name="Station_Name" ColumnName="Station_Name" />
+          <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+          <ScalarProperty Name="Longtitude" ColumnName="Longtitude" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="get_Station_By_Status" FunctionName="Model.Store.get_Station_By_Status">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Model.get_Station_By_Status_Result">
+          <ScalarProperty Name="Station_ID" ColumnName="Station_ID" />
+          <ScalarProperty Name="Station_Name" ColumnName="Station_Name" />
+          <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+          <ScalarProperty Name="Longtitude" ColumnName="Longtitude" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Get_Station_By_Train_ID" FunctionName="Model.Store.Get_Station_By_Train_ID">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Model.Get_Station_By_Train_ID_Result">
+          <ScalarProperty Name="Origin_name" ColumnName="Origin_name" />
+          <ScalarProperty Name="Destin_name" ColumnName="Destin_name" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="get_Ticket_By_ID" FunctionName="Model.Store.get_Ticket_By_ID">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Model.get_Ticket_By_ID_Result">
+          <ScalarProperty Name="Ticket_ID" ColumnName="Ticket_ID" />
+          <ScalarProperty Name="PNR" ColumnName="PNR" />
+          <ScalarProperty Name="Passenger_type" ColumnName="Passenger_type" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Train_ID" ColumnName="Train_ID" />
+          <ScalarProperty Name="Departure_Date" ColumnName="Departure_Date" />
+          <ScalarProperty Name="Departure_Time" ColumnName="Departure_Time" />
+          <ScalarProperty Name="Coach_Type" ColumnName="Coach_Type" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Get_Ticket_By_ID_v2" FunctionName="Model.Store.Get_Ticket_By_ID_v2">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Model.Get_Ticket_By_ID_v2_Result">
+          <ScalarProperty Name="Ticket_ID" ColumnName="Ticket_ID" />
+          <ScalarProperty Name="PNR" ColumnName="PNR" />
+          <ScalarProperty Name="Passenger_type" ColumnName="Passenger_type" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Train_ID" ColumnName="Train_ID" />
+          <ScalarProperty Name="Departure_Date" ColumnName="Departure_Date" />
+          <ScalarProperty Name="Departure_Time" ColumnName="Departure_Time" />
+          <ScalarProperty Name="Coach_Type" ColumnName="Coach_Type" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="Train_Name" ColumnName="Train_Name" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="get_Ticket_By_PNR" FunctionName="Model.Store.get_Ticket_By_PNR">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Model.get_Ticket_By_PNR_Result">
+          <ScalarProperty Name="Ticket_ID" ColumnName="Ticket_ID" />
+          <ScalarProperty Name="PNR" ColumnName="PNR" />
+          <ScalarProperty Name="Passenger_type" ColumnName="Passenger_type" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Train_ID" ColumnName="Train_ID" />
+          <ScalarProperty Name="Departure_Date" ColumnName="Departure_Date" />
+          <ScalarProperty Name="Departure_Time" ColumnName="Departure_Time" />
+          <ScalarProperty Name="Coach_Type" ColumnName="Coach_Type" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="Train_Name" ColumnName="Train_Name" />
+          <ScalarProperty Name="Destination_Station" ColumnName="Destination_Station" />
+          <ScalarProperty Name="Origin_Station" ColumnName="Origin_Station" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="get_Ticket_By_TrainID" FunctionName="Model.Store.get_Ticket_By_TrainID">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Model.get_Ticket_By_TrainID_Result">
+          <ScalarProperty Name="Ticket_ID" ColumnName="Ticket_ID" />
+          <ScalarProperty Name="PNR" ColumnName="PNR" />
+          <ScalarProperty Name="Passenger_type" ColumnName="Passenger_type" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Train_ID" ColumnName="Train_ID" />
+          <ScalarProperty Name="Departure_Date" ColumnName="Departure_Date" />
+          <ScalarProperty Name="Departure_Time" ColumnName="Departure_Time" />
+          <ScalarProperty Name="Coach_Type" ColumnName="Coach_Type" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="get_Timetable_By_ID" FunctionName="Model.Store.get_Timetable_By_ID">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Model.get_Timetable_By_ID_Result">
+          <ScalarProperty Name="Timetable_ID" ColumnName="Timetable_ID" />
+          <ScalarProperty Name="Departure_Date" ColumnName="Departure_Date" />
+          <ScalarProperty Name="Departure_Time" ColumnName="Departure_Time" />
+          <ScalarProperty Name="Arrival_Date" ColumnName="Arrival_Date" />
+          <ScalarProperty Name="Arrival_Time" ColumnName="Arrival_Time" />
+          <ScalarProperty Name="Distance" ColumnName="Distance" />
+          <ScalarProperty Name="Train_ID" ColumnName="Train_ID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Get_Timetable_By_Train_ID" FunctionName="Model.Store.Get_Timetable_By_Train_ID">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Model.Get_Timetable_By_Train_ID_Result">
+          <ScalarProperty Name="Train_Name" ColumnName="Train_Name" />
+          <ScalarProperty Name="Timetable_ID" ColumnName="Timetable_ID" />
+          <ScalarProperty Name="Departure_Date" ColumnName="Departure_Date" />
+          <ScalarProperty Name="Departure_Time" ColumnName="Departure_Time" />
+          <ScalarProperty Name="Arrival_Date" ColumnName="Arrival_Date" />
+          <ScalarProperty Name="Arrival_Time" ColumnName="Arrival_Time" />
+          <ScalarProperty Name="Distance" ColumnName="Distance" />
+          <ScalarProperty Name="Train_ID" ColumnName="Train_ID" />
+          <ScalarProperty Name="origin_station" ColumnName="origin_station" />
+          <ScalarProperty Name="destination_station" ColumnName="destination_station" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="get_Train_By_ID" FunctionName="Model.Store.get_Train_By_ID">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Model.get_Train_By_ID_Result">
+          <ScalarProperty Name="Train_ID" ColumnName="Train_ID" />
+          <ScalarProperty Name="Train_Name" ColumnName="Train_Name" />
+          <ScalarProperty Name="Origin_Station_ID" ColumnName="Origin_Station_ID" />
+          <ScalarProperty Name="Destination_Station_ID" ColumnName="Destination_Station_ID" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Train_Type" ColumnName="Train_Type" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="get_User_By_Username" FunctionName="Model.Store.get_User_By_Username">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Model.get_User_By_Username_Result">
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Phone_Number" ColumnName="Phone_Number" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="Security_Code" ColumnName="Security_Code" />
+          <ScalarProperty Name="Role_ID" ColumnName="Role_ID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Get_User_By_UserName_v2" FunctionName="Model.Store.Get_User_By_UserName_v2">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Model.Get_User_By_UserName_v2_Result">
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Phone_Number" ColumnName="Phone_Number" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="Security_Code" ColumnName="Security_Code" />
+          <ScalarProperty Name="Role_ID" ColumnName="Role_ID" />
+          <ScalarProperty Name="Role_Name" ColumnName="Role_Name" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="getAll_Coaches" FunctionName="Model.Store.getAll_Coaches">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Model.getAll_Coaches_Result">
+          <ScalarProperty Name="Coach_ID" ColumnName="Coach_ID" />
+          <ScalarProperty Name="Coach_Type" ColumnName="Coach_Type" />
+          <ScalarProperty Name="Train_ID" ColumnName="Train_ID" />
+          <ScalarProperty Name="Number_Of_Seats" ColumnName="Number_Of_Seats" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="getAll_Passengers" FunctionName="Model.Store.getAll_Passengers">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Model.getAll_Passengers_Result">
+          <ScalarProperty Name="PNR" ColumnName="PNR" />
+          <ScalarProperty Name="Passenger_Name" ColumnName="Passenger_Name" />
+          <ScalarProperty Name="Date_Of_Birth" ColumnName="Date_Of_Birth" />
+          <ScalarProperty Name="Card_Code" ColumnName="Card_Code" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Phone_Number" ColumnName="Phone_Number" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="getAll_Roles" FunctionName="Model.Store.getAll_Roles">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Model.getAll_Roles_Result">
+          <ScalarProperty Name="Role_ID" ColumnName="Role_ID" />
+          <ScalarProperty Name="Role_Name" ColumnName="Role_Name" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="getAll_Stations" FunctionName="Model.Store.getAll_Stations">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Model.getAll_Stations_Result">
+          <ScalarProperty Name="Station_ID" ColumnName="Station_ID" />
+          <ScalarProperty Name="Station_Name" ColumnName="Station_Name" />
+          <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+          <ScalarProperty Name="Longtitude" ColumnName="Longtitude" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="getAll_Tickets" FunctionName="Model.Store.getAll_Tickets">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Model.getAll_Tickets_Result">
+          <ScalarProperty Name="Ticket_ID" ColumnName="Ticket_ID" />
+          <ScalarProperty Name="PNR" ColumnName="PNR" />
+          <ScalarProperty Name="Passenger_type" ColumnName="Passenger_type" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Train_ID" ColumnName="Train_ID" />
+          <ScalarProperty Name="Departure_Date" ColumnName="Departure_Date" />
+          <ScalarProperty Name="Departure_Time" ColumnName="Departure_Time" />
+          <ScalarProperty Name="Coach_Type" ColumnName="Coach_Type" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="getAll_Timetables" FunctionName="Model.Store.getAll_Timetables">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Model.getAll_Timetables_Result">
+          <ScalarProperty Name="Timetable_ID" ColumnName="Timetable_ID" />
+          <ScalarProperty Name="Departure_Date" ColumnName="Departure_Date" />
+          <ScalarProperty Name="Departure_Time" ColumnName="Departure_Time" />
+          <ScalarProperty Name="Arrival_Date" ColumnName="Arrival_Date" />
+          <ScalarProperty Name="Arrival_Time" ColumnName="Arrival_Time" />
+          <ScalarProperty Name="Distance" ColumnName="Distance" />
+          <ScalarProperty Name="Train_ID" ColumnName="Train_ID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="getAll_Trains" FunctionName="Model.Store.getAll_Trains">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Model.getAll_Trains_Result">
+          <ScalarProperty Name="Train_ID" ColumnName="Train_ID" />
+          <ScalarProperty Name="Train_Name" ColumnName="Train_Name" />
+          <ScalarProperty Name="Origin_Station_ID" ColumnName="Origin_Station_ID" />
+          <ScalarProperty Name="Destination_Station_ID" ColumnName="Destination_Station_ID" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Train_Type" ColumnName="Train_Type" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="getAll_Users" FunctionName="Model.Store.getAll_Users">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Model.getAll_Users_Result">
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Phone_Number" ColumnName="Phone_Number" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="Security_Code" ColumnName="Security_Code" />
+          <ScalarProperty Name="Role_ID" ColumnName="Role_ID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="login" FunctionName="Model.Store.login">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Model.login_Result">
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Phone_Number" ColumnName="Phone_Number" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="Security_Code" ColumnName="Security_Code" />
+          <ScalarProperty Name="Role_ID" ColumnName="Role_ID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Search_Coach_Type" FunctionName="Model.Store.Search_Coach_Type">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Model.Search_Coach_Type_Result">
+          <ScalarProperty Name="Coach_ID" ColumnName="Coach_ID" />
+          <ScalarProperty Name="Coach_Type" ColumnName="Coach_Type" />
+          <ScalarProperty Name="Train_ID" ColumnName="Train_ID" />
+          <ScalarProperty Name="Number_Of_Seats" ColumnName="Number_Of_Seats" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Search_Station" FunctionName="Model.Store.Search_Station">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Model.Search_Station_Result">
+          <ScalarProperty Name="Station_ID" ColumnName="Station_ID" />
+          <ScalarProperty Name="Station_Name" ColumnName="Station_Name" />
+          <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+          <ScalarProperty Name="Longtitude" ColumnName="Longtitude" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Search_Ticket_By_PNR" FunctionName="Model.Store.Search_Ticket_By_PNR">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Model.Search_Ticket_By_PNR_Result">
+          <ScalarProperty Name="Ticket_ID" ColumnName="Ticket_ID" />
+          <ScalarProperty Name="PNR" ColumnName="PNR" />
+          <ScalarProperty Name="Passenger_type" ColumnName="Passenger_type" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Train_ID" ColumnName="Train_ID" />
+          <ScalarProperty Name="Departure_Date" ColumnName="Departure_Date" />
+          <ScalarProperty Name="Departure_Time" ColumnName="Departure_Time" />
+          <ScalarProperty Name="Coach_Type" ColumnName="Coach_Type" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="Train_Name" ColumnName="Train_Name" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Search_Timetable" FunctionName="Model.Store.Search_Timetable">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Model.Search_Timetable_Result">
+          <ScalarProperty Name="Timetable_ID" ColumnName="Timetable_ID" />
+          <ScalarProperty Name="Departure_Date" ColumnName="Departure_Date" />
+          <ScalarProperty Name="Departure_Time" ColumnName="Departure_Time" />
+          <ScalarProperty Name="Arrival_Date" ColumnName="Arrival_Date" />
+          <ScalarProperty Name="Arrival_Time" ColumnName="Arrival_Time" />
+          <ScalarProperty Name="Distance" ColumnName="Distance" />
+          <ScalarProperty Name="Train_ID" ColumnName="Train_ID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Search_Train" FunctionName="Model.Store.Search_Train">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Model.Search_Train_Result">
+          <ScalarProperty Name="Train_ID" ColumnName="Train_ID" />
+          <ScalarProperty Name="Train_Name" ColumnName="Train_Name" />
+          <ScalarProperty Name="Origin_Station_ID" ColumnName="Origin_Station_ID" />
+          <ScalarProperty Name="Destination_Station_ID" ColumnName="Destination_Station_ID" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Train_Type" ColumnName="Train_Type" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Search_Train_By_Train_id" FunctionName="Model.Store.Search_Train_By_Train_id">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Model.Search_Train_By_Train_id_Result">
+          <ScalarProperty Name="Train_ID" ColumnName="Train_ID" />
+          <ScalarProperty Name="Train_Name" ColumnName="Train_Name" />
+          <ScalarProperty Name="Origin_Station_ID" ColumnName="Origin_Station_ID" />
+          <ScalarProperty Name="Destination_Station_ID" ColumnName="Destination_Station_ID" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Train_Type" ColumnName="Train_Type" />
+          <ScalarProperty Name="origin_station" ColumnName="origin_station" />
+          <ScalarProperty Name="destin_station" ColumnName="destin_station" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Search_Train_Information" FunctionName="Model.Store.Search_Train_Information">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Model.Search_Train_Information_Result">
+          <ScalarProperty Name="Train_ID" ColumnName="Train_ID" />
+          <ScalarProperty Name="Train_Name" ColumnName="Train_Name" />
+          <ScalarProperty Name="Origin_Station_ID" ColumnName="Origin_Station_ID" />
+          <ScalarProperty Name="Destination_Station_ID" ColumnName="Destination_Station_ID" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Train_Type" ColumnName="Train_Type" />
+          <ScalarProperty Name="Timetable_ID" ColumnName="Timetable_ID" />
+          <ScalarProperty Name="Departure_Date" ColumnName="Departure_Date" />
+          <ScalarProperty Name="Departure_Time" ColumnName="Departure_Time" />
+          <ScalarProperty Name="Arrival_Date" ColumnName="Arrival_Date" />
+          <ScalarProperty Name="Arrival_Time" ColumnName="Arrival_Time" />
+          <ScalarProperty Name="Distance" ColumnName="Distance" />
+          <ScalarProperty Name="Train_ID1" ColumnName="Train_ID1" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Search_Train_TimeTable" FunctionName="Model.Store.Search_Train_TimeTable">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Model.Search_Train_TimeTable_Result">
+          <ScalarProperty Name="Train_ID" ColumnName="Train_ID" />
+          <ScalarProperty Name="Train_Name" ColumnName="Train_Name" />
+          <ScalarProperty Name="Origin_Station_ID" ColumnName="Origin_Station_ID" />
+          <ScalarProperty Name="Destination_Station_ID" ColumnName="Destination_Station_ID" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Train_Type" ColumnName="Train_Type" />
+          <ScalarProperty Name="Timetable_ID" ColumnName="Timetable_ID" />
+          <ScalarProperty Name="Departure_Date" ColumnName="Departure_Date" />
+          <ScalarProperty Name="Departure_Time" ColumnName="Departure_Time" />
+          <ScalarProperty Name="Arrival_Date" ColumnName="Arrival_Date" />
+          <ScalarProperty Name="Arrival_Time" ColumnName="Arrival_Time" />
+          <ScalarProperty Name="Distance" ColumnName="Distance" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Search_Username_By_ID" FunctionName="Model.Store.Search_Username_By_ID">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Model.Search_Username_By_ID_Result">
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Phone_Number" ColumnName="Phone_Number" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="Security_Code" ColumnName="Security_Code" />
+          <ScalarProperty Name="Role_ID" ColumnName="Role_ID" />
+          <ScalarProperty Name="Rolename" ColumnName="Rolename" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Update_Coaches" FunctionName="Model.Store.Update_Coaches" />
+    <FunctionImportMapping FunctionImportName="Update_Info" FunctionName="Model.Store.Update_Info" />
+    <FunctionImportMapping FunctionImportName="Update_Passengers" FunctionName="Model.Store.Update_Passengers" />
+    <FunctionImportMapping FunctionImportName="Update_Password" FunctionName="Model.Store.Update_Password" />
+    <FunctionImportMapping FunctionImportName="Update_Roles" FunctionName="Model.Store.Update_Roles" />
+    <FunctionImportMapping FunctionImportName="Update_Stations" FunctionName="Model.Store.Update_Stations" />
+    <FunctionImportMapping FunctionImportName="Update_Tickets" FunctionName="Model.Store.Update_Tickets" />
+    <FunctionImportMapping FunctionImportName="Update_Timetables" FunctionName="Model.Store.Update_Timetables" />
+    <FunctionImportMapping FunctionImportName="Update_Trains" FunctionName="Model.Store.Update_Trains" />
+    <FunctionImportMapping FunctionImportName="Update_Users" FunctionName="Model.Store.Update_Users" />
+    <FunctionImportMapping FunctionImportName="Add_Tickets" FunctionName="Model.Store.Add_Tickets" />
+    <FunctionImportMapping FunctionImportName="Get_Train_Des" FunctionName="Model.Store.Get_Train_Des">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Model.Get_Train_Des_Result">
+          <ScalarProperty Name="Train_ID" ColumnName="Train_ID" />
+          <ScalarProperty Name="Train_Name" ColumnName="Train_Name" />
+          <ScalarProperty Name="Origin_Station_ID" ColumnName="Origin_Station_ID" />
+          <ScalarProperty Name="Destination_Station_ID" ColumnName="Destination_Station_ID" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Train_Type" ColumnName="Train_Type" />
+          <ScalarProperty Name="Timetable_ID" ColumnName="Timetable_ID" />
+          <ScalarProperty Name="Departure_Date" ColumnName="Departure_Date" />
+          <ScalarProperty Name="Departure_Time" ColumnName="Departure_Time" />
+          <ScalarProperty Name="Arrival_Date" ColumnName="Arrival_Date" />
+          <ScalarProperty Name="Arrival_Time" ColumnName="Arrival_Time" />
+          <ScalarProperty Name="Distance" ColumnName="Distance" />
+          <ScalarProperty Name="Station_ID" ColumnName="Station_ID" />
+          <ScalarProperty Name="Station_Name" ColumnName="Station_Name" />
+          <ScalarProperty Name="Status1" ColumnName="Status1" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Get_Train_Des2" FunctionName="Model.Store.Get_Train_Des2">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Model.Get_Train_Des2_Result">
+          <ScalarProperty Name="Train_ID" ColumnName="Train_ID" />
+          <ScalarProperty Name="Train_Name" ColumnName="Train_Name" />
+          <ScalarProperty Name="Origin_Station_ID" ColumnName="Origin_Station_ID" />
+          <ScalarProperty Name="Destination_Station_ID" ColumnName="Destination_Station_ID" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Train_Type" ColumnName="Train_Type" />
+          <ScalarProperty Name="Timetable_ID" ColumnName="Timetable_ID" />
+          <ScalarProperty Name="Departure_Date" ColumnName="Departure_Date" />
+          <ScalarProperty Name="Departure_Time" ColumnName="Departure_Time" />
+          <ScalarProperty Name="Arrival_Date" ColumnName="Arrival_Date" />
+          <ScalarProperty Name="Arrival_Time" ColumnName="Arrival_Time" />
+          <ScalarProperty Name="Distance" ColumnName="Distance" />
+          <ScalarProperty Name="Station_ID" ColumnName="Station_ID" />
+          <ScalarProperty Name="Station_Name" ColumnName="Station_Name" />
+          <ScalarProperty Name="Status1" ColumnName="Status1" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Get_Train_Des_Schedule" FunctionName="Model.Store.Get_Train_Des_Schedule">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Model.Get_Train_Des_Schedule_Result">
+          <ScalarProperty Name="Train_ID" ColumnName="Train_ID" />
+          <ScalarProperty Name="Train_Name" ColumnName="Train_Name" />
+          <ScalarProperty Name="Origin_Station_ID" ColumnName="Origin_Station_ID" />
+          <ScalarProperty Name="Destination_Station_ID" ColumnName="Destination_Station_ID" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Train_Type" ColumnName="Train_Type" />
+          <ScalarProperty Name="Timetable_ID" ColumnName="Timetable_ID" />
+          <ScalarProperty Name="Departure_Date" ColumnName="Departure_Date" />
+          <ScalarProperty Name="Departure_Time" ColumnName="Departure_Time" />
+          <ScalarProperty Name="Distance" ColumnName="Distance" />
+          <ScalarProperty Name="Station_ID" ColumnName="Station_ID" />
+          <ScalarProperty Name="Station_Name" ColumnName="Station_Name" />
+          <ScalarProperty Name="Status1" ColumnName="Status1" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Get_train_By_OS" FunctionName="Model.Store.Get_train_By_OS">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Model.Get_train_By_OS_Result">
+          <ScalarProperty Name="Train_ID" ColumnName="Train_ID" />
+          <ScalarProperty Name="Train_Name" ColumnName="Train_Name" />
+          <ScalarProperty Name="Origin_Station_ID" ColumnName="Origin_Station_ID" />
+          <ScalarProperty Name="Destination_Station_ID" ColumnName="Destination_Station_ID" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Train_Type" ColumnName="Train_Type" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Get_Train_By_Time_Sche" FunctionName="Model.Store.Get_Train_By_Time_Sche">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Model.Get_Train_By_Time_Sche_Result">
+          <ScalarProperty Name="Train_ID" ColumnName="Train_ID" />
+          <ScalarProperty Name="Train_Name" ColumnName="Train_Name" />
+          <ScalarProperty Name="Train_Type" ColumnName="Train_Type" />
+          <ScalarProperty Name="Timetable_ID" ColumnName="Timetable_ID" />
+          <ScalarProperty Name="Departure_Date" ColumnName="Departure_Date" />
+          <ScalarProperty Name="Departure_Time" ColumnName="Departure_Time" />
+          <ScalarProperty Name="Distance" ColumnName="Distance" />
+          <ScalarProperty Name="Station_ID" ColumnName="Station_ID" />
+          <ScalarProperty Name="Station_Name" ColumnName="Station_Name" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Get_Train_By_Time_Sche2" FunctionName="Model.Store.Get_Train_By_Time_Sche2">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Model.Get_Train_By_Time_Sche2_Result">
+          <ScalarProperty Name="Train_ID" ColumnName="Train_ID" />
+          <ScalarProperty Name="Train_Name" ColumnName="Train_Name" />
+          <ScalarProperty Name="Train_Type" ColumnName="Train_Type" />
+          <ScalarProperty Name="Timetable_ID" ColumnName="Timetable_ID" />
+          <ScalarProperty Name="Departure_Date" ColumnName="Departure_Date" />
+          <ScalarProperty Name="Departure_Time" ColumnName="Departure_Time" />
+          <ScalarProperty Name="Distance" ColumnName="Distance" />
+          <ScalarProperty Name="Station_ID" ColumnName="Station_ID" />
+          <ScalarProperty Name="Station_Name" ColumnName="Station_Name" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+  </EntityContainerMapping>
+</Mapping>

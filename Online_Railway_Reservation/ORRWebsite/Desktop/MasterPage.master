@@ -1,0 +1,82 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="Desktop_MasterPage" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>Online Railway Reservation System</title>
+    <link href="css/StyleSheet.css" type="text/css" rel="stylesheet" />
+    <link href="css/font-awesome.min.css" type="text/css" rel="stylesheet" />
+    <link rel="shortcut icon" href="images/200.ico" />
+
+</head>
+<body>
+    
+    <form id="form1" runat="server">
+        <div id="toanbo">
+            <asp:ScriptManager runat="server" />
+            <!-- begin Header -->
+
+            <div id="header">
+                <div id="header-content">
+                    <div id="header-content-left" class="col-3">
+                        <a href="../../Desktop/Default.aspx"><img src="../../Desktop/images/LOGO_n.png" /></a>
+                    </div>
+                    <div id="header-content-right" class="col-9">
+                        <div id="menu-bar">
+                            <ul id="list-menu">
+                                <a href="?lang=vi">
+                                    <li class="lang">
+                                        <img src="../../Desktop/images/Viet-Nam-icon.png" /></li>
+                                </a>
+                                <a href="?lang=en">
+                                    <li class="lang" style="margin-left: 20px !important">
+                                        <img src="../../Desktop/images/United-Kingdo-icon.png" /></li>
+                                </a>
+                                
+                                    <a href="../../Desktop/Contact.aspx" ><li class="contact"></li></a>
+                                
+                                    <a href="../../Desktop/Rule.aspx" ><li class="regulation"></li></a>
+                                
+                                    <a href="../../Desktop/Schedule.aspx" ><li class="hour"></li></a>
+                                
+                                    <a href="../../Desktop/Info_Ticket.aspx" ><li class="bookTicket"></li></a>
+                                
+                                    
+                                <a href="Default.aspx">
+                                    <li id="list-home" class="searchTicket" ><%--<i class="fa fa-home" style="font-size: 28px"></i>--%></li>
+                                </a>
+                                <a href="../../Desktop/Admin/Admin_manager.aspx" ><li>
+                                    <asp:Label Text="MANAGEMENT
+                                        " runat="server" id="lblManager"/></li></a>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- end Header -->
+            <div style="height: auto;">
+                <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                </asp:ContentPlaceHolder>
+            </div>
+
+
+
+
+
+            <!-- begin Footer -->
+
+            <div id="footer">
+                <p class="footer-item"><i class="fa fa-copyright"></i> Aprotrain Aptech HCM - C1309G NVQD</p>
+                <p style="text-align:center">
+                    <asp:Button Text="Login" runat="server" id="btnLogin" CssClass="btnLogin" OnClick="btnLogin_Click" ValidationGroup="login"/>
+                    <asp:Button Text="Logout" runat="server" id="btnLogout" Visible="false" CssClass="btnLogin" OnClick="btnLogout_Click" ValidationGroup="logout"/>
+                </p>
+            </div>
+
+            <!-- end Footer -->
+        </div>
+    </form>
+</body>
+</html>

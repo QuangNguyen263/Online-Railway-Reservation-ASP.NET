@@ -1,0 +1,304 @@
+﻿body {
+}
+
+/*master*/
+.contact:before{
+    content: "CONTACT";
+    
+}
+
+.regulation:before{
+    content: "REGULATION";
+}
+
+.hour:before{
+    content: "YOUR LOCATION";
+}
+
+.bookTicket:before{
+    content: "VIEW TICKETS";
+}
+
+.searchTicket:before{
+    content: "SEARCH TICKET";
+}
+
+/*default*/
+.form-head:before{
+    content:"FIND TICKETS";
+}
+
+.form1:before{
+    content: "1. Book Ticket";
+}
+
+.form2:before{
+    content: "2. People";
+}
+
+.depature:before{
+    content: "Depature";
+}
+
+.depaturedate:before{
+    content: "Depature date";
+}
+
+.arrival:before{
+    content: "Arrival";
+}
+
+.returndate:before{
+    content: "Return date";
+}
+
+.adult:before{
+    content: "Adult (From 12 year old)";
+}
+
+.child:before{
+    content: "Child (From 2 to 12 year old)";
+}
+
+.baby:before{
+    content: "Baby (Under 2 years)";
+}
+
+.form-info:before{
+    content: "Booking guide";
+}
+
+/*Info_Ticket*/
+.findTicketInfo:before{
+    content: "FIND BOOKING INFORMATION";
+}
+
+.codePrn:before{
+    content: "Code PRN:";
+}
+.codePrn2:before{
+    content: "Email:";
+}
+.codePrn3:before{
+    content: "Phone Number:";
+}
+.forgetPrn:before{
+    content: "Forget PRN code?";
+}
+
+.customerInfo:before{
+    content: "Customer information";
+}
+
+.fullName:before{
+    content: "Full Name:";
+}
+
+.codeP:before{
+    content: "PNR Code:";
+}
+
+.birth:before{
+    content: "Date Of Birth";
+}
+
+.address:before{
+    content: "Address";
+}
+
+.ticketID:before{
+    content: "Ticket ID";
+}
+
+.from:before{
+    content: "From";
+}
+
+.to:before{
+    content: "To";
+}
+
+.trainName:before{
+    content: "Train Name";
+}
+
+.coachType:before{
+    content: "Coach Type";
+}
+
+.departureTime:before{
+    content: "Departure Time";
+}
+
+.passengerType:before{
+    content: "Passenger Type";
+}
+
+.price:before{
+    content: "Price";
+}
+
+.status:before{
+    content: "Status";
+}
+
+/*Info_Ticket_FindPRN*/
+.retrieveInfo:before{
+    content: "RETRIEVE INFORMATION";
+}
+
+.phone:before{
+    content: "Phone Number:";
+}
+
+/*Done_Ticket*/
+.selectTrain:before{
+    content: "Select trip";
+}
+
+.infoTrain:before{
+    content: "Trip information and payment";
+}
+
+.complete:before{
+    content: "Complete !";
+}
+
+.mess:before{
+    content: "The PRN codes has been sent to your email.Please check and managing your ticket here";
+}
+
+/*Choose_Ticket*/
+.oneway:before {
+    content: "One Way";
+}
+
+.returnJourney:before{
+    content: "Return";
+}
+
+/*Book_ticket*/
+.infoTrip:before{
+    content: "Trip information";
+}
+
+.time:before{
+    content: "Time";
+}
+
+.title:before{
+    content: "Gender";
+}
+
+.lastN:before{
+    content: "Last name (*)";
+}
+
+.firstN:before{
+    content: "First name (*)";
+}
+
+.reconfirmE:before{
+    content: "Reconfirm email (*)";
+}
+
+.infoPayment:before{
+    content: "Sigin Account Internet Banking";
+}
+
+.bankName:before{
+    content: "Bank Username (*)";
+}
+
+.pass:before{
+    content: "Password (*)";
+}
+
+.cardCode:before{
+    content: "Card Code (*)";
+}
+
+.infoGo:before{
+    content: "Time travel payment information";
+}
+
+.class:before{
+    content: "Class";
+}
+
+.coachCode:before{
+    content: "Coach code";
+}
+
+.number:before{
+    content: "Number of ticket";
+}
+
+.money:before{
+    content: "Monetized";
+}
+
+.adults:before{
+    content: "Adult";
+}
+
+.childs:before{
+    content: "Child";
+}
+
+.babys:before{
+    content: "Baby";
+}
+
+.infoReturn:before{
+    content: "Payment information return leg";
+}
+
+.unit:before{
+    content: "Unit: $";
+}
+
+.total:before{
+    content: "Total price";
+}
+
+.day:before{
+    content: "Day:";
+}
+
+.idTrain:before{
+    content: "Train code:";
+}
+
+/*contact*/
+.contactus:before{
+    content: "Contact Us";
+}
+
+.call:before{
+    content: "Call us on 955 5800 800";
+}
+
+.register:before{
+    content: "Registered Office:";
+}
+
+.corporate:before{
+    content: "Corporate Office:";
+}
+
+.talk:before{
+    content: "Talk to us";
+}
+
+.nameU:before{
+    content: "Your name:";
+}
+
+.emailU:before{
+    content: "Your email:";
+}
+
+.messenger:before{
+    content: "Your messenger:";
+}

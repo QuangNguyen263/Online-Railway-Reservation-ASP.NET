@@ -1,0 +1,2306 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Coaches">
+          <Key>
+            <PropertyRef Name="Coach_ID" />
+          </Key>
+          <Property Name="Coach_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Coach_Type" Type="nvarchar" MaxLength="50" />
+          <Property Name="Train_ID" Type="int" />
+          <Property Name="Number_Of_Seats" Type="int" />
+          <Property Name="Price" Type="float" />
+          <Property Name="Status" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="Passengers">
+          <Key>
+            <PropertyRef Name="PNR" />
+          </Key>
+          <Property Name="PNR" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Passenger_Name" Type="nvarchar" MaxLength="100" />
+          <Property Name="Date_Of_Birth" Type="date" />
+          <Property Name="Card_Code" Type="nvarchar" MaxLength="20" />
+          <Property Name="Gender" Type="nvarchar" MaxLength="20" />
+          <Property Name="Email" Type="nvarchar" MaxLength="100" />
+          <Property Name="Phone_Number" Type="nvarchar" MaxLength="20" />
+          <Property Name="Address" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="Roles">
+          <Key>
+            <PropertyRef Name="Role_ID" />
+          </Key>
+          <Property Name="Role_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Role_Name" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Stations">
+          <Key>
+            <PropertyRef Name="Station_ID" />
+          </Key>
+          <Property Name="Station_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Station_Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Latitude" Type="float" />
+          <Property Name="Longtitude" Type="float" />
+          <Property Name="Status" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="Tickets">
+          <Key>
+            <PropertyRef Name="Ticket_ID" />
+          </Key>
+          <Property Name="Ticket_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PNR" Type="nvarchar" MaxLength="50" />
+          <Property Name="Passenger_type" Type="nvarchar" MaxLength="30" />
+          <Property Name="Status" Type="nvarchar" MaxLength="20" />
+          <Property Name="Train_ID" Type="int" />
+          <Property Name="Departure_Date" Type="date" />
+          <Property Name="Departure_Time" Type="time" Precision="7" />
+          <Property Name="Coach_Type" Type="nvarchar" MaxLength="30" />
+          <Property Name="Price" Type="float" />
+        </EntityType>
+        <EntityType Name="Timetables">
+          <Key>
+            <PropertyRef Name="Timetable_ID" />
+          </Key>
+          <Property Name="Timetable_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Departure_Date" Type="date" />
+          <Property Name="Departure_Time" Type="time" Precision="7" />
+          <Property Name="Arrival_Date" Type="date" />
+          <Property Name="Arrival_Time" Type="time" Precision="7" />
+          <Property Name="Distance" Type="float" />
+          <Property Name="Train_ID" Type="int" />
+        </EntityType>
+        <EntityType Name="Trains">
+          <Key>
+            <PropertyRef Name="Train_ID" />
+          </Key>
+          <Property Name="Train_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Train_Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Origin_Station_ID" Type="int" Nullable="false" />
+          <Property Name="Destination_Station_ID" Type="int" Nullable="false" />
+          <Property Name="Status" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Train_Type" Type="nvarchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="Username" />
+          </Key>
+          <Property Name="Username" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="100" />
+          <Property Name="Email" Type="nvarchar" MaxLength="100" />
+          <Property Name="Phone_Number" Type="nvarchar" MaxLength="20" />
+          <Property Name="Gender" Type="nvarchar" MaxLength="20" />
+          <Property Name="Security_Code" Type="nvarchar" MaxLength="50" />
+          <Property Name="Role_ID" Type="int" />
+        </EntityType>
+        <Association Name="FK_Coaches_Trains">
+          <End Role="Trains" Type="Self.Trains" Multiplicity="0..1" />
+          <End Role="Coaches" Type="Self.Coaches" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Trains">
+              <PropertyRef Name="Train_ID" />
+            </Principal>
+            <Dependent Role="Coaches">
+              <PropertyRef Name="Train_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tickets_Passengers">
+          <End Role="Passengers" Type="Self.Passengers" Multiplicity="0..1" />
+          <End Role="Tickets" Type="Self.Tickets" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Passengers">
+              <PropertyRef Name="PNR" />
+            </Principal>
+            <Dependent Role="Tickets">
+              <PropertyRef Name="PNR" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tickets_Trains">
+          <End Role="Trains" Type="Self.Trains" Multiplicity="0..1" />
+          <End Role="Tickets" Type="Self.Tickets" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Trains">
+              <PropertyRef Name="Train_ID" />
+            </Principal>
+            <Dependent Role="Tickets">
+              <PropertyRef Name="Train_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Timetables_Trains">
+          <End Role="Trains" Type="Self.Trains" Multiplicity="0..1" />
+          <End Role="Timetables" Type="Self.Timetables" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Trains">
+              <PropertyRef Name="Train_ID" />
+            </Principal>
+            <Dependent Role="Timetables">
+              <PropertyRef Name="Train_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Trains_Stations">
+          <End Role="Stations" Type="Self.Stations" Multiplicity="1" />
+          <End Role="Trains" Type="Self.Trains" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Stations">
+              <PropertyRef Name="Station_ID" />
+            </Principal>
+            <Dependent Role="Trains">
+              <PropertyRef Name="Destination_Station_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Trains_Stations1">
+          <End Role="Stations" Type="Self.Stations" Multiplicity="1" />
+          <End Role="Trains" Type="Self.Trains" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Stations">
+              <PropertyRef Name="Station_ID" />
+            </Principal>
+            <Dependent Role="Trains">
+              <PropertyRef Name="Origin_Station_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Users_Roles">
+          <End Role="Roles" Type="Self.Roles" Multiplicity="0..1" />
+          <End Role="Users" Type="Self.Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Roles">
+              <PropertyRef Name="Role_ID" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="Role_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="Add_Coaches" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Coach_Type" Type="nvarchar" Mode="In" />
+          <Parameter Name="Train_ID" Type="int" Mode="In" />
+          <Parameter Name="Number_Of_Seats" Type="int" Mode="In" />
+          <Parameter Name="Price" Type="float" Mode="In" />
+          <Parameter Name="Status" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="Add_Passengers" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="PNR" Type="nvarchar" Mode="In" />
+          <Parameter Name="Passenger_Name" Type="nvarchar" Mode="In" />
+          <Parameter Name="Date_Of_Birth" Type="date" Mode="In" />
+          <Parameter Name="Card_Code" Type="nvarchar" Mode="In" />
+          <Parameter Name="Gender" Type="nvarchar" Mode="In" />
+          <Parameter Name="Email" Type="nvarchar" Mode="In" />
+          <Parameter Name="Phone_Number" Type="nvarchar" Mode="In" />
+          <Parameter Name="Address" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="Add_Roles" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Role_Name" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="Add_Stations" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Station_Name" Type="nvarchar" Mode="In" />
+          <Parameter Name="Latitude" Type="float" Mode="In" />
+          <Parameter Name="Longtitude" Type="float" Mode="In" />
+          <Parameter Name="Status" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="Add_Tickets" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="PNR" Type="nvarchar" Mode="In" />
+          <Parameter Name="Passenger_Type" Type="nvarchar" Mode="In" />
+          <Parameter Name="Status" Type="nvarchar" Mode="In" />
+          <Parameter Name="Train_ID" Type="int" Mode="In" />
+          <Parameter Name="Departure_Date" Type="date" Mode="In" />
+          <Parameter Name="Departure_Time" Type="time" Mode="In" />
+          <Parameter Name="Coach_type" Type="nvarchar" Mode="In" />
+          <Parameter Name="Price" Type="float" Mode="In" />
+        </Function>
+        <Function Name="Add_Timetables" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Departure_Date" Type="date" Mode="In" />
+          <Parameter Name="Departure_Time" Type="time" Mode="In" />
+          <Parameter Name="Arrival_Date" Type="date" Mode="In" />
+          <Parameter Name="Arrival_Time" Type="time" Mode="In" />
+          <Parameter Name="Distance" Type="float" Mode="In" />
+          <Parameter Name="Train_ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Add_Trains" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Train_Name" Type="nvarchar" Mode="In" />
+          <Parameter Name="Origin_Station_ID" Type="int" Mode="In" />
+          <Parameter Name="Destination_Station_ID" Type="int" Mode="In" />
+          <Parameter Name="Status" Type="nvarchar" Mode="In" />
+          <Parameter Name="Train_Type" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="Add_Users" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Username" Type="nvarchar" Mode="In" />
+          <Parameter Name="Password" Type="nvarchar" Mode="In" />
+          <Parameter Name="Email" Type="nvarchar" Mode="In" />
+          <Parameter Name="Phone_Number" Type="nvarchar" Mode="In" />
+          <Parameter Name="Gender" Type="nvarchar" Mode="In" />
+          <Parameter Name="Security_Code" Type="nvarchar" Mode="In" />
+          <Parameter Name="Role_ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Cancel_Ticket" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Ticket_ID" Type="int" Mode="In" />
+          <Parameter Name="Status" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="Delete_Coaches" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Coach_ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Delete_Passengers" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="PNR" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="Delete_Roles" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Role_ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Delete_Stations" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Station_ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Delete_Tickets" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Ticket_ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Delete_Timetables" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Timetable_ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Delete_Trains" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Train_ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Delete_Users" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Username" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="Get_All_Coaches" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="Get_All_Ticket_v2" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="get_All_Timetables_v2" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="Get_All_Train_v2" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="Get_All_User_v2" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="get_Coach_By_ID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Coach_ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Get_Coach_By_Train" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="trainid" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Get_Coach_By_Train_ID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Train_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="get_Passenger_By_Email" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Email" Type="nvarchar" Mode="In" />
+          <Parameter Name="Phone_Number" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="get_Passenger_By_PNR" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="PNR" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="get_Role_By_ID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Role_ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="get_Station_By_ID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Station_ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="get_Station_By_Status" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Status" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="Get_Station_By_Train_ID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="train_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="get_Ticket_By_ID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Ticket_ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Get_Ticket_By_ID_v2" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="get_Ticket_By_PNR" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="PNR" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="get_Ticket_By_TrainID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Train_ID" Type="int" Mode="In" />
+          <Parameter Name="Coach_Type" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="get_Timetable_By_ID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Timetable_ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Get_Timetable_By_Train_ID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="train_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="get_Train_By_ID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Train_ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Get_train_By_OS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Origin_Station_ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Get_Train_By_Time_Sche" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Train_id" Type="int" Mode="In" />
+          <Parameter Name="Departure_Date" Type="date" Mode="In" />
+        </Function>
+        <Function Name="Get_Train_By_Time_Sche2" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Train_id" Type="int" Mode="In" />
+          <Parameter Name="Departure_Date" Type="date" Mode="In" />
+        </Function>
+        <Function Name="Get_Train_Des" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Origin_Station_ID" Type="int" Mode="In" />
+          <Parameter Name="Departure_Date" Type="date" Mode="In" />
+        </Function>
+        <Function Name="Get_Train_Des_Schedule" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Origin_Station_ID" Type="int" Mode="In" />
+          <Parameter Name="Departure_Date" Type="date" Mode="In" />
+        </Function>
+        <Function Name="Get_Train_Des2" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Origin_Station_ID" Type="int" Mode="In" />
+          <Parameter Name="Departure_Date" Type="date" Mode="In" />
+        </Function>
+        <Function Name="get_User_By_Username" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Username" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="Get_User_By_UserName_v2" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="username" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="getAll_Coaches" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="getAll_Passengers" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="getAll_Roles" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="getAll_Stations" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="getAll_Tickets" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="getAll_Timetables" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="getAll_Trains" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="getAll_Users" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="login" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="username" Type="nvarchar" Mode="In" />
+          <Parameter Name="password" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="Search_Coach_Type" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Train_ID" Type="int" Mode="In" />
+          <Parameter Name="Coach_Type" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="Search_Station" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Station_Name" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="Search_Ticket_By_PNR" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="pnr" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="Search_Timetable" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Train_ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Search_Train" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Origin_Station_ID" Type="int" Mode="In" />
+          <Parameter Name="Destination_Station_ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Search_Train_By_Train_id" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="train_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Search_Train_Information" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Origin_Station_ID" Type="int" Mode="In" />
+          <Parameter Name="Destination_Station_ID" Type="int" Mode="In" />
+          <Parameter Name="Departure_Date" Type="date" Mode="In" />
+        </Function>
+        <Function Name="Search_Train_TimeTable" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Origin_Station_ID" Type="int" Mode="In" />
+          <Parameter Name="Destination_Station_ID" Type="int" Mode="In" />
+          <Parameter Name="Departure_Date" Type="date" Mode="In" />
+        </Function>
+        <Function Name="Search_Username_By_ID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="username" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="Update_Coaches" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Coach_ID" Type="int" Mode="In" />
+          <Parameter Name="Coach_Type" Type="nvarchar" Mode="In" />
+          <Parameter Name="Train_ID" Type="int" Mode="In" />
+          <Parameter Name="Number_Of_Seats" Type="int" Mode="In" />
+          <Parameter Name="Price" Type="float" Mode="In" />
+          <Parameter Name="Status" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="Update_Info" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="username" Type="nvarchar" Mode="In" />
+          <Parameter Name="email" Type="nvarchar" Mode="In" />
+          <Parameter Name="phone" Type="nvarchar" Mode="In" />
+          <Parameter Name="gender" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="Update_Passengers" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="PNR" Type="nvarchar" Mode="In" />
+          <Parameter Name="Passenger_Name" Type="nvarchar" Mode="In" />
+          <Parameter Name="Date_Of_Birth" Type="date" Mode="In" />
+          <Parameter Name="Card_Code" Type="nvarchar" Mode="In" />
+          <Parameter Name="Gender" Type="nvarchar" Mode="In" />
+          <Parameter Name="Email" Type="nvarchar" Mode="In" />
+          <Parameter Name="Phone_Number" Type="nvarchar" Mode="In" />
+          <Parameter Name="Address" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="Update_Password" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="username" Type="nvarchar" Mode="In" />
+          <Parameter Name="password" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="Update_Roles" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Role_ID" Type="int" Mode="In" />
+          <Parameter Name="Role_Name" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="Update_Stations" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Station_ID" Type="int" Mode="In" />
+          <Parameter Name="Station_Name" Type="nvarchar" Mode="In" />
+          <Parameter Name="Latitude" Type="float" Mode="In" />
+          <Parameter Name="Longtitude" Type="float" Mode="In" />
+          <Parameter Name="Status" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="Update_Tickets" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Ticket_ID" Type="int" Mode="In" />
+          <Parameter Name="PNR" Type="nvarchar" Mode="In" />
+          <Parameter Name="Passenger_Type" Type="nvarchar" Mode="In" />
+          <Parameter Name="Status" Type="nvarchar" Mode="In" />
+          <Parameter Name="Train_ID" Type="int" Mode="In" />
+          <Parameter Name="Departure_Date" Type="date" Mode="In" />
+          <Parameter Name="Departure_Time" Type="time" Mode="In" />
+          <Parameter Name="Coach_Type" Type="nvarchar" Mode="In" />
+          <Parameter Name="Price" Type="float" Mode="In" />
+        </Function>
+        <Function Name="Update_Timetables" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Timetable_ID" Type="int" Mode="In" />
+          <Parameter Name="Departure_Date" Type="date" Mode="In" />
+          <Parameter Name="Departure_Time" Type="time" Mode="In" />
+          <Parameter Name="Arrival_Date" Type="date" Mode="In" />
+          <Parameter Name="Arrival_Time" Type="time" Mode="In" />
+          <Parameter Name="Distance" Type="float" Mode="In" />
+          <Parameter Name="Train_ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Update_Trains" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Train_ID" Type="int" Mode="In" />
+          <Parameter Name="Train_Name" Type="nvarchar" Mode="In" />
+          <Parameter Name="Origin_Station_ID" Type="int" Mode="In" />
+          <Parameter Name="Destination_Station_ID" Type="int" Mode="In" />
+          <Parameter Name="Status" Type="nvarchar" Mode="In" />
+          <Parameter Name="Train_Type" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="Update_Users" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Username" Type="nvarchar" Mode="In" />
+          <Parameter Name="Password" Type="nvarchar" Mode="In" />
+          <Parameter Name="Email" Type="nvarchar" Mode="In" />
+          <Parameter Name="Phone_Number" Type="nvarchar" Mode="In" />
+          <Parameter Name="Gender" Type="nvarchar" Mode="In" />
+          <Parameter Name="Security_Code" Type="nvarchar" Mode="In" />
+          <Parameter Name="Role_ID" Type="int" Mode="In" />
+        </Function>
+        <EntityContainer Name="ModelStoreContainer">
+          <EntitySet Name="Coaches" EntityType="Self.Coaches" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Passengers" EntityType="Self.Passengers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Stations" EntityType="Self.Stations" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tickets" EntityType="Self.Tickets" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Timetables" EntityType="Self.Timetables" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Trains" EntityType="Self.Trains" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Coaches_Trains" Association="Self.FK_Coaches_Trains">
+            <End Role="Trains" EntitySet="Trains" />
+            <End Role="Coaches" EntitySet="Coaches" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tickets_Passengers" Association="Self.FK_Tickets_Passengers">
+            <End Role="Passengers" EntitySet="Passengers" />
+            <End Role="Tickets" EntitySet="Tickets" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tickets_Trains" Association="Self.FK_Tickets_Trains">
+            <End Role="Trains" EntitySet="Trains" />
+            <End Role="Tickets" EntitySet="Tickets" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Timetables_Trains" Association="Self.FK_Timetables_Trains">
+            <End Role="Trains" EntitySet="Trains" />
+            <End Role="Timetables" EntitySet="Timetables" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Trains_Stations" Association="Self.FK_Trains_Stations">
+            <End Role="Stations" EntitySet="Stations" />
+            <End Role="Trains" EntitySet="Trains" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Trains_Stations1" Association="Self.FK_Trains_Stations1">
+            <End Role="Stations" EntitySet="Stations" />
+            <End Role="Trains" EntitySet="Trains" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Users_Roles" Association="Self.FK_Users_Roles">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Coach">
+          <Key>
+            <PropertyRef Name="Coach_ID" />
+          </Key>
+          <Property Name="Coach_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Coach_Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Train_ID" Type="Int32" />
+          <Property Name="Number_Of_Seats" Type="Int32" />
+          <Property Name="Price" Type="Double" />
+          <Property Name="Status" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Train" Relationship="Self.FK_Coaches_Trains" FromRole="Coaches" ToRole="Trains" />
+        </EntityType>
+        <EntityType Name="Passenger">
+          <Key>
+            <PropertyRef Name="PNR" />
+          </Key>
+          <Property Name="PNR" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Passenger_Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Date_Of_Birth" Type="DateTime" Precision="0" />
+          <Property Name="Card_Code" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Gender" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Phone_Number" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Tickets" Relationship="Self.FK_Tickets_Passengers" FromRole="Passengers" ToRole="Tickets" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="Role_ID" />
+          </Key>
+          <Property Name="Role_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Role_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Users" Relationship="Self.FK_Users_Roles" FromRole="Roles" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="Station">
+          <Key>
+            <PropertyRef Name="Station_ID" />
+          </Key>
+          <Property Name="Station_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Station_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Latitude" Type="Double" />
+          <Property Name="Longtitude" Type="Double" />
+          <Property Name="Status" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Trains" Relationship="Self.FK_Trains_Stations" FromRole="Stations" ToRole="Trains" />
+          <NavigationProperty Name="Trains1" Relationship="Self.FK_Trains_Stations1" FromRole="Stations" ToRole="Trains" />
+        </EntityType>
+        <EntityType Name="Ticket">
+          <Key>
+            <PropertyRef Name="Ticket_ID" />
+          </Key>
+          <Property Name="Ticket_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PNR" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Passenger_type" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Train_ID" Type="Int32" />
+          <Property Name="Departure_Date" Type="DateTime" Precision="0" />
+          <Property Name="Departure_Time" Type="Time" Precision="7" />
+          <Property Name="Coach_Type" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Price" Type="Double" />
+          <NavigationProperty Name="Passenger" Relationship="Self.FK_Tickets_Passengers" FromRole="Tickets" ToRole="Passengers" />
+          <NavigationProperty Name="Train" Relationship="Self.FK_Tickets_Trains" FromRole="Tickets" ToRole="Trains" />
+        </EntityType>
+        <EntityType Name="Timetable">
+          <Key>
+            <PropertyRef Name="Timetable_ID" />
+          </Key>
+          <Property Name="Timetable_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Departure_Date" Type="DateTime" Precision="0" />
+          <Property Name="Departure_Time" Type="Time" Precision="7" />
+          <Property Name="Arrival_Date" Type="DateTime" Precision="0" />
+          <Property Name="Arrival_Time" Type="Time" Precision="7" />
+          <Property Name="Distance" Type="Double" />
+          <Property Name="Train_ID" Type="Int32" />
+          <NavigationProperty Name="Train" Relationship="Self.FK_Timetables_Trains" FromRole="Timetables" ToRole="Trains" />
+        </EntityType>
+        <EntityType Name="Train">
+          <Key>
+            <PropertyRef Name="Train_ID" />
+          </Key>
+          <Property Name="Train_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Train_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Origin_Station_ID" Type="Int32" Nullable="false" />
+          <Property Name="Destination_Station_ID" Type="Int32" Nullable="false" />
+          <Property Name="Status" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Train_Type" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Coaches" Relationship="Self.FK_Coaches_Trains" FromRole="Trains" ToRole="Coaches" />
+          <NavigationProperty Name="Station" Relationship="Self.FK_Trains_Stations" FromRole="Trains" ToRole="Stations" />
+          <NavigationProperty Name="Station1" Relationship="Self.FK_Trains_Stations1" FromRole="Trains" ToRole="Stations" />
+          <NavigationProperty Name="Tickets" Relationship="Self.FK_Tickets_Trains" FromRole="Trains" ToRole="Tickets" />
+          <NavigationProperty Name="Timetables" Relationship="Self.FK_Timetables_Trains" FromRole="Trains" ToRole="Timetables" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Username" />
+          </Key>
+          <Property Name="Username" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Phone_Number" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Gender" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Security_Code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Role_ID" Type="Int32" />
+          <NavigationProperty Name="Role" Relationship="Self.FK_Users_Roles" FromRole="Users" ToRole="Roles" />
+        </EntityType>
+        <Association Name="FK_Coaches_Trains">
+          <End Role="Trains" Type="Self.Train" Multiplicity="0..1" />
+          <End Role="Coaches" Type="Self.Coach" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Trains">
+              <PropertyRef Name="Train_ID" />
+            </Principal>
+            <Dependent Role="Coaches">
+              <PropertyRef Name="Train_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tickets_Passengers">
+          <End Role="Passengers" Type="Self.Passenger" Multiplicity="0..1" />
+          <End Role="Tickets" Type="Self.Ticket" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Passengers">
+              <PropertyRef Name="PNR" />
+            </Principal>
+            <Dependent Role="Tickets">
+              <PropertyRef Name="PNR" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Users_Roles">
+          <End Role="Roles" Type="Self.Role" Multiplicity="0..1" />
+          <End Role="Users" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Roles">
+              <PropertyRef Name="Role_ID" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="Role_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Trains_Stations">
+          <End Role="Stations" Type="Self.Station" Multiplicity="1" />
+          <End Role="Trains" Type="Self.Train" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Stations">
+              <PropertyRef Name="Station_ID" />
+            </Principal>
+            <Dependent Role="Trains">
+              <PropertyRef Name="Destination_Station_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Trains_Stations1">
+          <End Role="Stations" Type="Self.Station" Multiplicity="1" />
+          <End Role="Trains" Type="Self.Train" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Stations">
+              <PropertyRef Name="Station_ID" />
+            </Principal>
+            <Dependent Role="Trains">
+              <PropertyRef Name="Origin_Station_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tickets_Trains">
+          <End Role="Trains" Type="Self.Train" Multiplicity="0..1" />
+          <End Role="Tickets" Type="Self.Ticket" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Trains">
+              <PropertyRef Name="Train_ID" />
+            </Principal>
+            <Dependent Role="Tickets">
+              <PropertyRef Name="Train_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Timetables_Trains">
+          <End Role="Trains" Type="Self.Train" Multiplicity="0..1" />
+          <End Role="Timetables" Type="Self.Timetable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Trains">
+              <PropertyRef Name="Train_ID" />
+            </Principal>
+            <Dependent Role="Timetables">
+              <PropertyRef Name="Train_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Online_Railway_reservation_systemEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Coaches" EntityType="Self.Coach" />
+          <EntitySet Name="Passengers" EntityType="Self.Passenger" />
+          <EntitySet Name="Roles" EntityType="Self.Role" />
+          <EntitySet Name="Stations" EntityType="Self.Station" />
+          <EntitySet Name="Tickets" EntityType="Self.Ticket" />
+          <EntitySet Name="Timetables" EntityType="Self.Timetable" />
+          <EntitySet Name="Trains" EntityType="Self.Train" />
+          <EntitySet Name="Users" EntityType="Self.User" />
+          <AssociationSet Name="FK_Coaches_Trains" Association="Self.FK_Coaches_Trains">
+            <End Role="Trains" EntitySet="Trains" />
+            <End Role="Coaches" EntitySet="Coaches" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tickets_Passengers" Association="Self.FK_Tickets_Passengers">
+            <End Role="Passengers" EntitySet="Passengers" />
+            <End Role="Tickets" EntitySet="Tickets" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Users_Roles" Association="Self.FK_Users_Roles">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Trains_Stations" Association="Self.FK_Trains_Stations">
+            <End Role="Stations" EntitySet="Stations" />
+            <End Role="Trains" EntitySet="Trains" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Trains_Stations1" Association="Self.FK_Trains_Stations1">
+            <End Role="Stations" EntitySet="Stations" />
+            <End Role="Trains" EntitySet="Trains" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tickets_Trains" Association="Self.FK_Tickets_Trains">
+            <End Role="Trains" EntitySet="Trains" />
+            <End Role="Tickets" EntitySet="Tickets" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Timetables_Trains" Association="Self.FK_Timetables_Trains">
+            <End Role="Trains" EntitySet="Trains" />
+            <End Role="Timetables" EntitySet="Timetables" />
+          </AssociationSet>
+          <FunctionImport Name="Add_Coaches">
+            <Parameter Name="Coach_Type" Mode="In" Type="String" />
+            <Parameter Name="Train_ID" Mode="In" Type="Int32" />
+            <Parameter Name="Number_Of_Seats" Mode="In" Type="Int32" />
+            <Parameter Name="Price" Mode="In" Type="Double" />
+            <Parameter Name="Status" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Add_Passengers">
+            <Parameter Name="PNR" Mode="In" Type="String" />
+            <Parameter Name="Passenger_Name" Mode="In" Type="String" />
+            <Parameter Name="Date_Of_Birth" Mode="In" Type="DateTime" />
+            <Parameter Name="Card_Code" Mode="In" Type="String" />
+            <Parameter Name="Gender" Mode="In" Type="String" />
+            <Parameter Name="Email" Mode="In" Type="String" />
+            <Parameter Name="Phone_Number" Mode="In" Type="String" />
+            <Parameter Name="Address" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Add_Roles">
+          <Parameter Name="Role_Name" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Add_Stations">
+            <Parameter Name="Station_Name" Mode="In" Type="String" />
+            <Parameter Name="Latitude" Mode="In" Type="Double" />
+            <Parameter Name="Longtitude" Mode="In" Type="Double" />
+            <Parameter Name="Status" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Add_Timetables">
+            <Parameter Name="Departure_Date" Mode="In" Type="DateTime" />
+            <Parameter Name="Departure_Time" Mode="In" Type="Time" />
+            <Parameter Name="Arrival_Date" Mode="In" Type="DateTime" />
+            <Parameter Name="Arrival_Time" Mode="In" Type="Time" />
+            <Parameter Name="Distance" Mode="In" Type="Double" />
+            <Parameter Name="Train_ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Add_Trains">
+            <Parameter Name="Train_Name" Mode="In" Type="String" />
+            <Parameter Name="Origin_Station_ID" Mode="In" Type="Int32" />
+            <Parameter Name="Destination_Station_ID" Mode="In" Type="Int32" />
+            <Parameter Name="Status" Mode="In" Type="String" />
+            <Parameter Name="Train_Type" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Add_Users">
+            <Parameter Name="Username" Mode="In" Type="String" />
+            <Parameter Name="Password" Mode="In" Type="String" />
+            <Parameter Name="Email" Mode="In" Type="String" />
+            <Parameter Name="Phone_Number" Mode="In" Type="String" />
+            <Parameter Name="Gender" Mode="In" Type="String" />
+            <Parameter Name="Security_Code" Mode="In" Type="String" />
+            <Parameter Name="Role_ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Cancel_Ticket">
+            <Parameter Name="Ticket_ID" Mode="In" Type="Int32" />
+            <Parameter Name="Status" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Delete_Coaches">
+          <Parameter Name="Coach_ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Delete_Passengers">
+          <Parameter Name="PNR" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Delete_Roles">
+          <Parameter Name="Role_ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Delete_Stations">
+          <Parameter Name="Station_ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Delete_Tickets">
+          <Parameter Name="Ticket_ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Delete_Timetables">
+          <Parameter Name="Timetable_ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Delete_Trains">
+          <Parameter Name="Train_ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Delete_Users">
+          <Parameter Name="Username" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Get_All_Coaches" ReturnType="Collection(Model.Get_All_Coaches_Result)" />
+          <FunctionImport Name="Get_All_Ticket_v2" ReturnType="Collection(Model.Get_All_Ticket_v2_Result)" />
+          <FunctionImport Name="get_All_Timetables_v2" ReturnType="Collection(Model.get_All_Timetables_v2_Result)" />
+          <FunctionImport Name="Get_All_Train_v2" ReturnType="Collection(Model.Get_All_Train_v2_Result)" />
+          <FunctionImport Name="Get_All_User_v2" ReturnType="Collection(Model.Get_All_User_v2_Result)" />
+          <FunctionImport Name="get_Coach_By_ID" ReturnType="Collection(Model.get_Coach_By_ID_Result)">
+          <Parameter Name="Coach_ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Get_Coach_By_Train" ReturnType="Collection(Model.Get_Coach_By_Train_Result)">
+          <Parameter Name="trainid" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Get_Coach_By_Train_ID" ReturnType="Collection(Model.Get_Coach_By_Train_ID_Result)">
+          <Parameter Name="Train_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="get_Passenger_By_Email" ReturnType="Collection(Model.get_Passenger_By_Email_Result)">
+            <Parameter Name="Email" Mode="In" Type="String" />
+            <Parameter Name="Phone_Number" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="get_Passenger_By_PNR" ReturnType="Collection(Model.get_Passenger_By_PNR_Result)">
+          <Parameter Name="PNR" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="get_Role_By_ID" ReturnType="Collection(Model.get_Role_By_ID_Result)">
+          <Parameter Name="Role_ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="get_Station_By_ID" ReturnType="Collection(Model.get_Station_By_ID_Result)">
+          <Parameter Name="Station_ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="get_Station_By_Status" ReturnType="Collection(Model.get_Station_By_Status_Result)">
+          <Parameter Name="Status" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Get_Station_By_Train_ID" ReturnType="Collection(Model.Get_Station_By_Train_ID_Result)">
+          <Parameter Name="train_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="get_Ticket_By_ID" ReturnType="Collection(Model.get_Ticket_By_ID_Result)">
+          <Parameter Name="Ticket_ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Get_Ticket_By_ID_v2" ReturnType="Collection(Model.Get_Ticket_By_ID_v2_Result)">
+          <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="get_Ticket_By_PNR" ReturnType="Collection(Model.get_Ticket_By_PNR_Result)">
+          <Parameter Name="PNR" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="get_Ticket_By_TrainID" ReturnType="Collection(Model.get_Ticket_By_TrainID_Result)">
+            <Parameter Name="Train_ID" Mode="In" Type="Int32" />
+            <Parameter Name="Coach_Type" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="get_Timetable_By_ID" ReturnType="Collection(Model.get_Timetable_By_ID_Result)">
+          <Parameter Name="Timetable_ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Get_Timetable_By_Train_ID" ReturnType="Collection(Model.Get_Timetable_By_Train_ID_Result)">
+          <Parameter Name="train_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="get_Train_By_ID" ReturnType="Collection(Model.get_Train_By_ID_Result)">
+          <Parameter Name="Train_ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="get_User_By_Username" ReturnType="Collection(Model.get_User_By_Username_Result)">
+          <Parameter Name="Username" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Get_User_By_UserName_v2" ReturnType="Collection(Model.Get_User_By_UserName_v2_Result)">
+          <Parameter Name="username" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="getAll_Coaches" ReturnType="Collection(Model.getAll_Coaches_Result)" />
+          <FunctionImport Name="getAll_Passengers" ReturnType="Collection(Model.getAll_Passengers_Result)" />
+          <FunctionImport Name="getAll_Roles" ReturnType="Collection(Model.getAll_Roles_Result)" />
+          <FunctionImport Name="getAll_Stations" ReturnType="Collection(Model.getAll_Stations_Result)" />
+          <FunctionImport Name="getAll_Tickets" ReturnType="Collection(Model.getAll_Tickets_Result)" />
+          <FunctionImport Name="getAll_Timetables" ReturnType="Collection(Model.getAll_Timetables_Result)" />
+          <FunctionImport Name="getAll_Trains" ReturnType="Collection(Model.getAll_Trains_Result)" />
+          <FunctionImport Name="getAll_Users" ReturnType="Collection(Model.getAll_Users_Result)" />
+          <FunctionImport Name="login" ReturnType="Collection(Model.login_Result)">
+            <Parameter Name="username" Mode="In" Type="String" />
+            <Parameter Name="password" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Search_Coach_Type" ReturnType="Collection(Model.Search_Coach_Type_Result)">
+            <Parameter Name="Train_ID" Mode="In" Type="Int32" />
+            <Parameter Name="Coach_Type" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Search_Station" ReturnType="Collection(Model.Search_Station_Result)">
+          <Parameter Name="Station_Name" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Search_Ticket_By_PNR" ReturnType="Collection(Model.Search_Ticket_By_PNR_Result)">
+          <Parameter Name="pnr" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Search_Timetable" ReturnType="Collection(Model.Search_Timetable_Result)">
+          <Parameter Name="Train_ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Search_Train" ReturnType="Collection(Model.Search_Train_Result)">
+            <Parameter Name="Origin_Station_ID" Mode="In" Type="Int32" />
+            <Parameter Name="Destination_Station_ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Search_Train_By_Train_id" ReturnType="Collection(Model.Search_Train_By_Train_id_Result)">
+          <Parameter Name="train_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Search_Train_Information" ReturnType="Collection(Model.Search_Train_Information_Result)">
+            <Parameter Name="Origin_Station_ID" Mode="In" Type="Int32" />
+            <Parameter Name="Destination_Station_ID" Mode="In" Type="Int32" />
+            <Parameter Name="Departure_Date" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="Search_Train_TimeTable" ReturnType="Collection(Model.Search_Train_TimeTable_Result)">
+            <Parameter Name="Origin_Station_ID" Mode="In" Type="Int32" />
+            <Parameter Name="Destination_Station_ID" Mode="In" Type="Int32" />
+            <Parameter Name="Departure_Date" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="Search_Username_By_ID" ReturnType="Collection(Model.Search_Username_By_ID_Result)">
+          <Parameter Name="username" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Update_Coaches">
+            <Parameter Name="Coach_ID" Mode="In" Type="Int32" />
+            <Parameter Name="Coach_Type" Mode="In" Type="String" />
+            <Parameter Name="Train_ID" Mode="In" Type="Int32" />
+            <Parameter Name="Number_Of_Seats" Mode="In" Type="Int32" />
+            <Parameter Name="Price" Mode="In" Type="Double" />
+            <Parameter Name="Status" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Update_Info">
+            <Parameter Name="username" Mode="In" Type="String" />
+            <Parameter Name="email" Mode="In" Type="String" />
+            <Parameter Name="phone" Mode="In" Type="String" />
+            <Parameter Name="gender" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Update_Passengers">
+            <Parameter Name="PNR" Mode="In" Type="String" />
+            <Parameter Name="Passenger_Name" Mode="In" Type="String" />
+            <Parameter Name="Date_Of_Birth" Mode="In" Type="DateTime" />
+            <Parameter Name="Card_Code" Mode="In" Type="String" />
+            <Parameter Name="Gender" Mode="In" Type="String" />
+            <Parameter Name="Email" Mode="In" Type="String" />
+            <Parameter Name="Phone_Number" Mode="In" Type="String" />
+            <Parameter Name="Address" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Update_Password">
+            <Parameter Name="username" Mode="In" Type="String" />
+            <Parameter Name="password" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Update_Roles">
+            <Parameter Name="Role_ID" Mode="In" Type="Int32" />
+            <Parameter Name="Role_Name" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Update_Stations">
+            <Parameter Name="Station_ID" Mode="In" Type="Int32" />
+            <Parameter Name="Station_Name" Mode="In" Type="String" />
+            <Parameter Name="Latitude" Mode="In" Type="Double" />
+            <Parameter Name="Longtitude" Mode="In" Type="Double" />
+            <Parameter Name="Status" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Update_Tickets">
+            <Parameter Name="Ticket_ID" Mode="In" Type="Int32" />
+            <Parameter Name="PNR" Mode="In" Type="String" />
+            <Parameter Name="Passenger_Type" Mode="In" Type="String" />
+            <Parameter Name="Status" Mode="In" Type="String" />
+            <Parameter Name="Train_ID" Mode="In" Type="Int32" />
+            <Parameter Name="Departure_Date" Mode="In" Type="DateTime" />
+            <Parameter Name="Departure_Time" Mode="In" Type="Time" />
+            <Parameter Name="Coach_Type" Mode="In" Type="String" />
+            <Parameter Name="Price" Mode="In" Type="Double" />
+          </FunctionImport>
+          <FunctionImport Name="Update_Timetables">
+            <Parameter Name="Timetable_ID" Mode="In" Type="Int32" />
+            <Parameter Name="Departure_Date" Mode="In" Type="DateTime" />
+            <Parameter Name="Departure_Time" Mode="In" Type="Time" />
+            <Parameter Name="Arrival_Date" Mode="In" Type="DateTime" />
+            <Parameter Name="Arrival_Time" Mode="In" Type="Time" />
+            <Parameter Name="Distance" Mode="In" Type="Double" />
+            <Parameter Name="Train_ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Update_Trains">
+            <Parameter Name="Train_ID" Mode="In" Type="Int32" />
+            <Parameter Name="Train_Name" Mode="In" Type="String" />
+            <Parameter Name="Origin_Station_ID" Mode="In" Type="Int32" />
+            <Parameter Name="Destination_Station_ID" Mode="In" Type="Int32" />
+            <Parameter Name="Status" Mode="In" Type="String" />
+            <Parameter Name="Train_Type" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Update_Users">
+            <Parameter Name="Username" Mode="In" Type="String" />
+            <Parameter Name="Password" Mode="In" Type="String" />
+            <Parameter Name="Email" Mode="In" Type="String" />
+            <Parameter Name="Phone_Number" Mode="In" Type="String" />
+            <Parameter Name="Gender" Mode="In" Type="String" />
+            <Parameter Name="Security_Code" Mode="In" Type="String" />
+            <Parameter Name="Role_ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Add_Tickets">
+            <Parameter Name="PNR" Mode="In" Type="String" />
+            <Parameter Name="Passenger_Type" Mode="In" Type="String" />
+            <Parameter Name="Status" Mode="In" Type="String" />
+            <Parameter Name="Train_ID" Mode="In" Type="Int32" />
+            <Parameter Name="Departure_Date" Mode="In" Type="DateTime" />
+            <Parameter Name="Departure_Time" Mode="In" Type="Time" />
+            <Parameter Name="Coach_type" Mode="In" Type="String" />
+            <Parameter Name="Price" Mode="In" Type="Double" />
+          </FunctionImport>
+          <FunctionImport Name="Get_Train_Des" ReturnType="Collection(Model.Get_Train_Des_Result)">
+            <Parameter Name="Origin_Station_ID" Mode="In" Type="Int32" />
+            <Parameter Name="Departure_Date" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="Get_Train_Des2" ReturnType="Collection(Model.Get_Train_Des2_Result)">
+            <Parameter Name="Origin_Station_ID" Mode="In" Type="Int32" />
+            <Parameter Name="Departure_Date" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="Get_Train_Des_Schedule" ReturnType="Collection(Model.Get_Train_Des_Schedule_Result)">
+            <Parameter Name="Origin_Station_ID" Mode="In" Type="Int32" />
+            <Parameter Name="Departure_Date" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="Get_train_By_OS" ReturnType="Collection(Model.Get_train_By_OS_Result)">
+          <Parameter Name="Origin_Station_ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Get_Train_By_Time_Sche" ReturnType="Collection(Model.Get_Train_By_Time_Sche_Result)">
+            <Parameter Name="Train_id" Mode="In" Type="Int32" />
+            <Parameter Name="Departure_Date" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="Get_Train_By_Time_Sche2" ReturnType="Collection(Model.Get_Train_By_Time_Sche2_Result)">
+            <Parameter Name="Train_id" Mode="In" Type="Int32" />
+            <Parameter Name="Departure_Date" Mode="In" Type="DateTime" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="Get_All_Coaches_Result">
+          <Property Type="Int32" Name="Coach_ID" Nullable="false" />
+          <Property Type="String" Name="Coach_Type" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="Train_ID" Nullable="true" />
+          <Property Type="Int32" Name="Number_Of_Seats" Nullable="true" />
+          <Property Type="Double" Name="Price" Nullable="true" />
+          <Property Type="String" Name="Status" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="Train_Name" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="Get_All_Ticket_v2_Result">
+          <Property Type="Int32" Name="Ticket_ID" Nullable="false" />
+          <Property Type="String" Name="PNR" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Passenger_type" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="Status" Nullable="true" MaxLength="20" />
+          <Property Type="Int32" Name="Train_ID" Nullable="true" />
+          <Property Type="DateTime" Name="Departure_Date" Nullable="true" />
+          <Property Type="Time" Name="Departure_Time" Nullable="true" />
+          <Property Type="String" Name="Coach_Type" Nullable="true" MaxLength="30" />
+          <Property Type="Double" Name="Price" Nullable="true" />
+          <Property Type="String" Name="Train_Name" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="get_All_Timetables_v2_Result">
+          <Property Type="String" Name="Train_Name" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="Timetable_ID" Nullable="false" />
+          <Property Type="DateTime" Name="Departure_Date" Nullable="true" />
+          <Property Type="Time" Name="Departure_Time" Nullable="true" />
+          <Property Type="DateTime" Name="Arrival_Date" Nullable="true" />
+          <Property Type="Time" Name="Arrival_Time" Nullable="true" />
+          <Property Type="Double" Name="Distance" Nullable="true" />
+          <Property Type="Int32" Name="Train_ID" Nullable="true" />
+          <Property Type="String" Name="origin_station" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="destination_station" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="Get_All_Train_v2_Result">
+          <Property Type="Int32" Name="Train_ID" Nullable="false" />
+          <Property Type="String" Name="Train_Name" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="Origin_Station_ID" Nullable="false" />
+          <Property Type="Int32" Name="Destination_Station_ID" Nullable="false" />
+          <Property Type="String" Name="Status" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="Train_Type" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="origin_station" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="destin_station" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="Get_All_User_v2_Result">
+          <Property Type="String" Name="Username" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Password" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Email" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Phone_Number" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="Gender" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="Security_Code" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="Role_ID" Nullable="true" />
+          <Property Type="String" Name="Role_Name" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="get_Coach_By_ID_Result">
+          <Property Type="Int32" Name="Coach_ID" Nullable="false" />
+          <Property Type="String" Name="Coach_Type" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="Train_ID" Nullable="true" />
+          <Property Type="Int32" Name="Number_Of_Seats" Nullable="true" />
+          <Property Type="Double" Name="Price" Nullable="true" />
+          <Property Type="String" Name="Status" Nullable="true" MaxLength="20" />
+        </ComplexType>
+        <ComplexType Name="Get_Coach_By_Train_Result">
+          <Property Type="Int32" Name="Coach_ID" Nullable="false" />
+          <Property Type="String" Name="Coach_Type" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="Train_ID" Nullable="true" />
+          <Property Type="Int32" Name="Number_Of_Seats" Nullable="true" />
+          <Property Type="Double" Name="Price" Nullable="true" />
+          <Property Type="String" Name="Status" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="Train_Name" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="Get_Coach_By_Train_ID_Result">
+          <Property Type="Int32" Name="Coach_ID" Nullable="false" />
+          <Property Type="String" Name="Coach_Type" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="Train_ID" Nullable="true" />
+          <Property Type="Int32" Name="Number_Of_Seats" Nullable="true" />
+          <Property Type="Double" Name="Price" Nullable="true" />
+          <Property Type="String" Name="Status" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="Train_Name" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="get_Passenger_By_Email_Result">
+          <Property Type="String" Name="PNR" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Passenger_Name" Nullable="true" MaxLength="100" />
+          <Property Type="DateTime" Name="Date_Of_Birth" Nullable="true" />
+          <Property Type="String" Name="Card_Code" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="Gender" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="Email" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Phone_Number" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="Address" Nullable="true" MaxLength="200" />
+        </ComplexType>
+        <ComplexType Name="get_Passenger_By_PNR_Result">
+          <Property Type="String" Name="PNR" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Passenger_Name" Nullable="true" MaxLength="100" />
+          <Property Type="DateTime" Name="Date_Of_Birth" Nullable="true" />
+          <Property Type="String" Name="Card_Code" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="Gender" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="Email" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Phone_Number" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="Address" Nullable="true" MaxLength="200" />
+        </ComplexType>
+        <ComplexType Name="get_Role_By_ID_Result">
+          <Property Type="Int32" Name="Role_ID" Nullable="false" />
+          <Property Type="String" Name="Role_Name" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="get_Station_By_ID_Result">
+          <Property Type="Int32" Name="Station_ID" Nullable="false" />
+          <Property Type="String" Name="Station_Name" Nullable="true" MaxLength="50" />
+          <Property Type="Double" Name="Latitude" Nullable="true" />
+          <Property Type="Double" Name="Longtitude" Nullable="true" />
+          <Property Type="String" Name="Status" Nullable="true" MaxLength="20" />
+        </ComplexType>
+        <ComplexType Name="get_Station_By_Status_Result">
+          <Property Type="Int32" Name="Station_ID" Nullable="false" />
+          <Property Type="String" Name="Station_Name" Nullable="true" MaxLength="50" />
+          <Property Type="Double" Name="Latitude" Nullable="true" />
+          <Property Type="Double" Name="Longtitude" Nullable="true" />
+          <Property Type="String" Name="Status" Nullable="true" MaxLength="20" />
+        </ComplexType>
+        <ComplexType Name="Get_Station_By_Train_ID_Result">
+          <Property Type="String" Name="Origin_name" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Destin_name" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="get_Ticket_By_ID_Result">
+          <Property Type="Int32" Name="Ticket_ID" Nullable="false" />
+          <Property Type="String" Name="PNR" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Passenger_type" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="Status" Nullable="true" MaxLength="20" />
+          <Property Type="Int32" Name="Train_ID" Nullable="true" />
+          <Property Type="DateTime" Name="Departure_Date" Nullable="true" />
+          <Property Type="Time" Name="Departure_Time" Nullable="true" />
+          <Property Type="String" Name="Coach_Type" Nullable="true" MaxLength="30" />
+          <Property Type="Double" Name="Price" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="Get_Ticket_By_ID_v2_Result">
+          <Property Type="Int32" Name="Ticket_ID" Nullable="false" />
+          <Property Type="String" Name="PNR" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Passenger_type" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="Status" Nullable="true" MaxLength="20" />
+          <Property Type="Int32" Name="Train_ID" Nullable="true" />
+          <Property Type="DateTime" Name="Departure_Date" Nullable="true" />
+          <Property Type="Time" Name="Departure_Time" Nullable="true" />
+          <Property Type="String" Name="Coach_Type" Nullable="true" MaxLength="30" />
+          <Property Type="Double" Name="Price" Nullable="true" />
+          <Property Type="String" Name="Train_Name" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="get_Ticket_By_PNR_Result">
+          <Property Type="Int32" Name="Ticket_ID" Nullable="false" />
+          <Property Type="String" Name="PNR" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Passenger_type" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="Status" Nullable="true" MaxLength="20" />
+          <Property Type="Int32" Name="Train_ID" Nullable="true" />
+          <Property Type="DateTime" Name="Departure_Date" Nullable="true" />
+          <Property Type="Time" Name="Departure_Time" Nullable="true" />
+          <Property Type="String" Name="Coach_Type" Nullable="true" MaxLength="30" />
+          <Property Type="Double" Name="Price" Nullable="true" />
+          <Property Type="String" Name="Train_Name" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Destination_Station" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Origin_Station" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="get_Ticket_By_TrainID_Result">
+          <Property Type="Int32" Name="Ticket_ID" Nullable="false" />
+          <Property Type="String" Name="PNR" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Passenger_type" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="Status" Nullable="true" MaxLength="20" />
+          <Property Type="Int32" Name="Train_ID" Nullable="true" />
+          <Property Type="DateTime" Name="Departure_Date" Nullable="true" />
+          <Property Type="Time" Name="Departure_Time" Nullable="true" />
+          <Property Type="String" Name="Coach_Type" Nullable="true" MaxLength="30" />
+          <Property Type="Double" Name="Price" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="get_Timetable_By_ID_Result">
+          <Property Type="Int32" Name="Timetable_ID" Nullable="false" />
+          <Property Type="DateTime" Name="Departure_Date" Nullable="true" />
+          <Property Type="Time" Name="Departure_Time" Nullable="true" />
+          <Property Type="DateTime" Name="Arrival_Date" Nullable="true" />
+          <Property Type="Time" Name="Arrival_Time" Nullable="true" />
+          <Property Type="Double" Name="Distance" Nullable="true" />
+          <Property Type="Int32" Name="Train_ID" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="Get_Timetable_By_Train_ID_Result">
+          <Property Type="String" Name="Train_Name" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="Timetable_ID" Nullable="false" />
+          <Property Type="DateTime" Name="Departure_Date" Nullable="true" />
+          <Property Type="Time" Name="Departure_Time" Nullable="true" />
+          <Property Type="DateTime" Name="Arrival_Date" Nullable="true" />
+          <Property Type="Time" Name="Arrival_Time" Nullable="true" />
+          <Property Type="Double" Name="Distance" Nullable="true" />
+          <Property Type="Int32" Name="Train_ID" Nullable="true" />
+          <Property Type="String" Name="origin_station" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="destination_station" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="get_Train_By_ID_Result">
+          <Property Type="Int32" Name="Train_ID" Nullable="false" />
+          <Property Type="String" Name="Train_Name" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="Origin_Station_ID" Nullable="false" />
+          <Property Type="Int32" Name="Destination_Station_ID" Nullable="false" />
+          <Property Type="String" Name="Status" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="Train_Type" Nullable="false" MaxLength="20" />
+        </ComplexType>
+        <ComplexType Name="get_User_By_Username_Result">
+          <Property Type="String" Name="Username" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Password" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Email" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Phone_Number" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="Gender" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="Security_Code" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="Role_ID" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="Get_User_By_UserName_v2_Result">
+          <Property Type="String" Name="Username" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Password" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Email" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Phone_Number" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="Gender" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="Security_Code" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="Role_ID" Nullable="true" />
+          <Property Type="String" Name="Role_Name" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="getAll_Coaches_Result">
+          <Property Type="Int32" Name="Coach_ID" Nullable="false" />
+          <Property Type="String" Name="Coach_Type" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="Train_ID" Nullable="true" />
+          <Property Type="Int32" Name="Number_Of_Seats" Nullable="true" />
+          <Property Type="Double" Name="Price" Nullable="true" />
+          <Property Type="String" Name="Status" Nullable="true" MaxLength="20" />
+        </ComplexType>
+        <ComplexType Name="getAll_Passengers_Result">
+          <Property Type="String" Name="PNR" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Passenger_Name" Nullable="true" MaxLength="100" />
+          <Property Type="DateTime" Name="Date_Of_Birth" Nullable="true" />
+          <Property Type="String" Name="Card_Code" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="Gender" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="Email" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Phone_Number" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="Address" Nullable="true" MaxLength="200" />
+        </ComplexType>
+        <ComplexType Name="getAll_Roles_Result">
+          <Property Type="Int32" Name="Role_ID" Nullable="false" />
+          <Property Type="String" Name="Role_Name" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="getAll_Stations_Result">
+          <Property Type="Int32" Name="Station_ID" Nullable="false" />
+          <Property Type="String" Name="Station_Name" Nullable="true" MaxLength="50" />
+          <Property Type="Double" Name="Latitude" Nullable="true" />
+          <Property Type="Double" Name="Longtitude" Nullable="true" />
+          <Property Type="String" Name="Status" Nullable="true" MaxLength="20" />
+        </ComplexType>
+        <ComplexType Name="getAll_Tickets_Result">
+          <Property Type="Int32" Name="Ticket_ID" Nullable="false" />
+          <Property Type="String" Name="PNR" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Passenger_type" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="Status" Nullable="true" MaxLength="20" />
+          <Property Type="Int32" Name="Train_ID" Nullable="true" />
+          <Property Type="DateTime" Name="Departure_Date" Nullable="true" />
+          <Property Type="Time" Name="Departure_Time" Nullable="true" />
+          <Property Type="String" Name="Coach_Type" Nullable="true" MaxLength="30" />
+          <Property Type="Double" Name="Price" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="getAll_Timetables_Result">
+          <Property Type="Int32" Name="Timetable_ID" Nullable="false" />
+          <Property Type="DateTime" Name="Departure_Date" Nullable="true" />
+          <Property Type="Time" Name="Departure_Time" Nullable="true" />
+          <Property Type="DateTime" Name="Arrival_Date" Nullable="true" />
+          <Property Type="Time" Name="Arrival_Time" Nullable="true" />
+          <Property Type="Double" Name="Distance" Nullable="true" />
+          <Property Type="Int32" Name="Train_ID" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="getAll_Trains_Result">
+          <Property Type="Int32" Name="Train_ID" Nullable="false" />
+          <Property Type="String" Name="Train_Name" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="Origin_Station_ID" Nullable="false" />
+          <Property Type="Int32" Name="Destination_Station_ID" Nullable="false" />
+          <Property Type="String" Name="Status" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="Train_Type" Nullable="false" MaxLength="20" />
+        </ComplexType>
+        <ComplexType Name="getAll_Users_Result">
+          <Property Type="String" Name="Username" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Password" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Email" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Phone_Number" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="Gender" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="Security_Code" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="Role_ID" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="login_Result">
+          <Property Type="String" Name="Username" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Password" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Email" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Phone_Number" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="Gender" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="Security_Code" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="Role_ID" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="Search_Coach_Type_Result">
+          <Property Type="Int32" Name="Coach_ID" Nullable="false" />
+          <Property Type="String" Name="Coach_Type" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="Train_ID" Nullable="true" />
+          <Property Type="Int32" Name="Number_Of_Seats" Nullable="true" />
+          <Property Type="Double" Name="Price" Nullable="true" />
+          <Property Type="String" Name="Status" Nullable="true" MaxLength="20" />
+        </ComplexType>
+        <ComplexType Name="Search_Station_Result">
+          <Property Type="Int32" Name="Station_ID" Nullable="false" />
+          <Property Type="String" Name="Station_Name" Nullable="true" MaxLength="50" />
+          <Property Type="Double" Name="Latitude" Nullable="true" />
+          <Property Type="Double" Name="Longtitude" Nullable="true" />
+          <Property Type="String" Name="Status" Nullable="true" MaxLength="20" />
+        </ComplexType>
+        <ComplexType Name="Search_Ticket_By_PNR_Result">
+          <Property Type="Int32" Name="Ticket_ID" Nullable="false" />
+          <Property Type="String" Name="PNR" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Passenger_type" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="Status" Nullable="true" MaxLength="20" />
+          <Property Type="Int32" Name="Train_ID" Nullable="true" />
+          <Property Type="DateTime" Name="Departure_Date" Nullable="true" />
+          <Property Type="Time" Name="Departure_Time" Nullable="true" />
+          <Property Type="String" Name="Coach_Type" Nullable="true" MaxLength="30" />
+          <Property Type="Double" Name="Price" Nullable="true" />
+          <Property Type="String" Name="Train_Name" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="Search_Timetable_Result">
+          <Property Type="Int32" Name="Timetable_ID" Nullable="false" />
+          <Property Type="DateTime" Name="Departure_Date" Nullable="true" />
+          <Property Type="Time" Name="Departure_Time" Nullable="true" />
+          <Property Type="DateTime" Name="Arrival_Date" Nullable="true" />
+          <Property Type="Time" Name="Arrival_Time" Nullable="true" />
+          <Property Type="Double" Name="Distance" Nullable="true" />
+          <Property Type="Int32" Name="Train_ID" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="Search_Train_Result">
+          <Property Type="Int32" Name="Train_ID" Nullable="false" />
+          <Property Type="String" Name="Train_Name" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="Origin_Station_ID" Nullable="false" />
+          <Property Type="Int32" Name="Destination_Station_ID" Nullable="false" />
+          <Property Type="String" Name="Status" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="Train_Type" Nullable="false" MaxLength="20" />
+        </ComplexType>
+        <ComplexType Name="Search_Train_By_Train_id_Result">
+          <Property Type="Int32" Name="Train_ID" Nullable="false" />
+          <Property Type="String" Name="Train_Name" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="Origin_Station_ID" Nullable="false" />
+          <Property Type="Int32" Name="Destination_Station_ID" Nullable="false" />
+          <Property Type="String" Name="Status" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="Train_Type" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="origin_station" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="destin_station" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="Search_Train_Information_Result">
+          <Property Type="Int32" Name="Train_ID" Nullable="false" />
+          <Property Type="String" Name="Train_Name" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="Origin_Station_ID" Nullable="false" />
+          <Property Type="Int32" Name="Destination_Station_ID" Nullable="false" />
+          <Property Type="String" Name="Status" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="Train_Type" Nullable="false" MaxLength="20" />
+          <Property Type="Int32" Name="Timetable_ID" Nullable="false" />
+          <Property Type="DateTime" Name="Departure_Date" Nullable="true" />
+          <Property Type="Time" Name="Departure_Time" Nullable="true" />
+          <Property Type="DateTime" Name="Arrival_Date" Nullable="true" />
+          <Property Type="Time" Name="Arrival_Time" Nullable="true" />
+          <Property Type="Double" Name="Distance" Nullable="true" />
+          <Property Type="Int32" Name="Train_ID1" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="Search_Train_TimeTable_Result">
+          <Property Type="Int32" Name="Train_ID" Nullable="false" />
+          <Property Type="String" Name="Train_Name" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="Origin_Station_ID" Nullable="false" />
+          <Property Type="Int32" Name="Destination_Station_ID" Nullable="false" />
+          <Property Type="String" Name="Status" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="Train_Type" Nullable="false" MaxLength="20" />
+          <Property Type="Int32" Name="Timetable_ID" Nullable="false" />
+          <Property Type="DateTime" Name="Departure_Date" Nullable="true" />
+          <Property Type="Time" Name="Departure_Time" Nullable="true" />
+          <Property Type="DateTime" Name="Arrival_Date" Nullable="true" />
+          <Property Type="Time" Name="Arrival_Time" Nullable="true" />
+          <Property Type="Double" Name="Distance" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="Search_Username_By_ID_Result">
+          <Property Type="String" Name="Username" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Password" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Email" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Phone_Number" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="Gender" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="Security_Code" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="Role_ID" Nullable="true" />
+          <Property Type="String" Name="Rolename" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="Get_Train_Des_Result">
+          <Property Type="Int32" Name="Train_ID" Nullable="false" />
+          <Property Type="String" Name="Train_Name" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="Origin_Station_ID" Nullable="false" />
+          <Property Type="Int32" Name="Destination_Station_ID" Nullable="false" />
+          <Property Type="String" Name="Status" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="Train_Type" Nullable="false" MaxLength="20" />
+          <Property Type="Int32" Name="Timetable_ID" Nullable="false" />
+          <Property Type="DateTime" Name="Departure_Date" Nullable="true" />
+          <Property Type="Time" Name="Departure_Time" Nullable="true" />
+          <Property Type="DateTime" Name="Arrival_Date" Nullable="true" />
+          <Property Type="Time" Name="Arrival_Time" Nullable="true" />
+          <Property Type="Double" Name="Distance" Nullable="true" />
+          <Property Type="Int32" Name="Station_ID" Nullable="false" />
+          <Property Type="String" Name="Station_Name" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Status1" Nullable="true" MaxLength="20" />
+        </ComplexType>
+        <ComplexType Name="Get_Train_Des2_Result">
+          <Property Type="Int32" Name="Train_ID" Nullable="false" />
+          <Property Type="String" Name="Train_Name" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="Origin_Station_ID" Nullable="false" />
+          <Property Type="Int32" Name="Destination_Station_ID" Nullable="false" />
+          <Property Type="String" Name="Status" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="Train_Type" Nullable="false" MaxLength="20" />
+          <Property Type="Int32" Name="Timetable_ID" Nullable="false" />
+          <Property Type="DateTime" Name="Departure_Date" Nullable="true" />
+          <Property Type="Time" Name="Departure_Time" Nullable="true" />
+          <Property Type="DateTime" Name="Arrival_Date" Nullable="true" />
+          <Property Type="Time" Name="Arrival_Time" Nullable="true" />
+          <Property Type="Double" Name="Distance" Nullable="true" />
+          <Property Type="Int32" Name="Station_ID" Nullable="false" />
+          <Property Type="String" Name="Station_Name" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Status1" Nullable="true" MaxLength="20" />
+        </ComplexType>
+        <ComplexType Name="Get_Train_Des_Schedule_Result">
+          <Property Type="Int32" Name="Train_ID" Nullable="false" />
+          <Property Type="String" Name="Train_Name" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="Origin_Station_ID" Nullable="false" />
+          <Property Type="Int32" Name="Destination_Station_ID" Nullable="false" />
+          <Property Type="String" Name="Status" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="Train_Type" Nullable="false" MaxLength="20" />
+          <Property Type="Int32" Name="Timetable_ID" Nullable="false" />
+          <Property Type="DateTime" Name="Departure_Date" Nullable="true" />
+          <Property Type="Time" Name="Departure_Time" Nullable="true" />
+          <Property Type="Double" Name="Distance" Nullable="true" />
+          <Property Type="Int32" Name="Station_ID" Nullable="false" />
+          <Property Type="String" Name="Station_Name" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Status1" Nullable="true" MaxLength="20" />
+        </ComplexType>
+        <ComplexType Name="Get_train_By_OS_Result">
+          <Property Type="Int32" Name="Train_ID" Nullable="false" />
+          <Property Type="String" Name="Train_Name" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="Origin_Station_ID" Nullable="false" />
+          <Property Type="Int32" Name="Destination_Station_ID" Nullable="false" />
+          <Property Type="String" Name="Status" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="Train_Type" Nullable="false" MaxLength="20" />
+        </ComplexType>
+        <ComplexType Name="Get_Train_By_Time_Sche_Result">
+          <Property Type="Int32" Name="Train_ID" Nullable="false" />
+          <Property Type="String" Name="Train_Name" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Train_Type" Nullable="false" MaxLength="20" />
+          <Property Type="Int32" Name="Timetable_ID" Nullable="false" />
+          <Property Type="DateTime" Name="Departure_Date" Nullable="true" />
+          <Property Type="Time" Name="Departure_Time" Nullable="true" />
+          <Property Type="Double" Name="Distance" Nullable="true" />
+          <Property Type="Int32" Name="Station_ID" Nullable="false" />
+          <Property Type="String" Name="Station_Name" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="Get_Train_By_Time_Sche2_Result">
+          <Property Type="Int32" Name="Train_ID" Nullable="false" />
+          <Property Type="String" Name="Train_Name" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Train_Type" Nullable="false" MaxLength="20" />
+          <Property Type="Int32" Name="Timetable_ID" Nullable="false" />
+          <Property Type="DateTime" Name="Departure_Date" Nullable="true" />
+          <Property Type="Time" Name="Departure_Time" Nullable="true" />
+          <Property Type="Double" Name="Distance" Nullable="true" />
+          <Property Type="Int32" Name="Station_ID" Nullable="false" />
+          <Property Type="String" Name="Station_Name" Nullable="true" MaxLength="50" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="Online_Railway_reservation_systemEntities">
+          <EntitySetMapping Name="Coaches">
+            <EntityTypeMapping TypeName="Model.Coach">
+              <MappingFragment StoreEntitySet="Coaches">
+                <ScalarProperty Name="Coach_ID" ColumnName="Coach_ID" />
+                <ScalarProperty Name="Coach_Type" ColumnName="Coach_Type" />
+                <ScalarProperty Name="Train_ID" ColumnName="Train_ID" />
+                <ScalarProperty Name="Number_Of_Seats" ColumnName="Number_Of_Seats" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Passengers">
+            <EntityTypeMapping TypeName="Model.Passenger">
+              <MappingFragment StoreEntitySet="Passengers">
+                <ScalarProperty Name="PNR" ColumnName="PNR" />
+                <ScalarProperty Name="Passenger_Name" ColumnName="Passenger_Name" />
+                <ScalarProperty Name="Date_Of_Birth" ColumnName="Date_Of_Birth" />
+                <ScalarProperty Name="Card_Code" ColumnName="Card_Code" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Phone_Number" ColumnName="Phone_Number" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Roles">
+            <EntityTypeMapping TypeName="Model.Role">
+              <MappingFragment StoreEntitySet="Roles">
+                <ScalarProperty Name="Role_ID" ColumnName="Role_ID" />
+                <ScalarProperty Name="Role_Name" ColumnName="Role_Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Stations">
+            <EntityTypeMapping TypeName="Model.Station">
+              <MappingFragment StoreEntitySet="Stations">
+                <ScalarProperty Name="Station_ID" ColumnName="Station_ID" />
+                <ScalarProperty Name="Station_Name" ColumnName="Station_Name" />
+                <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+                <ScalarProperty Name="Longtitude" ColumnName="Longtitude" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tickets">
+            <EntityTypeMapping TypeName="Model.Ticket">
+              <MappingFragment StoreEntitySet="Tickets">
+                <ScalarProperty Name="Ticket_ID" ColumnName="Ticket_ID" />
+                <ScalarProperty Name="PNR" ColumnName="PNR" />
+                <ScalarProperty Name="Passenger_type" ColumnName="Passenger_type" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Train_ID" ColumnName="Train_ID" />
+                <ScalarProperty Name="Departure_Date" ColumnName="Departure_Date" />
+                <ScalarProperty Name="Departure_Time" ColumnName="Departure_Time" />
+                <ScalarProperty Name="Coach_Type" ColumnName="Coach_Type" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Timetables">
+            <EntityTypeMapping TypeName="Model.Timetable">
+              <MappingFragment StoreEntitySet="Timetables">
+                <ScalarProperty Name="Timetable_ID" ColumnName="Timetable_ID" />
+                <ScalarProperty Name="Departure_Date" ColumnName="Departure_Date" />
+                <ScalarProperty Name="Departure_Time" ColumnName="Departure_Time" />
+                <ScalarProperty Name="Arrival_Date" ColumnName="Arrival_Date" />
+                <ScalarProperty Name="Arrival_Time" ColumnName="Arrival_Time" />
+                <ScalarProperty Name="Distance" ColumnName="Distance" />
+                <ScalarProperty Name="Train_ID" ColumnName="Train_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Trains">
+            <EntityTypeMapping TypeName="Model.Train">
+              <MappingFragment StoreEntitySet="Trains">
+                <ScalarProperty Name="Train_ID" ColumnName="Train_ID" />
+                <ScalarProperty Name="Train_Name" ColumnName="Train_Name" />
+                <ScalarProperty Name="Origin_Station_ID" ColumnName="Origin_Station_ID" />
+                <ScalarProperty Name="Destination_Station_ID" ColumnName="Destination_Station_ID" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Train_Type" ColumnName="Train_Type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="Model.User">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Phone_Number" ColumnName="Phone_Number" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="Security_Code" ColumnName="Security_Code" />
+                <ScalarProperty Name="Role_ID" ColumnName="Role_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="Add_Coaches" FunctionName="Model.Store.Add_Coaches" />
+          <FunctionImportMapping FunctionImportName="Add_Passengers" FunctionName="Model.Store.Add_Passengers" />
+          <FunctionImportMapping FunctionImportName="Add_Roles" FunctionName="Model.Store.Add_Roles" />
+          <FunctionImportMapping FunctionImportName="Add_Stations" FunctionName="Model.Store.Add_Stations" />
+          <FunctionImportMapping FunctionImportName="Add_Timetables" FunctionName="Model.Store.Add_Timetables" />
+          <FunctionImportMapping FunctionImportName="Add_Trains" FunctionName="Model.Store.Add_Trains" />
+          <FunctionImportMapping FunctionImportName="Add_Users" FunctionName="Model.Store.Add_Users" />
+          <FunctionImportMapping FunctionImportName="Cancel_Ticket" FunctionName="Model.Store.Cancel_Ticket" />
+          <FunctionImportMapping FunctionImportName="Delete_Coaches" FunctionName="Model.Store.Delete_Coaches" />
+          <FunctionImportMapping FunctionImportName="Delete_Passengers" FunctionName="Model.Store.Delete_Passengers" />
+          <FunctionImportMapping FunctionImportName="Delete_Roles" FunctionName="Model.Store.Delete_Roles" />
+          <FunctionImportMapping FunctionImportName="Delete_Stations" FunctionName="Model.Store.Delete_Stations" />
+          <FunctionImportMapping FunctionImportName="Delete_Tickets" FunctionName="Model.Store.Delete_Tickets" />
+          <FunctionImportMapping FunctionImportName="Delete_Timetables" FunctionName="Model.Store.Delete_Timetables" />
+          <FunctionImportMapping FunctionImportName="Delete_Trains" FunctionName="Model.Store.Delete_Trains" />
+          <FunctionImportMapping FunctionImportName="Delete_Users" FunctionName="Model.Store.Delete_Users" />
+          <FunctionImportMapping FunctionImportName="Get_All_Coaches" FunctionName="Model.Store.Get_All_Coaches">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Model.Get_All_Coaches_Result">
+                <ScalarProperty Name="Coach_ID" ColumnName="Coach_ID" />
+                <ScalarProperty Name="Coach_Type" ColumnName="Coach_Type" />
+                <ScalarProperty Name="Train_ID" ColumnName="Train_ID" />
+                <ScalarProperty Name="Number_Of_Seats" ColumnName="Number_Of_Seats" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Train_Name" ColumnName="Train_Name" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Get_All_Ticket_v2" FunctionName="Model.Store.Get_All_Ticket_v2">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Model.Get_All_Ticket_v2_Result">
+                <ScalarProperty Name="Ticket_ID" ColumnName="Ticket_ID" />
+                <ScalarProperty Name="PNR" ColumnName="PNR" />
+                <ScalarProperty Name="Passenger_type" ColumnName="Passenger_type" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Train_ID" ColumnName="Train_ID" />
+                <ScalarProperty Name="Departure_Date" ColumnName="Departure_Date" />
+                <ScalarProperty Name="Departure_Time" ColumnName="Departure_Time" />
+                <ScalarProperty Name="Coach_Type" ColumnName="Coach_Type" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Train_Name" ColumnName="Train_Name" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="get_All_Timetables_v2" FunctionName="Model.Store.get_All_Timetables_v2">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Model.get_All_Timetables_v2_Result">
+                <ScalarProperty Name="Train_Name" ColumnName="Train_Name" />
+                <ScalarProperty Name="Timetable_ID" ColumnName="Timetable_ID" />
+                <ScalarProperty Name="Departure_Date" ColumnName="Departure_Date" />
+                <ScalarProperty Name="Departure_Time" ColumnName="Departure_Time" />
+                <ScalarProperty Name="Arrival_Date" ColumnName="Arrival_Date" />
+                <ScalarProperty Name="Arrival_Time" ColumnName="Arrival_Time" />
+                <ScalarProperty Name="Distance" ColumnName="Distance" />
+                <ScalarProperty Name="Train_ID" ColumnName="Train_ID" />
+                <ScalarProperty Name="origin_station" ColumnName="origin_station" />
+                <ScalarProperty Name="destination_station" ColumnName="destination_station" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Get_All_Train_v2" FunctionName="Model.Store.Get_All_Train_v2">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Model.Get_All_Train_v2_Result">
+                <ScalarProperty Name="Train_ID" ColumnName="Train_ID" />
+                <ScalarProperty Name="Train_Name" ColumnName="Train_Name" />
+                <ScalarProperty Name="Origin_Station_ID" ColumnName="Origin_Station_ID" />
+                <ScalarProperty Name="Destination_Station_ID" ColumnName="Destination_Station_ID" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Train_Type" ColumnName="Train_Type" />
+                <ScalarProperty Name="origin_station" ColumnName="origin_station" />
+                <ScalarProperty Name="destin_station" ColumnName="destin_station" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Get_All_User_v2" FunctionName="Model.Store.Get_All_User_v2">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Model.Get_All_User_v2_Result">
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Phone_Number" ColumnName="Phone_Number" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="Security_Code" ColumnName="Security_Code" />
+                <ScalarProperty Name="Role_ID" ColumnName="Role_ID" />
+                <ScalarProperty Name="Role_Name" ColumnName="Role_Name" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="get_Coach_By_ID" FunctionName="Model.Store.get_Coach_By_ID">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Model.get_Coach_By_ID_Result">
+                <ScalarProperty Name="Coach_ID" ColumnName="Coach_ID" />
+                <ScalarProperty Name="Coach_Type" ColumnName="Coach_Type" />
+                <ScalarProperty Name="Train_ID" ColumnName="Train_ID" />
+                <ScalarProperty Name="Number_Of_Seats" ColumnName="Number_Of_Seats" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Get_Coach_By_Train" FunctionName="Model.Store.Get_Coach_By_Train">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Model.Get_Coach_By_Train_Result">
+                <ScalarProperty Name="Coach_ID" ColumnName="Coach_ID" />
+                <ScalarProperty Name="Coach_Type" ColumnName="Coach_Type" />
+                <ScalarProperty Name="Train_ID" ColumnName="Train_ID" />
+                <ScalarProperty Name="Number_Of_Seats" ColumnName="Number_Of_Seats" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Train_Name" ColumnName="Train_Name" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Get_Coach_By_Train_ID" FunctionName="Model.Store.Get_Coach_By_Train_ID">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Model.Get_Coach_By_Train_ID_Result">
+                <ScalarProperty Name="Coach_ID" ColumnName="Coach_ID" />
+                <ScalarProperty Name="Coach_Type" ColumnName="Coach_Type" />
+                <ScalarProperty Name="Train_ID" ColumnName="Train_ID" />
+                <ScalarProperty Name="Number_Of_Seats" ColumnName="Number_Of_Seats" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Train_Name" ColumnName="Train_Name" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="get_Passenger_By_Email" FunctionName="Model.Store.get_Passenger_By_Email">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Model.get_Passenger_By_Email_Result">
+                <ScalarProperty Name="PNR" ColumnName="PNR" />
+                <ScalarProperty Name="Passenger_Name" ColumnName="Passenger_Name" />
+                <ScalarProperty Name="Date_Of_Birth" ColumnName="Date_Of_Birth" />
+                <ScalarProperty Name="Card_Code" ColumnName="Card_Code" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Phone_Number" ColumnName="Phone_Number" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="get_Passenger_By_PNR" FunctionName="Model.Store.get_Passenger_By_PNR">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Model.get_Passenger_By_PNR_Result">
+                <ScalarProperty Name="PNR" ColumnName="PNR" />
+                <ScalarProperty Name="Passenger_Name" ColumnName="Passenger_Name" />
+                <ScalarProperty Name="Date_Of_Birth" ColumnName="Date_Of_Birth" />
+                <ScalarProperty Name="Card_Code" ColumnName="Card_Code" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Phone_Number" ColumnName="Phone_Number" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="get_Role_By_ID" FunctionName="Model.Store.get_Role_By_ID">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Model.get_Role_By_ID_Result">
+                <ScalarProperty Name="Role_ID" ColumnName="Role_ID" />
+                <ScalarProperty Name="Role_Name" ColumnName="Role_Name" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="get_Station_By_ID" FunctionName="Model.Store.get_Station_By_ID">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Model.get_Station_By_ID_Result">
+                <ScalarProperty Name="Station_ID" ColumnName="Station_ID" />
+                <ScalarProperty Name="Station_Name" ColumnName="Station_Name" />
+                <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+                <ScalarProperty Name="Longtitude" ColumnName="Longtitude" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="get_Station_By_Status" FunctionName="Model.Store.get_Station_By_Status">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Model.get_Station_By_Status_Result">
+                <ScalarProperty Name="Station_ID" ColumnName="Station_ID" />
+                <ScalarProperty Name="Station_Name" ColumnName="Station_Name" />
+                <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+                <ScalarProperty Name="Longtitude" ColumnName="Longtitude" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Get_Station_By_Train_ID" FunctionName="Model.Store.Get_Station_By_Train_ID">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Model.Get_Station_By_Train_ID_Result">
+                <ScalarProperty Name="Origin_name" ColumnName="Origin_name" />
+                <ScalarProperty Name="Destin_name" ColumnName="Destin_name" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="get_Ticket_By_ID" FunctionName="Model.Store.get_Ticket_By_ID">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Model.get_Ticket_By_ID_Result">
+                <ScalarProperty Name="Ticket_ID" ColumnName="Ticket_ID" />
+                <ScalarProperty Name="PNR" ColumnName="PNR" />
+                <ScalarProperty Name="Passenger_type" ColumnName="Passenger_type" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Train_ID" ColumnName="Train_ID" />
+                <ScalarProperty Name="Departure_Date" ColumnName="Departure_Date" />
+                <ScalarProperty Name="Departure_Time" ColumnName="Departure_Time" />
+                <ScalarProperty Name="Coach_Type" ColumnName="Coach_Type" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Get_Ticket_By_ID_v2" FunctionName="Model.Store.Get_Ticket_By_ID_v2">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Model.Get_Ticket_By_ID_v2_Result">
+                <ScalarProperty Name="Ticket_ID" ColumnName="Ticket_ID" />
+                <ScalarProperty Name="PNR" ColumnName="PNR" />
+                <ScalarProperty Name="Passenger_type" ColumnName="Passenger_type" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Train_ID" ColumnName="Train_ID" />
+                <ScalarProperty Name="Departure_Date" ColumnName="Departure_Date" />
+                <ScalarProperty Name="Departure_Time" ColumnName="Departure_Time" />
+                <ScalarProperty Name="Coach_Type" ColumnName="Coach_Type" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Train_Name" ColumnName="Train_Name" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="get_Ticket_By_PNR" FunctionName="Model.Store.get_Ticket_By_PNR">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Model.get_Ticket_By_PNR_Result">
+                <ScalarProperty Name="Ticket_ID" ColumnName="Ticket_ID" />
+                <ScalarProperty Name="PNR" ColumnName="PNR" />
+                <ScalarProperty Name="Passenger_type" ColumnName="Passenger_type" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Train_ID" ColumnName="Train_ID" />
+                <ScalarProperty Name="Departure_Date" ColumnName="Departure_Date" />
+                <ScalarProperty Name="Departure_Time" ColumnName="Departure_Time" />
+                <ScalarProperty Name="Coach_Type" ColumnName="Coach_Type" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Train_Name" ColumnName="Train_Name" />
+                <ScalarProperty Name="Destination_Station" ColumnName="Destination_Station" />
+                <ScalarProperty Name="Origin_Station" ColumnName="Origin_Station" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="get_Ticket_By_TrainID" FunctionName="Model.Store.get_Ticket_By_TrainID">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Model.get_Ticket_By_TrainID_Result">
+                <ScalarProperty Name="Ticket_ID" ColumnName="Ticket_ID" />
+                <ScalarProperty Name="PNR" ColumnName="PNR" />
+                <ScalarProperty Name="Passenger_type" ColumnName="Passenger_type" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Train_ID" ColumnName="Train_ID" />
+                <ScalarProperty Name="Departure_Date" ColumnName="Departure_Date" />
+                <ScalarProperty Name="Departure_Time" ColumnName="Departure_Time" />
+                <ScalarProperty Name="Coach_Type" ColumnName="Coach_Type" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="get_Timetable_By_ID" FunctionName="Model.Store.get_Timetable_By_ID">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Model.get_Timetable_By_ID_Result">
+                <ScalarProperty Name="Timetable_ID" ColumnName="Timetable_ID" />
+                <ScalarProperty Name="Departure_Date" ColumnName="Departure_Date" />
+                <ScalarProperty Name="Departure_Time" ColumnName="Departure_Time" />
+                <ScalarProperty Name="Arrival_Date" ColumnName="Arrival_Date" />
+                <ScalarProperty Name="Arrival_Time" ColumnName="Arrival_Time" />
+                <ScalarProperty Name="Distance" ColumnName="Distance" />
+                <ScalarProperty Name="Train_ID" ColumnName="Train_ID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Get_Timetable_By_Train_ID" FunctionName="Model.Store.Get_Timetable_By_Train_ID">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Model.Get_Timetable_By_Train_ID_Result">
+                <ScalarProperty Name="Train_Name" ColumnName="Train_Name" />
+                <ScalarProperty Name="Timetable_ID" ColumnName="Timetable_ID" />
+                <ScalarProperty Name="Departure_Date" ColumnName="Departure_Date" />
+                <ScalarProperty Name="Departure_Time" ColumnName="Departure_Time" />
+                <ScalarProperty Name="Arrival_Date" ColumnName="Arrival_Date" />
+                <ScalarProperty Name="Arrival_Time" ColumnName="Arrival_Time" />
+                <ScalarProperty Name="Distance" ColumnName="Distance" />
+                <ScalarProperty Name="Train_ID" ColumnName="Train_ID" />
+                <ScalarProperty Name="origin_station" ColumnName="origin_station" />
+                <ScalarProperty Name="destination_station" ColumnName="destination_station" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="get_Train_By_ID" FunctionName="Model.Store.get_Train_By_ID">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Model.get_Train_By_ID_Result">
+                <ScalarProperty Name="Train_ID" ColumnName="Train_ID" />
+                <ScalarProperty Name="Train_Name" ColumnName="Train_Name" />
+                <ScalarProperty Name="Origin_Station_ID" ColumnName="Origin_Station_ID" />
+                <ScalarProperty Name="Destination_Station_ID" ColumnName="Destination_Station_ID" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Train_Type" ColumnName="Train_Type" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="get_User_By_Username" FunctionName="Model.Store.get_User_By_Username">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Model.get_User_By_Username_Result">
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Phone_Number" ColumnName="Phone_Number" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="Security_Code" ColumnName="Security_Code" />
+                <ScalarProperty Name="Role_ID" ColumnName="Role_ID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Get_User_By_UserName_v2" FunctionName="Model.Store.Get_User_By_UserName_v2">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Model.Get_User_By_UserName_v2_Result">
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Phone_Number" ColumnName="Phone_Number" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="Security_Code" ColumnName="Security_Code" />
+                <ScalarProperty Name="Role_ID" ColumnName="Role_ID" />
+                <ScalarProperty Name="Role_Name" ColumnName="Role_Name" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="getAll_Coaches" FunctionName="Model.Store.getAll_Coaches">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Model.getAll_Coaches_Result">
+                <ScalarProperty Name="Coach_ID" ColumnName="Coach_ID" />
+                <ScalarProperty Name="Coach_Type" ColumnName="Coach_Type" />
+                <ScalarProperty Name="Train_ID" ColumnName="Train_ID" />
+                <ScalarProperty Name="Number_Of_Seats" ColumnName="Number_Of_Seats" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="getAll_Passengers" FunctionName="Model.Store.getAll_Passengers">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Model.getAll_Passengers_Result">
+                <ScalarProperty Name="PNR" ColumnName="PNR" />
+                <ScalarProperty Name="Passenger_Name" ColumnName="Passenger_Name" />
+                <ScalarProperty Name="Date_Of_Birth" ColumnName="Date_Of_Birth" />
+                <ScalarProperty Name="Card_Code" ColumnName="Card_Code" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Phone_Number" ColumnName="Phone_Number" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="getAll_Roles" FunctionName="Model.Store.getAll_Roles">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Model.getAll_Roles_Result">
+                <ScalarProperty Name="Role_ID" ColumnName="Role_ID" />
+                <ScalarProperty Name="Role_Name" ColumnName="Role_Name" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="getAll_Stations" FunctionName="Model.Store.getAll_Stations">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Model.getAll_Stations_Result">
+                <ScalarProperty Name="Station_ID" ColumnName="Station_ID" />
+                <ScalarProperty Name="Station_Name" ColumnName="Station_Name" />
+                <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+                <ScalarProperty Name="Longtitude" ColumnName="Longtitude" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="getAll_Tickets" FunctionName="Model.Store.getAll_Tickets">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Model.getAll_Tickets_Result">
+                <ScalarProperty Name="Ticket_ID" ColumnName="Ticket_ID" />
+                <ScalarProperty Name="PNR" ColumnName="PNR" />
+                <ScalarProperty Name="Passenger_type" ColumnName="Passenger_type" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Train_ID" ColumnName="Train_ID" />
+                <ScalarProperty Name="Departure_Date" ColumnName="Departure_Date" />
+                <ScalarProperty Name="Departure_Time" ColumnName="Departure_Time" />
+                <ScalarProperty Name="Coach_Type" ColumnName="Coach_Type" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="getAll_Timetables" FunctionName="Model.Store.getAll_Timetables">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Model.getAll_Timetables_Result">
+                <ScalarProperty Name="Timetable_ID" ColumnName="Timetable_ID" />
+                <ScalarProperty Name="Departure_Date" ColumnName="Departure_Date" />
+                <ScalarProperty Name="Departure_Time" ColumnName="Departure_Time" />
+                <ScalarProperty Name="Arrival_Date" ColumnName="Arrival_Date" />
+                <ScalarProperty Name="Arrival_Time" ColumnName="Arrival_Time" />
+                <ScalarProperty Name="Distance" ColumnName="Distance" />
+                <ScalarProperty Name="Train_ID" ColumnName="Train_ID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="getAll_Trains" FunctionName="Model.Store.getAll_Trains">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Model.getAll_Trains_Result">
+                <ScalarProperty Name="Train_ID" ColumnName="Train_ID" />
+                <ScalarProperty Name="Train_Name" ColumnName="Train_Name" />
+                <ScalarProperty Name="Origin_Station_ID" ColumnName="Origin_Station_ID" />
+                <ScalarProperty Name="Destination_Station_ID" ColumnName="Destination_Station_ID" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Train_Type" ColumnName="Train_Type" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="getAll_Users" FunctionName="Model.Store.getAll_Users">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Model.getAll_Users_Result">
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Phone_Number" ColumnName="Phone_Number" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="Security_Code" ColumnName="Security_Code" />
+                <ScalarProperty Name="Role_ID" ColumnName="Role_ID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="login" FunctionName="Model.Store.login">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Model.login_Result">
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Phone_Number" ColumnName="Phone_Number" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="Security_Code" ColumnName="Security_Code" />
+                <ScalarProperty Name="Role_ID" ColumnName="Role_ID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Search_Coach_Type" FunctionName="Model.Store.Search_Coach_Type">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Model.Search_Coach_Type_Result">
+                <ScalarProperty Name="Coach_ID" ColumnName="Coach_ID" />
+                <ScalarProperty Name="Coach_Type" ColumnName="Coach_Type" />
+                <ScalarProperty Name="Train_ID" ColumnName="Train_ID" />
+                <ScalarProperty Name="Number_Of_Seats" ColumnName="Number_Of_Seats" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Search_Station" FunctionName="Model.Store.Search_Station">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Model.Search_Station_Result">
+                <ScalarProperty Name="Station_ID" ColumnName="Station_ID" />
+                <ScalarProperty Name="Station_Name" ColumnName="Station_Name" />
+                <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+                <ScalarProperty Name="Longtitude" ColumnName="Longtitude" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Search_Ticket_By_PNR" FunctionName="Model.Store.Search_Ticket_By_PNR">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Model.Search_Ticket_By_PNR_Result">
+                <ScalarProperty Name="Ticket_ID" ColumnName="Ticket_ID" />
+                <ScalarProperty Name="PNR" ColumnName="PNR" />
+                <ScalarProperty Name="Passenger_type" ColumnName="Passenger_type" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Train_ID" ColumnName="Train_ID" />
+                <ScalarProperty Name="Departure_Date" ColumnName="Departure_Date" />
+                <ScalarProperty Name="Departure_Time" ColumnName="Departure_Time" />
+                <ScalarProperty Name="Coach_Type" ColumnName="Coach_Type" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Train_Name" ColumnName="Train_Name" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Search_Timetable" FunctionName="Model.Store.Search_Timetable">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Model.Search_Timetable_Result">
+                <ScalarProperty Name="Timetable_ID" ColumnName="Timetable_ID" />
+                <ScalarProperty Name="Departure_Date" ColumnName="Departure_Date" />
+                <ScalarProperty Name="Departure_Time" ColumnName="Departure_Time" />
+                <ScalarProperty Name="Arrival_Date" ColumnName="Arrival_Date" />
+                <ScalarProperty Name="Arrival_Time" ColumnName="Arrival_Time" />
+                <ScalarProperty Name="Distance" ColumnName="Distance" />
+                <ScalarProperty Name="Train_ID" ColumnName="Train_ID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Search_Train" FunctionName="Model.Store.Search_Train">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Model.Search_Train_Result">
+                <ScalarProperty Name="Train_ID" ColumnName="Train_ID" />
+                <ScalarProperty Name="Train_Name" ColumnName="Train_Name" />
+                <ScalarProperty Name="Origin_Station_ID" ColumnName="Origin_Station_ID" />
+                <ScalarProperty Name="Destination_Station_ID" ColumnName="Destination_Station_ID" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Train_Type" ColumnName="Train_Type" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Search_Train_By_Train_id" FunctionName="Model.Store.Search_Train_By_Train_id">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Model.Search_Train_By_Train_id_Result">
+                <ScalarProperty Name="Train_ID" ColumnName="Train_ID" />
+                <ScalarProperty Name="Train_Name" ColumnName="Train_Name" />
+                <ScalarProperty Name="Origin_Station_ID" ColumnName="Origin_Station_ID" />
+                <ScalarProperty Name="Destination_Station_ID" ColumnName="Destination_Station_ID" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Train_Type" ColumnName="Train_Type" />
+                <ScalarProperty Name="origin_station" ColumnName="origin_station" />
+                <ScalarProperty Name="destin_station" ColumnName="destin_station" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Search_Train_Information" FunctionName="Model.Store.Search_Train_Information">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Model.Search_Train_Information_Result">
+                <ScalarProperty Name="Train_ID" ColumnName="Train_ID" />
+                <ScalarProperty Name="Train_Name" ColumnName="Train_Name" />
+                <ScalarProperty Name="Origin_Station_ID" ColumnName="Origin_Station_ID" />
+                <ScalarProperty Name="Destination_Station_ID" ColumnName="Destination_Station_ID" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Train_Type" ColumnName="Train_Type" />
+                <ScalarProperty Name="Timetable_ID" ColumnName="Timetable_ID" />
+                <ScalarProperty Name="Departure_Date" ColumnName="Departure_Date" />
+                <ScalarProperty Name="Departure_Time" ColumnName="Departure_Time" />
+                <ScalarProperty Name="Arrival_Date" ColumnName="Arrival_Date" />
+                <ScalarProperty Name="Arrival_Time" ColumnName="Arrival_Time" />
+                <ScalarProperty Name="Distance" ColumnName="Distance" />
+                <ScalarProperty Name="Train_ID1" ColumnName="Train_ID1" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Search_Train_TimeTable" FunctionName="Model.Store.Search_Train_TimeTable">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Model.Search_Train_TimeTable_Result">
+                <ScalarProperty Name="Train_ID" ColumnName="Train_ID" />
+                <ScalarProperty Name="Train_Name" ColumnName="Train_Name" />
+                <ScalarProperty Name="Origin_Station_ID" ColumnName="Origin_Station_ID" />
+                <ScalarProperty Name="Destination_Station_ID" ColumnName="Destination_Station_ID" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Train_Type" ColumnName="Train_Type" />
+                <ScalarProperty Name="Timetable_ID" ColumnName="Timetable_ID" />
+                <ScalarProperty Name="Departure_Date" ColumnName="Departure_Date" />
+                <ScalarProperty Name="Departure_Time" ColumnName="Departure_Time" />
+                <ScalarProperty Name="Arrival_Date" ColumnName="Arrival_Date" />
+                <ScalarProperty Name="Arrival_Time" ColumnName="Arrival_Time" />
+                <ScalarProperty Name="Distance" ColumnName="Distance" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Search_Username_By_ID" FunctionName="Model.Store.Search_Username_By_ID">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Model.Search_Username_By_ID_Result">
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Phone_Number" ColumnName="Phone_Number" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="Security_Code" ColumnName="Security_Code" />
+                <ScalarProperty Name="Role_ID" ColumnName="Role_ID" />
+                <ScalarProperty Name="Rolename" ColumnName="Rolename" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Update_Coaches" FunctionName="Model.Store.Update_Coaches" />
+          <FunctionImportMapping FunctionImportName="Update_Info" FunctionName="Model.Store.Update_Info" />
+          <FunctionImportMapping FunctionImportName="Update_Passengers" FunctionName="Model.Store.Update_Passengers" />
+          <FunctionImportMapping FunctionImportName="Update_Password" FunctionName="Model.Store.Update_Password" />
+          <FunctionImportMapping FunctionImportName="Update_Roles" FunctionName="Model.Store.Update_Roles" />
+          <FunctionImportMapping FunctionImportName="Update_Stations" FunctionName="Model.Store.Update_Stations" />
+          <FunctionImportMapping FunctionImportName="Update_Tickets" FunctionName="Model.Store.Update_Tickets" />
+          <FunctionImportMapping FunctionImportName="Update_Timetables" FunctionName="Model.Store.Update_Timetables" />
+          <FunctionImportMapping FunctionImportName="Update_Trains" FunctionName="Model.Store.Update_Trains" />
+          <FunctionImportMapping FunctionImportName="Update_Users" FunctionName="Model.Store.Update_Users" />
+          <FunctionImportMapping FunctionImportName="Add_Tickets" FunctionName="Model.Store.Add_Tickets" />
+          <FunctionImportMapping FunctionImportName="Get_Train_Des" FunctionName="Model.Store.Get_Train_Des">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Model.Get_Train_Des_Result">
+                <ScalarProperty Name="Train_ID" ColumnName="Train_ID" />
+                <ScalarProperty Name="Train_Name" ColumnName="Train_Name" />
+                <ScalarProperty Name="Origin_Station_ID" ColumnName="Origin_Station_ID" />
+                <ScalarProperty Name="Destination_Station_ID" ColumnName="Destination_Station_ID" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Train_Type" ColumnName="Train_Type" />
+                <ScalarProperty Name="Timetable_ID" ColumnName="Timetable_ID" />
+                <ScalarProperty Name="Departure_Date" ColumnName="Departure_Date" />
+                <ScalarProperty Name="Departure_Time" ColumnName="Departure_Time" />
+                <ScalarProperty Name="Arrival_Date" ColumnName="Arrival_Date" />
+                <ScalarProperty Name="Arrival_Time" ColumnName="Arrival_Time" />
+                <ScalarProperty Name="Distance" ColumnName="Distance" />
+                <ScalarProperty Name="Station_ID" ColumnName="Station_ID" />
+                <ScalarProperty Name="Station_Name" ColumnName="Station_Name" />
+                <ScalarProperty Name="Status1" ColumnName="Status1" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Get_Train_Des2" FunctionName="Model.Store.Get_Train_Des2">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Model.Get_Train_Des2_Result">
+                <ScalarProperty Name="Train_ID" ColumnName="Train_ID" />
+                <ScalarProperty Name="Train_Name" ColumnName="Train_Name" />
+                <ScalarProperty Name="Origin_Station_ID" ColumnName="Origin_Station_ID" />
+                <ScalarProperty Name="Destination_Station_ID" ColumnName="Destination_Station_ID" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Train_Type" ColumnName="Train_Type" />
+                <ScalarProperty Name="Timetable_ID" ColumnName="Timetable_ID" />
+                <ScalarProperty Name="Departure_Date" ColumnName="Departure_Date" />
+                <ScalarProperty Name="Departure_Time" ColumnName="Departure_Time" />
+                <ScalarProperty Name="Arrival_Date" ColumnName="Arrival_Date" />
+                <ScalarProperty Name="Arrival_Time" ColumnName="Arrival_Time" />
+                <ScalarProperty Name="Distance" ColumnName="Distance" />
+                <ScalarProperty Name="Station_ID" ColumnName="Station_ID" />
+                <ScalarProperty Name="Station_Name" ColumnName="Station_Name" />
+                <ScalarProperty Name="Status1" ColumnName="Status1" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Get_Train_Des_Schedule" FunctionName="Model.Store.Get_Train_Des_Schedule">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Model.Get_Train_Des_Schedule_Result">
+                <ScalarProperty Name="Train_ID" ColumnName="Train_ID" />
+                <ScalarProperty Name="Train_Name" ColumnName="Train_Name" />
+                <ScalarProperty Name="Origin_Station_ID" ColumnName="Origin_Station_ID" />
+                <ScalarProperty Name="Destination_Station_ID" ColumnName="Destination_Station_ID" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Train_Type" ColumnName="Train_Type" />
+                <ScalarProperty Name="Timetable_ID" ColumnName="Timetable_ID" />
+                <ScalarProperty Name="Departure_Date" ColumnName="Departure_Date" />
+                <ScalarProperty Name="Departure_Time" ColumnName="Departure_Time" />
+                <ScalarProperty Name="Distance" ColumnName="Distance" />
+                <ScalarProperty Name="Station_ID" ColumnName="Station_ID" />
+                <ScalarProperty Name="Station_Name" ColumnName="Station_Name" />
+                <ScalarProperty Name="Status1" ColumnName="Status1" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Get_train_By_OS" FunctionName="Model.Store.Get_train_By_OS">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Model.Get_train_By_OS_Result">
+                <ScalarProperty Name="Train_ID" ColumnName="Train_ID" />
+                <ScalarProperty Name="Train_Name" ColumnName="Train_Name" />
+                <ScalarProperty Name="Origin_Station_ID" ColumnName="Origin_Station_ID" />
+                <ScalarProperty Name="Destination_Station_ID" ColumnName="Destination_Station_ID" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Train_Type" ColumnName="Train_Type" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Get_Train_By_Time_Sche" FunctionName="Model.Store.Get_Train_By_Time_Sche">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Model.Get_Train_By_Time_Sche_Result">
+                <ScalarProperty Name="Train_ID" ColumnName="Train_ID" />
+                <ScalarProperty Name="Train_Name" ColumnName="Train_Name" />
+                <ScalarProperty Name="Train_Type" ColumnName="Train_Type" />
+                <ScalarProperty Name="Timetable_ID" ColumnName="Timetable_ID" />
+                <ScalarProperty Name="Departure_Date" ColumnName="Departure_Date" />
+                <ScalarProperty Name="Departure_Time" ColumnName="Departure_Time" />
+                <ScalarProperty Name="Distance" ColumnName="Distance" />
+                <ScalarProperty Name="Station_ID" ColumnName="Station_ID" />
+                <ScalarProperty Name="Station_Name" ColumnName="Station_Name" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Get_Train_By_Time_Sche2" FunctionName="Model.Store.Get_Train_By_Time_Sche2">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Model.Get_Train_By_Time_Sche2_Result">
+                <ScalarProperty Name="Train_ID" ColumnName="Train_ID" />
+                <ScalarProperty Name="Train_Name" ColumnName="Train_Name" />
+                <ScalarProperty Name="Train_Type" ColumnName="Train_Type" />
+                <ScalarProperty Name="Timetable_ID" ColumnName="Timetable_ID" />
+                <ScalarProperty Name="Departure_Date" ColumnName="Departure_Date" />
+                <ScalarProperty Name="Departure_Time" ColumnName="Departure_Time" />
+                <ScalarProperty Name="Distance" ColumnName="Distance" />
+                <ScalarProperty Name="Station_ID" ColumnName="Station_ID" />
+                <ScalarProperty Name="Station_Name" ColumnName="Station_Name" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

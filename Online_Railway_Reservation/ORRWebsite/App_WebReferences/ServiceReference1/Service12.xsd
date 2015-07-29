@@ -1,0 +1,720 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:tns="http://schemas.datacontract.org/2004/07/Entities" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/Entities" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:59867/Service1.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:complexType name="ArrayOfGet_All_User_v2_Result">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Get_All_User_v2_Result" nillable="true" type="tns:Get_All_User_v2_Result" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfGet_All_User_v2_Result" nillable="true" type="tns:ArrayOfGet_All_User_v2_Result" />
+  <xs:complexType name="Get_All_User_v2_Result">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Gender" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Phone_Number" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Role_ID" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="Role_Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Security_Code" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Username" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Get_All_User_v2_Result" nillable="true" type="tns:Get_All_User_v2_Result" />
+  <xs:complexType name="User">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Gender" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Phone_Number" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Role" nillable="true" type="tns:Role" />
+      <xs:element minOccurs="0" name="Role_ID" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="Security_Code" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Username" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="User" nillable="true" type="tns:User" />
+  <xs:complexType name="Role">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Role_ID" type="xs:int" />
+      <xs:element minOccurs="0" name="Role_Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Users" nillable="true" type="tns:ArrayOfUser" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Role" nillable="true" type="tns:Role" />
+  <xs:complexType name="ArrayOfUser">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="User" nillable="true" type="tns:User" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfUser" nillable="true" type="tns:ArrayOfUser" />
+  <xs:complexType name="Get_User_By_UserName_v2_Result">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Gender" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Phone_Number" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Role_ID" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="Role_Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Security_Code" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Username" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Get_User_By_UserName_v2_Result" nillable="true" type="tns:Get_User_By_UserName_v2_Result" />
+  <xs:complexType name="ArrayOfgetAll_Trains_Result">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="getAll_Trains_Result" nillable="true" type="tns:getAll_Trains_Result" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfgetAll_Trains_Result" nillable="true" type="tns:ArrayOfgetAll_Trains_Result" />
+  <xs:complexType name="getAll_Trains_Result">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Destination_Station_ID" type="xs:int" />
+      <xs:element minOccurs="0" name="Origin_Station_ID" type="xs:int" />
+      <xs:element minOccurs="0" name="Status" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Train_ID" type="xs:int" />
+      <xs:element minOccurs="0" name="Train_Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Train_Type" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="getAll_Trains_Result" nillable="true" type="tns:getAll_Trains_Result" />
+  <xs:complexType name="Train">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Coaches" nillable="true" type="tns:ArrayOfCoach" />
+      <xs:element minOccurs="0" name="Destination_Station_ID" type="xs:int" />
+      <xs:element minOccurs="0" name="Origin_Station_ID" type="xs:int" />
+      <xs:element minOccurs="0" name="Station" nillable="true" type="tns:Station" />
+      <xs:element minOccurs="0" name="Station1" nillable="true" type="tns:Station" />
+      <xs:element minOccurs="0" name="Status" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Tickets" nillable="true" type="tns:ArrayOfTicket" />
+      <xs:element minOccurs="0" name="Timetables" nillable="true" type="tns:ArrayOfTimetable" />
+      <xs:element minOccurs="0" name="Train_ID" type="xs:int" />
+      <xs:element minOccurs="0" name="Train_Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Train_Type" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Train" nillable="true" type="tns:Train" />
+  <xs:complexType name="ArrayOfCoach">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Coach" nillable="true" type="tns:Coach" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCoach" nillable="true" type="tns:ArrayOfCoach" />
+  <xs:complexType name="Coach">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Coach_ID" type="xs:int" />
+      <xs:element minOccurs="0" name="Coach_Type" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Number_Of_Seats" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="Price" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="Status" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Train" nillable="true" type="tns:Train" />
+      <xs:element minOccurs="0" name="Train_ID" nillable="true" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Coach" nillable="true" type="tns:Coach" />
+  <xs:complexType name="Station">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Latitude" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="Longtitude" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="Station_ID" type="xs:int" />
+      <xs:element minOccurs="0" name="Station_Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Status" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Trains" nillable="true" type="tns:ArrayOfTrain" />
+      <xs:element minOccurs="0" name="Trains1" nillable="true" type="tns:ArrayOfTrain" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Station" nillable="true" type="tns:Station" />
+  <xs:complexType name="ArrayOfTrain">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Train" nillable="true" type="tns:Train" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfTrain" nillable="true" type="tns:ArrayOfTrain" />
+  <xs:complexType name="ArrayOfTicket">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Ticket" nillable="true" type="tns:Ticket" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfTicket" nillable="true" type="tns:ArrayOfTicket" />
+  <xs:complexType name="Ticket">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Coach_Type" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Departure_Date" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Departure_Time" nillable="true" type="ser:duration" />
+      <xs:element minOccurs="0" name="PNR" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Passenger" nillable="true" type="tns:Passenger" />
+      <xs:element minOccurs="0" name="Passenger_type" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Price" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="Status" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Ticket_ID" type="xs:int" />
+      <xs:element minOccurs="0" name="Train" nillable="true" type="tns:Train" />
+      <xs:element minOccurs="0" name="Train_ID" nillable="true" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Ticket" nillable="true" type="tns:Ticket" />
+  <xs:complexType name="Passenger">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Address" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Card_Code" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Date_Of_Birth" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Gender" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PNR" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Passenger_Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Phone_Number" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Tickets" nillable="true" type="tns:ArrayOfTicket" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Passenger" nillable="true" type="tns:Passenger" />
+  <xs:complexType name="ArrayOfTimetable">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Timetable" nillable="true" type="tns:Timetable" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfTimetable" nillable="true" type="tns:ArrayOfTimetable" />
+  <xs:complexType name="Timetable">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Arrival_Date" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Arrival_Time" nillable="true" type="ser:duration" />
+      <xs:element minOccurs="0" name="Departure_Date" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Departure_Time" nillable="true" type="ser:duration" />
+      <xs:element minOccurs="0" name="Distance" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="Timetable_ID" type="xs:int" />
+      <xs:element minOccurs="0" name="Train" nillable="true" type="tns:Train" />
+      <xs:element minOccurs="0" name="Train_ID" nillable="true" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Timetable" nillable="true" type="tns:Timetable" />
+  <xs:complexType name="get_Train_By_ID_Result">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Destination_Station_ID" type="xs:int" />
+      <xs:element minOccurs="0" name="Origin_Station_ID" type="xs:int" />
+      <xs:element minOccurs="0" name="Status" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Train_ID" type="xs:int" />
+      <xs:element minOccurs="0" name="Train_Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Train_Type" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="get_Train_By_ID_Result" nillable="true" type="tns:get_Train_By_ID_Result" />
+  <xs:complexType name="ArrayOfGet_All_Train_v2_Result">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Get_All_Train_v2_Result" nillable="true" type="tns:Get_All_Train_v2_Result" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfGet_All_Train_v2_Result" nillable="true" type="tns:ArrayOfGet_All_Train_v2_Result" />
+  <xs:complexType name="Get_All_Train_v2_Result">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Destination_Station_ID" type="xs:int" />
+      <xs:element minOccurs="0" name="Origin_Station_ID" type="xs:int" />
+      <xs:element minOccurs="0" name="Status" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Train_ID" type="xs:int" />
+      <xs:element minOccurs="0" name="Train_Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Train_Type" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="destin_station" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="origin_station" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Get_All_Train_v2_Result" nillable="true" type="tns:Get_All_Train_v2_Result" />
+  <xs:complexType name="Search_Train_By_Train_id_Result">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Destination_Station_ID" type="xs:int" />
+      <xs:element minOccurs="0" name="Origin_Station_ID" type="xs:int" />
+      <xs:element minOccurs="0" name="Status" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Train_ID" type="xs:int" />
+      <xs:element minOccurs="0" name="Train_Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Train_Type" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="destin_station" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="origin_station" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Search_Train_By_Train_id_Result" nillable="true" type="tns:Search_Train_By_Train_id_Result" />
+  <xs:complexType name="ArrayOfgetAll_Timetables_Result">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="getAll_Timetables_Result" nillable="true" type="tns:getAll_Timetables_Result" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfgetAll_Timetables_Result" nillable="true" type="tns:ArrayOfgetAll_Timetables_Result" />
+  <xs:complexType name="getAll_Timetables_Result">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Arrival_Date" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Arrival_Time" nillable="true" type="ser:duration" />
+      <xs:element minOccurs="0" name="Departure_Date" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Departure_Time" nillable="true" type="ser:duration" />
+      <xs:element minOccurs="0" name="Distance" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="Timetable_ID" type="xs:int" />
+      <xs:element minOccurs="0" name="Train_ID" nillable="true" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="getAll_Timetables_Result" nillable="true" type="tns:getAll_Timetables_Result" />
+  <xs:complexType name="ArrayOfget_All_Timetables_v2_Result">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="get_All_Timetables_v2_Result" nillable="true" type="tns:get_All_Timetables_v2_Result" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfget_All_Timetables_v2_Result" nillable="true" type="tns:ArrayOfget_All_Timetables_v2_Result" />
+  <xs:complexType name="get_All_Timetables_v2_Result">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Arrival_Date" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Arrival_Time" nillable="true" type="ser:duration" />
+      <xs:element minOccurs="0" name="Departure_Date" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Departure_Time" nillable="true" type="ser:duration" />
+      <xs:element minOccurs="0" name="Distance" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="Timetable_ID" type="xs:int" />
+      <xs:element minOccurs="0" name="Train_ID" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="Train_Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="destination_station" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="origin_station" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="get_All_Timetables_v2_Result" nillable="true" type="tns:get_All_Timetables_v2_Result" />
+  <xs:complexType name="get_Timetable_By_ID_Result">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Arrival_Date" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Arrival_Time" nillable="true" type="ser:duration" />
+      <xs:element minOccurs="0" name="Departure_Date" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Departure_Time" nillable="true" type="ser:duration" />
+      <xs:element minOccurs="0" name="Distance" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="Timetable_ID" type="xs:int" />
+      <xs:element minOccurs="0" name="Train_ID" nillable="true" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="get_Timetable_By_ID_Result" nillable="true" type="tns:get_Timetable_By_ID_Result" />
+  <xs:complexType name="ArrayOfGet_Timetable_By_Train_ID_Result">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Get_Timetable_By_Train_ID_Result" nillable="true" type="tns:Get_Timetable_By_Train_ID_Result" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfGet_Timetable_By_Train_ID_Result" nillable="true" type="tns:ArrayOfGet_Timetable_By_Train_ID_Result" />
+  <xs:complexType name="Get_Timetable_By_Train_ID_Result">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Arrival_Date" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Arrival_Time" nillable="true" type="ser:duration" />
+      <xs:element minOccurs="0" name="Departure_Date" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Departure_Time" nillable="true" type="ser:duration" />
+      <xs:element minOccurs="0" name="Distance" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="Timetable_ID" type="xs:int" />
+      <xs:element minOccurs="0" name="Train_ID" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="Train_Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="destination_station" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="origin_station" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Get_Timetable_By_Train_ID_Result" nillable="true" type="tns:Get_Timetable_By_Train_ID_Result" />
+  <xs:complexType name="ArrayOfgetAll_Tickets_Result">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="getAll_Tickets_Result" nillable="true" type="tns:getAll_Tickets_Result" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfgetAll_Tickets_Result" nillable="true" type="tns:ArrayOfgetAll_Tickets_Result" />
+  <xs:complexType name="getAll_Tickets_Result">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Coach_Type" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Departure_Date" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Departure_Time" nillable="true" type="ser:duration" />
+      <xs:element minOccurs="0" name="PNR" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Passenger_type" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Price" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="Status" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Ticket_ID" type="xs:int" />
+      <xs:element minOccurs="0" name="Train_ID" nillable="true" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="getAll_Tickets_Result" nillable="true" type="tns:getAll_Tickets_Result" />
+  <xs:complexType name="Get_Ticket_By_ID_v2_Result">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Coach_Type" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Departure_Date" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Departure_Time" nillable="true" type="ser:duration" />
+      <xs:element minOccurs="0" name="PNR" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Passenger_type" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Price" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="Status" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Ticket_ID" type="xs:int" />
+      <xs:element minOccurs="0" name="Train_ID" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="Train_Name" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Get_Ticket_By_ID_v2_Result" nillable="true" type="tns:Get_Ticket_By_ID_v2_Result" />
+  <xs:complexType name="ArrayOfSearch_Ticket_By_PNR_Result">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Search_Ticket_By_PNR_Result" nillable="true" type="tns:Search_Ticket_By_PNR_Result" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSearch_Ticket_By_PNR_Result" nillable="true" type="tns:ArrayOfSearch_Ticket_By_PNR_Result" />
+  <xs:complexType name="Search_Ticket_By_PNR_Result">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Coach_Type" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Departure_Date" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Departure_Time" nillable="true" type="ser:duration" />
+      <xs:element minOccurs="0" name="PNR" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Passenger_type" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Price" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="Status" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Ticket_ID" type="xs:int" />
+      <xs:element minOccurs="0" name="Train_ID" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="Train_Name" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Search_Ticket_By_PNR_Result" nillable="true" type="tns:Search_Ticket_By_PNR_Result" />
+  <xs:complexType name="ArrayOfGet_All_Ticket_v2_Result">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Get_All_Ticket_v2_Result" nillable="true" type="tns:Get_All_Ticket_v2_Result" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfGet_All_Ticket_v2_Result" nillable="true" type="tns:ArrayOfGet_All_Ticket_v2_Result" />
+  <xs:complexType name="Get_All_Ticket_v2_Result">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Coach_Type" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Departure_Date" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Departure_Time" nillable="true" type="ser:duration" />
+      <xs:element minOccurs="0" name="PNR" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Passenger_type" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Price" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="Status" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Ticket_ID" type="xs:int" />
+      <xs:element minOccurs="0" name="Train_ID" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="Train_Name" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Get_All_Ticket_v2_Result" nillable="true" type="tns:Get_All_Ticket_v2_Result" />
+  <xs:complexType name="login_Result">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Gender" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Phone_Number" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Role_ID" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="Security_Code" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Username" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="login_Result" nillable="true" type="tns:login_Result" />
+  <xs:complexType name="ArrayOfgetAll_Stations_Result">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="getAll_Stations_Result" nillable="true" type="tns:getAll_Stations_Result" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfgetAll_Stations_Result" nillable="true" type="tns:ArrayOfgetAll_Stations_Result" />
+  <xs:complexType name="getAll_Stations_Result">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Latitude" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="Longtitude" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="Station_ID" type="xs:int" />
+      <xs:element minOccurs="0" name="Station_Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Status" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="getAll_Stations_Result" nillable="true" type="tns:getAll_Stations_Result" />
+  <xs:complexType name="get_Station_By_ID_Result">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Latitude" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="Longtitude" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="Station_ID" type="xs:int" />
+      <xs:element minOccurs="0" name="Station_Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Status" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="get_Station_By_ID_Result" nillable="true" type="tns:get_Station_By_ID_Result" />
+  <xs:complexType name="Get_Station_By_Train_ID_Result">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Destin_name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Origin_name" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Get_Station_By_Train_ID_Result" nillable="true" type="tns:Get_Station_By_Train_ID_Result" />
+  <xs:complexType name="ArrayOfgetAll_Roles_Result">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="getAll_Roles_Result" nillable="true" type="tns:getAll_Roles_Result" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfgetAll_Roles_Result" nillable="true" type="tns:ArrayOfgetAll_Roles_Result" />
+  <xs:complexType name="getAll_Roles_Result">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Role_ID" type="xs:int" />
+      <xs:element minOccurs="0" name="Role_Name" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="getAll_Roles_Result" nillable="true" type="tns:getAll_Roles_Result" />
+  <xs:complexType name="ArrayOfgetAll_Passengers_Result">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="getAll_Passengers_Result" nillable="true" type="tns:getAll_Passengers_Result" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfgetAll_Passengers_Result" nillable="true" type="tns:ArrayOfgetAll_Passengers_Result" />
+  <xs:complexType name="getAll_Passengers_Result">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Address" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Card_Code" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Date_Of_Birth" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Gender" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PNR" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Passenger_Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Phone_Number" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="getAll_Passengers_Result" nillable="true" type="tns:getAll_Passengers_Result" />
+  <xs:complexType name="get_Passenger_By_PNR_Result">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Address" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Card_Code" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Date_Of_Birth" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Gender" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PNR" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Passenger_Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Phone_Number" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="get_Passenger_By_PNR_Result" nillable="true" type="tns:get_Passenger_By_PNR_Result" />
+  <xs:complexType name="ArrayOfgetAll_Coaches_Result">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="getAll_Coaches_Result" nillable="true" type="tns:getAll_Coaches_Result" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfgetAll_Coaches_Result" nillable="true" type="tns:ArrayOfgetAll_Coaches_Result" />
+  <xs:complexType name="getAll_Coaches_Result">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Coach_ID" type="xs:int" />
+      <xs:element minOccurs="0" name="Coach_Type" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Number_Of_Seats" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="Price" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="Status" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Train_ID" nillable="true" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="getAll_Coaches_Result" nillable="true" type="tns:getAll_Coaches_Result" />
+  <xs:complexType name="ArrayOfGet_All_Coaches_Result">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Get_All_Coaches_Result" nillable="true" type="tns:Get_All_Coaches_Result" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfGet_All_Coaches_Result" nillable="true" type="tns:ArrayOfGet_All_Coaches_Result" />
+  <xs:complexType name="Get_All_Coaches_Result">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Coach_ID" type="xs:int" />
+      <xs:element minOccurs="0" name="Coach_Type" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Number_Of_Seats" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="Price" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="Status" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Train_ID" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="Train_Name" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Get_All_Coaches_Result" nillable="true" type="tns:Get_All_Coaches_Result" />
+  <xs:complexType name="get_Coach_By_ID_Result">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Coach_ID" type="xs:int" />
+      <xs:element minOccurs="0" name="Coach_Type" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Number_Of_Seats" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="Price" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="Status" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Train_ID" nillable="true" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="get_Coach_By_ID_Result" nillable="true" type="tns:get_Coach_By_ID_Result" />
+  <xs:complexType name="ArrayOfSearch_Train_TimeTable_Result">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Search_Train_TimeTable_Result" nillable="true" type="tns:Search_Train_TimeTable_Result" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSearch_Train_TimeTable_Result" nillable="true" type="tns:ArrayOfSearch_Train_TimeTable_Result" />
+  <xs:complexType name="Search_Train_TimeTable_Result">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Arrival_Date" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Arrival_Time" nillable="true" type="ser:duration" />
+      <xs:element minOccurs="0" name="Departure_Date" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Departure_Time" nillable="true" type="ser:duration" />
+      <xs:element minOccurs="0" name="Destination_Station_ID" type="xs:int" />
+      <xs:element minOccurs="0" name="Distance" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="Origin_Station_ID" type="xs:int" />
+      <xs:element minOccurs="0" name="Status" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Timetable_ID" type="xs:int" />
+      <xs:element minOccurs="0" name="Train_ID" type="xs:int" />
+      <xs:element minOccurs="0" name="Train_Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Train_Type" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Search_Train_TimeTable_Result" nillable="true" type="tns:Search_Train_TimeTable_Result" />
+  <xs:complexType name="get_Ticket_By_ID_Result">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Coach_Type" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Departure_Date" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Departure_Time" nillable="true" type="ser:duration" />
+      <xs:element minOccurs="0" name="PNR" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Passenger_type" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Price" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="Status" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Ticket_ID" type="xs:int" />
+      <xs:element minOccurs="0" name="Train_ID" nillable="true" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="get_Ticket_By_ID_Result" nillable="true" type="tns:get_Ticket_By_ID_Result" />
+  <xs:complexType name="ArrayOfGet_Coach_By_Train_ID_Result">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Get_Coach_By_Train_ID_Result" nillable="true" type="tns:Get_Coach_By_Train_ID_Result" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfGet_Coach_By_Train_ID_Result" nillable="true" type="tns:ArrayOfGet_Coach_By_Train_ID_Result" />
+  <xs:complexType name="Get_Coach_By_Train_ID_Result">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Coach_ID" type="xs:int" />
+      <xs:element minOccurs="0" name="Coach_Type" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Number_Of_Seats" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="Price" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="Status" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Train_ID" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="Train_Name" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Get_Coach_By_Train_ID_Result" nillable="true" type="tns:Get_Coach_By_Train_ID_Result" />
+  <xs:complexType name="ArrayOfSearch_Coach_Type_Result">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Search_Coach_Type_Result" nillable="true" type="tns:Search_Coach_Type_Result" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSearch_Coach_Type_Result" nillable="true" type="tns:ArrayOfSearch_Coach_Type_Result" />
+  <xs:complexType name="Search_Coach_Type_Result">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Coach_ID" type="xs:int" />
+      <xs:element minOccurs="0" name="Coach_Type" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Number_Of_Seats" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="Price" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="Status" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Train_ID" nillable="true" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Search_Coach_Type_Result" nillable="true" type="tns:Search_Coach_Type_Result" />
+  <xs:complexType name="ArrayOfget_Passenger_By_Email_Result">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="get_Passenger_By_Email_Result" nillable="true" type="tns:get_Passenger_By_Email_Result" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfget_Passenger_By_Email_Result" nillable="true" type="tns:ArrayOfget_Passenger_By_Email_Result" />
+  <xs:complexType name="get_Passenger_By_Email_Result">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Address" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Card_Code" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Date_Of_Birth" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Gender" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PNR" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Passenger_Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Phone_Number" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="get_Passenger_By_Email_Result" nillable="true" type="tns:get_Passenger_By_Email_Result" />
+  <xs:complexType name="ArrayOfget_Ticket_By_PNR_Result">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="get_Ticket_By_PNR_Result" nillable="true" type="tns:get_Ticket_By_PNR_Result" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfget_Ticket_By_PNR_Result" nillable="true" type="tns:ArrayOfget_Ticket_By_PNR_Result" />
+  <xs:complexType name="get_Ticket_By_PNR_Result">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Coach_Type" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Departure_Date" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Departure_Time" nillable="true" type="ser:duration" />
+      <xs:element minOccurs="0" name="Destination_Station" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Origin_Station" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PNR" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Passenger_type" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Price" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="Status" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Ticket_ID" type="xs:int" />
+      <xs:element minOccurs="0" name="Train_ID" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="Train_Name" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="get_Ticket_By_PNR_Result" nillable="true" type="tns:get_Ticket_By_PNR_Result" />
+  <xs:complexType name="ArrayOfget_Ticket_By_TrainID_Result">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="get_Ticket_By_TrainID_Result" nillable="true" type="tns:get_Ticket_By_TrainID_Result" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfget_Ticket_By_TrainID_Result" nillable="true" type="tns:ArrayOfget_Ticket_By_TrainID_Result" />
+  <xs:complexType name="get_Ticket_By_TrainID_Result">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Coach_Type" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Departure_Date" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Departure_Time" nillable="true" type="ser:duration" />
+      <xs:element minOccurs="0" name="PNR" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Passenger_type" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Price" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="Status" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Ticket_ID" type="xs:int" />
+      <xs:element minOccurs="0" name="Train_ID" nillable="true" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="get_Ticket_By_TrainID_Result" nillable="true" type="tns:get_Ticket_By_TrainID_Result" />
+  <xs:complexType name="ArrayOfget_Station_By_Status_Result">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="get_Station_By_Status_Result" nillable="true" type="tns:get_Station_By_Status_Result" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfget_Station_By_Status_Result" nillable="true" type="tns:ArrayOfget_Station_By_Status_Result" />
+  <xs:complexType name="get_Station_By_Status_Result">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Latitude" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="Longtitude" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="Station_ID" type="xs:int" />
+      <xs:element minOccurs="0" name="Station_Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Status" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="get_Station_By_Status_Result" nillable="true" type="tns:get_Station_By_Status_Result" />
+  <xs:complexType name="ArrayOfGet_Coach_By_Train_Result">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Get_Coach_By_Train_Result" nillable="true" type="tns:Get_Coach_By_Train_Result" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfGet_Coach_By_Train_Result" nillable="true" type="tns:ArrayOfGet_Coach_By_Train_Result" />
+  <xs:complexType name="Get_Coach_By_Train_Result">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Coach_ID" type="xs:int" />
+      <xs:element minOccurs="0" name="Coach_Type" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Number_Of_Seats" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="Price" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="Status" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Train_ID" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="Train_Name" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Get_Coach_By_Train_Result" nillable="true" type="tns:Get_Coach_By_Train_Result" />
+  <xs:complexType name="ArrayOfGet_train_By_OS_Result">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Get_train_By_OS_Result" nillable="true" type="tns:Get_train_By_OS_Result" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfGet_train_By_OS_Result" nillable="true" type="tns:ArrayOfGet_train_By_OS_Result" />
+  <xs:complexType name="Get_train_By_OS_Result">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Destination_Station_ID" type="xs:int" />
+      <xs:element minOccurs="0" name="Origin_Station_ID" type="xs:int" />
+      <xs:element minOccurs="0" name="Status" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Train_ID" type="xs:int" />
+      <xs:element minOccurs="0" name="Train_Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Train_Type" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Get_train_By_OS_Result" nillable="true" type="tns:Get_train_By_OS_Result" />
+  <xs:complexType name="ArrayOfGet_Train_By_Time_Sche2_Result">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Get_Train_By_Time_Sche2_Result" nillable="true" type="tns:Get_Train_By_Time_Sche2_Result" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfGet_Train_By_Time_Sche2_Result" nillable="true" type="tns:ArrayOfGet_Train_By_Time_Sche2_Result" />
+  <xs:complexType name="Get_Train_By_Time_Sche2_Result">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Departure_Date" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Departure_Time" nillable="true" type="ser:duration" />
+      <xs:element minOccurs="0" name="Distance" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="Station_ID" type="xs:int" />
+      <xs:element minOccurs="0" name="Station_Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Timetable_ID" type="xs:int" />
+      <xs:element minOccurs="0" name="Train_ID" type="xs:int" />
+      <xs:element minOccurs="0" name="Train_Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Train_Type" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Get_Train_By_Time_Sche2_Result" nillable="true" type="tns:Get_Train_By_Time_Sche2_Result" />
+</xs:schema>

@@ -1,0 +1,1217 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="Service1" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost:59867/Service1.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:59867/Service1.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:59867/Service1.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Entities" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IService1_GetAll_Users_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAll_Users" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetAll_Users_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAll_UsersResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_Add_Users_InputMessage">
+    <wsdl:part name="parameters" element="tns:Add_Users" />
+  </wsdl:message>
+  <wsdl:message name="IService1_Add_Users_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Add_UsersResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_Delete_Users_InputMessage">
+    <wsdl:part name="parameters" element="tns:Delete_Users" />
+  </wsdl:message>
+  <wsdl:message name="IService1_Delete_Users_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Delete_UsersResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_Update_Users_InputMessage">
+    <wsdl:part name="parameters" element="tns:Update_Users" />
+  </wsdl:message>
+  <wsdl:message name="IService1_Update_Users_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Update_UsersResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_Get_User_By_UserName_v2_InputMessage">
+    <wsdl:part name="parameters" element="tns:Get_User_By_UserName_v2" />
+  </wsdl:message>
+  <wsdl:message name="IService1_Get_User_By_UserName_v2_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Get_User_By_UserName_v2Response" />
+  </wsdl:message>
+  <wsdl:message name="IService1_Search_Username_InputMessage">
+    <wsdl:part name="parameters" element="tns:Search_Username" />
+  </wsdl:message>
+  <wsdl:message name="IService1_Search_Username_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Search_UsernameResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_Update_Info_InputMessage">
+    <wsdl:part name="parameters" element="tns:Update_Info" />
+  </wsdl:message>
+  <wsdl:message name="IService1_Update_Info_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Update_InfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetAll_Trains_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAll_Trains" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetAll_Trains_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAll_TrainsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_Add_Trains_InputMessage">
+    <wsdl:part name="parameters" element="tns:Add_Trains" />
+  </wsdl:message>
+  <wsdl:message name="IService1_Add_Trains_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Add_TrainsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_Delete_Trains_InputMessage">
+    <wsdl:part name="parameters" element="tns:Delete_Trains" />
+  </wsdl:message>
+  <wsdl:message name="IService1_Delete_Trains_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Delete_TrainsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_Update_Trains_InputMessage">
+    <wsdl:part name="parameters" element="tns:Update_Trains" />
+  </wsdl:message>
+  <wsdl:message name="IService1_Update_Trains_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Update_TrainsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_get_Train_By_ID_InputMessage">
+    <wsdl:part name="parameters" element="tns:get_Train_By_ID" />
+  </wsdl:message>
+  <wsdl:message name="IService1_get_Train_By_ID_OutputMessage">
+    <wsdl:part name="parameters" element="tns:get_Train_By_IDResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_Get_All_Trains_v2_InputMessage">
+    <wsdl:part name="parameters" element="tns:Get_All_Trains_v2" />
+  </wsdl:message>
+  <wsdl:message name="IService1_Get_All_Trains_v2_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Get_All_Trains_v2Response" />
+  </wsdl:message>
+  <wsdl:message name="IService1_Search_Train_By_Train_id_InputMessage">
+    <wsdl:part name="parameters" element="tns:Search_Train_By_Train_id" />
+  </wsdl:message>
+  <wsdl:message name="IService1_Search_Train_By_Train_id_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Search_Train_By_Train_idResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetAll_Timetables_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAll_Timetables" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetAll_Timetables_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAll_TimetablesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetAll_Timetables_v2_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAll_Timetables_v2" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetAll_Timetables_v2_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAll_Timetables_v2Response" />
+  </wsdl:message>
+  <wsdl:message name="IService1_Add_Timetables_InputMessage">
+    <wsdl:part name="parameters" element="tns:Add_Timetables" />
+  </wsdl:message>
+  <wsdl:message name="IService1_Add_Timetables_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Add_TimetablesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_Delete_Timetables_InputMessage">
+    <wsdl:part name="parameters" element="tns:Delete_Timetables" />
+  </wsdl:message>
+  <wsdl:message name="IService1_Delete_Timetables_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Delete_TimetablesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_Update_Timetables_InputMessage">
+    <wsdl:part name="parameters" element="tns:Update_Timetables" />
+  </wsdl:message>
+  <wsdl:message name="IService1_Update_Timetables_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Update_TimetablesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_get_Timetable_By_ID_InputMessage">
+    <wsdl:part name="parameters" element="tns:get_Timetable_By_ID" />
+  </wsdl:message>
+  <wsdl:message name="IService1_get_Timetable_By_ID_OutputMessage">
+    <wsdl:part name="parameters" element="tns:get_Timetable_By_IDResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_Get_Timetable_By_Train_ID_InputMessage">
+    <wsdl:part name="parameters" element="tns:Get_Timetable_By_Train_ID" />
+  </wsdl:message>
+  <wsdl:message name="IService1_Get_Timetable_By_Train_ID_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Get_Timetable_By_Train_IDResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetAll_Tickets_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAll_Tickets" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetAll_Tickets_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAll_TicketsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_Add_Tickets_InputMessage">
+    <wsdl:part name="parameters" element="tns:Add_Tickets" />
+  </wsdl:message>
+  <wsdl:message name="IService1_Add_Tickets_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Add_TicketsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_Delete_Tickets_InputMessage">
+    <wsdl:part name="parameters" element="tns:Delete_Tickets" />
+  </wsdl:message>
+  <wsdl:message name="IService1_Delete_Tickets_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Delete_TicketsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_Update_Tickets_InputMessage">
+    <wsdl:part name="parameters" element="tns:Update_Tickets" />
+  </wsdl:message>
+  <wsdl:message name="IService1_Update_Tickets_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Update_TicketsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_get_Ticket_By_ID2_InputMessage">
+    <wsdl:part name="parameters" element="tns:get_Ticket_By_ID2" />
+  </wsdl:message>
+  <wsdl:message name="IService1_get_Ticket_By_ID2_OutputMessage">
+    <wsdl:part name="parameters" element="tns:get_Ticket_By_ID2Response" />
+  </wsdl:message>
+  <wsdl:message name="IService1_Search_Ticket_By_PNR_InputMessage">
+    <wsdl:part name="parameters" element="tns:Search_Ticket_By_PNR" />
+  </wsdl:message>
+  <wsdl:message name="IService1_Search_Ticket_By_PNR_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Search_Ticket_By_PNRResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetAll_Tickets_v2_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAll_Tickets_v2" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetAll_Tickets_v2_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAll_Tickets_v2Response" />
+  </wsdl:message>
+  <wsdl:message name="IService1_Login_InputMessage">
+    <wsdl:part name="parameters" element="tns:Login" />
+  </wsdl:message>
+  <wsdl:message name="IService1_Login_OutputMessage">
+    <wsdl:part name="parameters" element="tns:LoginResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetAll_Stations_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAll_Stations" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetAll_Stations_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAll_StationsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_Add_Stations_InputMessage">
+    <wsdl:part name="parameters" element="tns:Add_Stations" />
+  </wsdl:message>
+  <wsdl:message name="IService1_Add_Stations_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Add_StationsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_Delete_Stations_InputMessage">
+    <wsdl:part name="parameters" element="tns:Delete_Stations" />
+  </wsdl:message>
+  <wsdl:message name="IService1_Delete_Stations_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Delete_StationsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_Update_Stations_InputMessage">
+    <wsdl:part name="parameters" element="tns:Update_Stations" />
+  </wsdl:message>
+  <wsdl:message name="IService1_Update_Stations_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Update_StationsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_get_Station_By_ID_InputMessage">
+    <wsdl:part name="parameters" element="tns:get_Station_By_ID" />
+  </wsdl:message>
+  <wsdl:message name="IService1_get_Station_By_ID_OutputMessage">
+    <wsdl:part name="parameters" element="tns:get_Station_By_IDResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_get_Station_By_Train_ID_InputMessage">
+    <wsdl:part name="parameters" element="tns:get_Station_By_Train_ID" />
+  </wsdl:message>
+  <wsdl:message name="IService1_get_Station_By_Train_ID_OutputMessage">
+    <wsdl:part name="parameters" element="tns:get_Station_By_Train_IDResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetAll_Roles_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAll_Roles" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetAll_Roles_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAll_RolesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_Add_Roles_InputMessage">
+    <wsdl:part name="parameters" element="tns:Add_Roles" />
+  </wsdl:message>
+  <wsdl:message name="IService1_Add_Roles_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Add_RolesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_Delete_Roles_InputMessage">
+    <wsdl:part name="parameters" element="tns:Delete_Roles" />
+  </wsdl:message>
+  <wsdl:message name="IService1_Delete_Roles_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Delete_RolesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_Update_Roles_InputMessage">
+    <wsdl:part name="parameters" element="tns:Update_Roles" />
+  </wsdl:message>
+  <wsdl:message name="IService1_Update_Roles_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Update_RolesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetAll_Passengers_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAll_Passengers" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetAll_Passengers_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAll_PassengersResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_Add_Passengers_InputMessage">
+    <wsdl:part name="parameters" element="tns:Add_Passengers" />
+  </wsdl:message>
+  <wsdl:message name="IService1_Add_Passengers_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Add_PassengersResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_Delete_Passengers_InputMessage">
+    <wsdl:part name="parameters" element="tns:Delete_Passengers" />
+  </wsdl:message>
+  <wsdl:message name="IService1_Delete_Passengers_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Delete_PassengersResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_Update_Passengers_InputMessage">
+    <wsdl:part name="parameters" element="tns:Update_Passengers" />
+  </wsdl:message>
+  <wsdl:message name="IService1_Update_Passengers_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Update_PassengersResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_Get_Passenger_By_PNR_InputMessage">
+    <wsdl:part name="parameters" element="tns:Get_Passenger_By_PNR" />
+  </wsdl:message>
+  <wsdl:message name="IService1_Get_Passenger_By_PNR_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Get_Passenger_By_PNRResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetAll_Coaches_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAll_Coaches" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetAll_Coaches_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAll_CoachesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetAll_Coaches_v2_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAll_Coaches_v2" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetAll_Coaches_v2_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAll_Coaches_v2Response" />
+  </wsdl:message>
+  <wsdl:message name="IService1_Add_Coaches_InputMessage">
+    <wsdl:part name="parameters" element="tns:Add_Coaches" />
+  </wsdl:message>
+  <wsdl:message name="IService1_Add_Coaches_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Add_CoachesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_Delete_Coaches_InputMessage">
+    <wsdl:part name="parameters" element="tns:Delete_Coaches" />
+  </wsdl:message>
+  <wsdl:message name="IService1_Delete_Coaches_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Delete_CoachesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_Update_Coaches_InputMessage">
+    <wsdl:part name="parameters" element="tns:Update_Coaches" />
+  </wsdl:message>
+  <wsdl:message name="IService1_Update_Coaches_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Update_CoachesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_Get_Coach_By_ID_InputMessage">
+    <wsdl:part name="parameters" element="tns:Get_Coach_By_ID" />
+  </wsdl:message>
+  <wsdl:message name="IService1_Get_Coach_By_ID_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Get_Coach_By_IDResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_search_Train_By_StatinID_InputMessage">
+    <wsdl:part name="parameters" element="tns:search_Train_By_StatinID" />
+  </wsdl:message>
+  <wsdl:message name="IService1_search_Train_By_StatinID_OutputMessage">
+    <wsdl:part name="parameters" element="tns:search_Train_By_StatinIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_get_Ticket_By_ID_InputMessage">
+    <wsdl:part name="parameters" element="tns:get_Ticket_By_ID" />
+  </wsdl:message>
+  <wsdl:message name="IService1_get_Ticket_By_ID_OutputMessage">
+    <wsdl:part name="parameters" element="tns:get_Ticket_By_IDResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetCoachByTrainID_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCoachByTrainID" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetCoachByTrainID_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCoachByTrainIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_Search_Coach_InputMessage">
+    <wsdl:part name="parameters" element="tns:Search_Coach" />
+  </wsdl:message>
+  <wsdl:message name="IService1_Search_Coach_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Search_CoachResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_Get_Passenger_By_Email_InputMessage">
+    <wsdl:part name="parameters" element="tns:Get_Passenger_By_Email" />
+  </wsdl:message>
+  <wsdl:message name="IService1_Get_Passenger_By_Email_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Get_Passenger_By_EmailResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_get_Ticket_By_PNR_InputMessage">
+    <wsdl:part name="parameters" element="tns:get_Ticket_By_PNR" />
+  </wsdl:message>
+  <wsdl:message name="IService1_get_Ticket_By_PNR_OutputMessage">
+    <wsdl:part name="parameters" element="tns:get_Ticket_By_PNRResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_Update_Password_InputMessage">
+    <wsdl:part name="parameters" element="tns:Update_Password" />
+  </wsdl:message>
+  <wsdl:message name="IService1_Update_Password_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Update_PasswordResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_Cancel_Ticket_InputMessage">
+    <wsdl:part name="parameters" element="tns:Cancel_Ticket" />
+  </wsdl:message>
+  <wsdl:message name="IService1_Cancel_Ticket_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Cancel_TicketResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_Get_Ticket_By_Train_ID_InputMessage">
+    <wsdl:part name="parameters" element="tns:Get_Ticket_By_Train_ID" />
+  </wsdl:message>
+  <wsdl:message name="IService1_Get_Ticket_By_Train_ID_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Get_Ticket_By_Train_IDResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetStationByStatus_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetStationByStatus" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetStationByStatus_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetStationByStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_Get_Coach_By_Train_InputMessage">
+    <wsdl:part name="parameters" element="tns:Get_Coach_By_Train" />
+  </wsdl:message>
+  <wsdl:message name="IService1_Get_Coach_By_Train_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Get_Coach_By_TrainResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_Get_Train_OS_InputMessage">
+    <wsdl:part name="parameters" element="tns:Get_Train_OS" />
+  </wsdl:message>
+  <wsdl:message name="IService1_Get_Train_OS_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Get_Train_OSResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_Get_Train_Time_Sche_InputMessage">
+    <wsdl:part name="parameters" element="tns:Get_Train_Time_Sche" />
+  </wsdl:message>
+  <wsdl:message name="IService1_Get_Train_Time_Sche_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Get_Train_Time_ScheResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IService1">
+    <wsdl:operation name="GetAll_Users">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetAll_Users" message="tns:IService1_GetAll_Users_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetAll_UsersResponse" message="tns:IService1_GetAll_Users_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Add_Users">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/Add_Users" message="tns:IService1_Add_Users_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/Add_UsersResponse" message="tns:IService1_Add_Users_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Delete_Users">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/Delete_Users" message="tns:IService1_Delete_Users_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/Delete_UsersResponse" message="tns:IService1_Delete_Users_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Update_Users">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/Update_Users" message="tns:IService1_Update_Users_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/Update_UsersResponse" message="tns:IService1_Update_Users_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Get_User_By_UserName_v2">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/Get_User_By_UserName_v2" message="tns:IService1_Get_User_By_UserName_v2_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/Get_User_By_UserName_v2Response" message="tns:IService1_Get_User_By_UserName_v2_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Search_Username">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/Search_Username" message="tns:IService1_Search_Username_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/Search_UsernameResponse" message="tns:IService1_Search_Username_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Update_Info">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/Update_Info" message="tns:IService1_Update_Info_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/Update_InfoResponse" message="tns:IService1_Update_Info_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAll_Trains">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetAll_Trains" message="tns:IService1_GetAll_Trains_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetAll_TrainsResponse" message="tns:IService1_GetAll_Trains_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Add_Trains">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/Add_Trains" message="tns:IService1_Add_Trains_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/Add_TrainsResponse" message="tns:IService1_Add_Trains_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Delete_Trains">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/Delete_Trains" message="tns:IService1_Delete_Trains_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/Delete_TrainsResponse" message="tns:IService1_Delete_Trains_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Update_Trains">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/Update_Trains" message="tns:IService1_Update_Trains_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/Update_TrainsResponse" message="tns:IService1_Update_Trains_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="get_Train_By_ID">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/get_Train_By_ID" message="tns:IService1_get_Train_By_ID_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/get_Train_By_IDResponse" message="tns:IService1_get_Train_By_ID_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Get_All_Trains_v2">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/Get_All_Trains_v2" message="tns:IService1_Get_All_Trains_v2_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/Get_All_Trains_v2Response" message="tns:IService1_Get_All_Trains_v2_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Search_Train_By_Train_id">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/Search_Train_By_Train_id" message="tns:IService1_Search_Train_By_Train_id_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/Search_Train_By_Train_idResponse" message="tns:IService1_Search_Train_By_Train_id_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAll_Timetables">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetAll_Timetables" message="tns:IService1_GetAll_Timetables_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetAll_TimetablesResponse" message="tns:IService1_GetAll_Timetables_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAll_Timetables_v2">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetAll_Timetables_v2" message="tns:IService1_GetAll_Timetables_v2_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetAll_Timetables_v2Response" message="tns:IService1_GetAll_Timetables_v2_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Add_Timetables">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/Add_Timetables" message="tns:IService1_Add_Timetables_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/Add_TimetablesResponse" message="tns:IService1_Add_Timetables_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Delete_Timetables">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/Delete_Timetables" message="tns:IService1_Delete_Timetables_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/Delete_TimetablesResponse" message="tns:IService1_Delete_Timetables_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Update_Timetables">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/Update_Timetables" message="tns:IService1_Update_Timetables_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/Update_TimetablesResponse" message="tns:IService1_Update_Timetables_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="get_Timetable_By_ID">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/get_Timetable_By_ID" message="tns:IService1_get_Timetable_By_ID_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/get_Timetable_By_IDResponse" message="tns:IService1_get_Timetable_By_ID_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Get_Timetable_By_Train_ID">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/Get_Timetable_By_Train_ID" message="tns:IService1_Get_Timetable_By_Train_ID_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/Get_Timetable_By_Train_IDResponse" message="tns:IService1_Get_Timetable_By_Train_ID_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAll_Tickets">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetAll_Tickets" message="tns:IService1_GetAll_Tickets_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetAll_TicketsResponse" message="tns:IService1_GetAll_Tickets_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Add_Tickets">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/Add_Tickets" message="tns:IService1_Add_Tickets_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/Add_TicketsResponse" message="tns:IService1_Add_Tickets_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Delete_Tickets">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/Delete_Tickets" message="tns:IService1_Delete_Tickets_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/Delete_TicketsResponse" message="tns:IService1_Delete_Tickets_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Update_Tickets">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/Update_Tickets" message="tns:IService1_Update_Tickets_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/Update_TicketsResponse" message="tns:IService1_Update_Tickets_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="get_Ticket_By_ID2">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/get_Ticket_By_ID2" message="tns:IService1_get_Ticket_By_ID2_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/get_Ticket_By_ID2Response" message="tns:IService1_get_Ticket_By_ID2_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Search_Ticket_By_PNR">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/Search_Ticket_By_PNR" message="tns:IService1_Search_Ticket_By_PNR_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/Search_Ticket_By_PNRResponse" message="tns:IService1_Search_Ticket_By_PNR_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAll_Tickets_v2">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetAll_Tickets_v2" message="tns:IService1_GetAll_Tickets_v2_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetAll_Tickets_v2Response" message="tns:IService1_GetAll_Tickets_v2_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Login">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/Login" message="tns:IService1_Login_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/LoginResponse" message="tns:IService1_Login_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAll_Stations">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetAll_Stations" message="tns:IService1_GetAll_Stations_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetAll_StationsResponse" message="tns:IService1_GetAll_Stations_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Add_Stations">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/Add_Stations" message="tns:IService1_Add_Stations_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/Add_StationsResponse" message="tns:IService1_Add_Stations_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Delete_Stations">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/Delete_Stations" message="tns:IService1_Delete_Stations_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/Delete_StationsResponse" message="tns:IService1_Delete_Stations_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Update_Stations">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/Update_Stations" message="tns:IService1_Update_Stations_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/Update_StationsResponse" message="tns:IService1_Update_Stations_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="get_Station_By_ID">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/get_Station_By_ID" message="tns:IService1_get_Station_By_ID_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/get_Station_By_IDResponse" message="tns:IService1_get_Station_By_ID_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="get_Station_By_Train_ID">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/get_Station_By_Train_ID" message="tns:IService1_get_Station_By_Train_ID_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/get_Station_By_Train_IDResponse" message="tns:IService1_get_Station_By_Train_ID_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAll_Roles">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetAll_Roles" message="tns:IService1_GetAll_Roles_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetAll_RolesResponse" message="tns:IService1_GetAll_Roles_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Add_Roles">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/Add_Roles" message="tns:IService1_Add_Roles_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/Add_RolesResponse" message="tns:IService1_Add_Roles_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Delete_Roles">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/Delete_Roles" message="tns:IService1_Delete_Roles_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/Delete_RolesResponse" message="tns:IService1_Delete_Roles_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Update_Roles">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/Update_Roles" message="tns:IService1_Update_Roles_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/Update_RolesResponse" message="tns:IService1_Update_Roles_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAll_Passengers">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetAll_Passengers" message="tns:IService1_GetAll_Passengers_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetAll_PassengersResponse" message="tns:IService1_GetAll_Passengers_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Add_Passengers">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/Add_Passengers" message="tns:IService1_Add_Passengers_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/Add_PassengersResponse" message="tns:IService1_Add_Passengers_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Delete_Passengers">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/Delete_Passengers" message="tns:IService1_Delete_Passengers_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/Delete_PassengersResponse" message="tns:IService1_Delete_Passengers_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Update_Passengers">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/Update_Passengers" message="tns:IService1_Update_Passengers_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/Update_PassengersResponse" message="tns:IService1_Update_Passengers_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Get_Passenger_By_PNR">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/Get_Passenger_By_PNR" message="tns:IService1_Get_Passenger_By_PNR_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/Get_Passenger_By_PNRResponse" message="tns:IService1_Get_Passenger_By_PNR_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAll_Coaches">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetAll_Coaches" message="tns:IService1_GetAll_Coaches_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetAll_CoachesResponse" message="tns:IService1_GetAll_Coaches_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAll_Coaches_v2">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetAll_Coaches_v2" message="tns:IService1_GetAll_Coaches_v2_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetAll_Coaches_v2Response" message="tns:IService1_GetAll_Coaches_v2_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Add_Coaches">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/Add_Coaches" message="tns:IService1_Add_Coaches_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/Add_CoachesResponse" message="tns:IService1_Add_Coaches_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Delete_Coaches">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/Delete_Coaches" message="tns:IService1_Delete_Coaches_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/Delete_CoachesResponse" message="tns:IService1_Delete_Coaches_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Update_Coaches">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/Update_Coaches" message="tns:IService1_Update_Coaches_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/Update_CoachesResponse" message="tns:IService1_Update_Coaches_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Get_Coach_By_ID">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/Get_Coach_By_ID" message="tns:IService1_Get_Coach_By_ID_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/Get_Coach_By_IDResponse" message="tns:IService1_Get_Coach_By_ID_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="search_Train_By_StatinID">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/search_Train_By_StatinID" message="tns:IService1_search_Train_By_StatinID_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/search_Train_By_StatinIDResponse" message="tns:IService1_search_Train_By_StatinID_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="get_Ticket_By_ID">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/get_Ticket_By_ID" message="tns:IService1_get_Ticket_By_ID_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/get_Ticket_By_IDResponse" message="tns:IService1_get_Ticket_By_ID_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCoachByTrainID">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetCoachByTrainID" message="tns:IService1_GetCoachByTrainID_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetCoachByTrainIDResponse" message="tns:IService1_GetCoachByTrainID_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Search_Coach">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/Search_Coach" message="tns:IService1_Search_Coach_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/Search_CoachResponse" message="tns:IService1_Search_Coach_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Get_Passenger_By_Email">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/Get_Passenger_By_Email" message="tns:IService1_Get_Passenger_By_Email_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/Get_Passenger_By_EmailResponse" message="tns:IService1_Get_Passenger_By_Email_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="get_Ticket_By_PNR">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/get_Ticket_By_PNR" message="tns:IService1_get_Ticket_By_PNR_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/get_Ticket_By_PNRResponse" message="tns:IService1_get_Ticket_By_PNR_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Update_Password">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/Update_Password" message="tns:IService1_Update_Password_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/Update_PasswordResponse" message="tns:IService1_Update_Password_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Cancel_Ticket">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/Cancel_Ticket" message="tns:IService1_Cancel_Ticket_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/Cancel_TicketResponse" message="tns:IService1_Cancel_Ticket_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Get_Ticket_By_Train_ID">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/Get_Ticket_By_Train_ID" message="tns:IService1_Get_Ticket_By_Train_ID_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/Get_Ticket_By_Train_IDResponse" message="tns:IService1_Get_Ticket_By_Train_ID_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetStationByStatus">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetStationByStatus" message="tns:IService1_GetStationByStatus_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetStationByStatusResponse" message="tns:IService1_GetStationByStatus_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Get_Coach_By_Train">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/Get_Coach_By_Train" message="tns:IService1_Get_Coach_By_Train_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/Get_Coach_By_TrainResponse" message="tns:IService1_Get_Coach_By_Train_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Get_Train_OS">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/Get_Train_OS" message="tns:IService1_Get_Train_OS_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/Get_Train_OSResponse" message="tns:IService1_Get_Train_OS_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Get_Train_Time_Sche">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/Get_Train_Time_Sche" message="tns:IService1_Get_Train_Time_Sche_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/Get_Train_Time_ScheResponse" message="tns:IService1_Get_Train_Time_Sche_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IService1" type="tns:IService1">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetAll_Users">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetAll_Users" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Add_Users">
+      <soap:operation soapAction="http://tempuri.org/IService1/Add_Users" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Delete_Users">
+      <soap:operation soapAction="http://tempuri.org/IService1/Delete_Users" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Update_Users">
+      <soap:operation soapAction="http://tempuri.org/IService1/Update_Users" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Get_User_By_UserName_v2">
+      <soap:operation soapAction="http://tempuri.org/IService1/Get_User_By_UserName_v2" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Search_Username">
+      <soap:operation soapAction="http://tempuri.org/IService1/Search_Username" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Update_Info">
+      <soap:operation soapAction="http://tempuri.org/IService1/Update_Info" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAll_Trains">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetAll_Trains" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Add_Trains">
+      <soap:operation soapAction="http://tempuri.org/IService1/Add_Trains" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Delete_Trains">
+      <soap:operation soapAction="http://tempuri.org/IService1/Delete_Trains" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Update_Trains">
+      <soap:operation soapAction="http://tempuri.org/IService1/Update_Trains" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="get_Train_By_ID">
+      <soap:operation soapAction="http://tempuri.org/IService1/get_Train_By_ID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Get_All_Trains_v2">
+      <soap:operation soapAction="http://tempuri.org/IService1/Get_All_Trains_v2" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Search_Train_By_Train_id">
+      <soap:operation soapAction="http://tempuri.org/IService1/Search_Train_By_Train_id" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAll_Timetables">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetAll_Timetables" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAll_Timetables_v2">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetAll_Timetables_v2" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Add_Timetables">
+      <soap:operation soapAction="http://tempuri.org/IService1/Add_Timetables" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Delete_Timetables">
+      <soap:operation soapAction="http://tempuri.org/IService1/Delete_Timetables" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Update_Timetables">
+      <soap:operation soapAction="http://tempuri.org/IService1/Update_Timetables" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="get_Timetable_By_ID">
+      <soap:operation soapAction="http://tempuri.org/IService1/get_Timetable_By_ID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Get_Timetable_By_Train_ID">
+      <soap:operation soapAction="http://tempuri.org/IService1/Get_Timetable_By_Train_ID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAll_Tickets">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetAll_Tickets" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Add_Tickets">
+      <soap:operation soapAction="http://tempuri.org/IService1/Add_Tickets" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Delete_Tickets">
+      <soap:operation soapAction="http://tempuri.org/IService1/Delete_Tickets" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Update_Tickets">
+      <soap:operation soapAction="http://tempuri.org/IService1/Update_Tickets" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="get_Ticket_By_ID2">
+      <soap:operation soapAction="http://tempuri.org/IService1/get_Ticket_By_ID2" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Search_Ticket_By_PNR">
+      <soap:operation soapAction="http://tempuri.org/IService1/Search_Ticket_By_PNR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAll_Tickets_v2">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetAll_Tickets_v2" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Login">
+      <soap:operation soapAction="http://tempuri.org/IService1/Login" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAll_Stations">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetAll_Stations" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Add_Stations">
+      <soap:operation soapAction="http://tempuri.org/IService1/Add_Stations" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Delete_Stations">
+      <soap:operation soapAction="http://tempuri.org/IService1/Delete_Stations" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Update_Stations">
+      <soap:operation soapAction="http://tempuri.org/IService1/Update_Stations" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="get_Station_By_ID">
+      <soap:operation soapAction="http://tempuri.org/IService1/get_Station_By_ID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="get_Station_By_Train_ID">
+      <soap:operation soapAction="http://tempuri.org/IService1/get_Station_By_Train_ID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAll_Roles">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetAll_Roles" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Add_Roles">
+      <soap:operation soapAction="http://tempuri.org/IService1/Add_Roles" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Delete_Roles">
+      <soap:operation soapAction="http://tempuri.org/IService1/Delete_Roles" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Update_Roles">
+      <soap:operation soapAction="http://tempuri.org/IService1/Update_Roles" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAll_Passengers">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetAll_Passengers" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Add_Passengers">
+      <soap:operation soapAction="http://tempuri.org/IService1/Add_Passengers" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Delete_Passengers">
+      <soap:operation soapAction="http://tempuri.org/IService1/Delete_Passengers" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Update_Passengers">
+      <soap:operation soapAction="http://tempuri.org/IService1/Update_Passengers" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Get_Passenger_By_PNR">
+      <soap:operation soapAction="http://tempuri.org/IService1/Get_Passenger_By_PNR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAll_Coaches">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetAll_Coaches" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAll_Coaches_v2">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetAll_Coaches_v2" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Add_Coaches">
+      <soap:operation soapAction="http://tempuri.org/IService1/Add_Coaches" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Delete_Coaches">
+      <soap:operation soapAction="http://tempuri.org/IService1/Delete_Coaches" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Update_Coaches">
+      <soap:operation soapAction="http://tempuri.org/IService1/Update_Coaches" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Get_Coach_By_ID">
+      <soap:operation soapAction="http://tempuri.org/IService1/Get_Coach_By_ID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="search_Train_By_StatinID">
+      <soap:operation soapAction="http://tempuri.org/IService1/search_Train_By_StatinID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="get_Ticket_By_ID">
+      <soap:operation soapAction="http://tempuri.org/IService1/get_Ticket_By_ID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCoachByTrainID">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetCoachByTrainID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Search_Coach">
+      <soap:operation soapAction="http://tempuri.org/IService1/Search_Coach" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Get_Passenger_By_Email">
+      <soap:operation soapAction="http://tempuri.org/IService1/Get_Passenger_By_Email" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="get_Ticket_By_PNR">
+      <soap:operation soapAction="http://tempuri.org/IService1/get_Ticket_By_PNR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Update_Password">
+      <soap:operation soapAction="http://tempuri.org/IService1/Update_Password" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Cancel_Ticket">
+      <soap:operation soapAction="http://tempuri.org/IService1/Cancel_Ticket" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Get_Ticket_By_Train_ID">
+      <soap:operation soapAction="http://tempuri.org/IService1/Get_Ticket_By_Train_ID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetStationByStatus">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetStationByStatus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Get_Coach_By_Train">
+      <soap:operation soapAction="http://tempuri.org/IService1/Get_Coach_By_Train" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Get_Train_OS">
+      <soap:operation soapAction="http://tempuri.org/IService1/Get_Train_OS" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Get_Train_Time_Sche">
+      <soap:operation soapAction="http://tempuri.org/IService1/Get_Train_Time_Sche" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Service1">
+    <wsdl:port name="BasicHttpBinding_IService1" binding="tns:BasicHttpBinding_IService1">
+      <soap:address location="http://localhost:59867/Service1.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

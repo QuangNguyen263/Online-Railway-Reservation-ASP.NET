@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Bank_AccountsModelStoreContainer" CdmEntityContainer="Bank_AccountsEntities">
+    <EntitySetMapping Name="Person_Accounts">
+      <EntityTypeMapping TypeName="Bank_AccountsModel.Person_Accounts">
+        <MappingFragment StoreEntitySet="Person_Accounts">
+          <ScalarProperty Name="Account_ID" ColumnName="Account_ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Expiration_Date" ColumnName="Expiration_Date" />
+          <ScalarProperty Name="Card_Code" ColumnName="Card_Code" />
+          <ScalarProperty Name="CVV_CSC" ColumnName="CVV/CSC" />
+          <ScalarProperty Name="Total_Amount" ColumnName="Total_Amount" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

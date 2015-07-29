@@ -1,0 +1,599 @@
+﻿* {
+    margin: auto;
+    box-sizing: border-box;
+}
+
+body {
+}
+
+/*#toanbo{
+    position:relative;
+    height: 100%;
+}*/
+
+#header {
+    width: 100%;
+    background: linear-gradient(#0083c1,#0091d4);
+    background: -moz-linear-gradient(#0083c1,#0091d4);
+    background: -o-linear-gradient(#0083c1,#0091d4);
+    color: #fff;
+    height: 84px;
+    /*padding:0 10%;*/
+}
+
+#header-content {
+    width: 80%;
+    height: 84px;
+}
+
+#header-content-left {
+    height: 84px;
+    float: left;
+}
+
+#list-menu {
+    list-style: none;
+}
+
+    #list-menu li {
+        border-radius: 3px;
+        margin: 7px;
+        float: right;
+        text-transform: uppercase;
+        font-family: Arial;
+        font-size: 15px;
+        font-weight: 600;
+        font-family: 'Segoe UI';
+    }
+
+    #list-menu a {
+        color: #fff;
+    }
+
+.lang {
+    border: none !important;
+    margin: -1px 3px 15px 5px !important;
+}
+
+#header-content-right {
+    padding-top: 30px;
+}
+
+#content-bg {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 100%;
+    height: 450px;
+    background-image: url('../../Desktop/images/background.jpg') !important;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    padding: 40px 16%;
+}
+
+/*#content-bg-hidden{
+    width: 100%;
+    height: 450px;
+    background-color:rgba(1, 131, 193,0.3);
+    padding: 0 !important;
+}*/
+
+#form-content {
+    width: auto;
+    height: 370px;
+    background-color: rgba(255, 255, 255, 0.85);
+    padding: 20px 40px 20px 40px;
+    font-family: 'Segoe UI';
+    font-size: 18px;
+    color: #4b4a4a;
+    position: relative;
+    /*color: #3c70de;*/
+    border-radius: 10px;
+    /*border-top-left-radius: 80px;
+    border-bottom-right-radius: 80px;*/
+}
+
+.form-head {
+    font-size: 25px;
+    color: #fff;
+    text-transform: uppercase;
+    text-align: center;
+    font-weight: 600;
+    font-family: 'Segoe UI';
+    /*background-color: rgba(51, 108, 228, 0.6);*/
+    background-color: rgba(35, 33, 33, 0.65);
+    margin: -20px -40px;
+    padding: 5px 0;
+    clear: both;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    font-style: italic;
+}
+
+#c-form1 {
+    width: 30%;
+    float: left;
+    padding: 0 15px;
+    margin-top: 30px;
+}
+
+#c-form2 {
+    width: 30%;
+    float: left;
+    padding: 0 15px;
+    margin-top: 30px;
+}
+
+#o-c-form {
+    width: 30%;
+    float: left;
+    padding: 0 15px;
+    margin-top: 30px;
+}
+
+.cleardiv {
+    clear: both;
+}
+
+.form-item {
+    margin-top: 9px;
+}
+
+.ddl {
+    width: 100%;
+    height: 33px;
+    border-radius: 5px;
+}
+
+.ddl2 {
+    height: 33px;
+    border-radius: 5px;
+    width: 50%;
+}
+
+.form-title {
+    padding-bottom: 5px;
+}
+
+.form-main-title {
+    font-size: 20px;
+    text-transform: fullsize-kana;
+    font-weight: bold;
+}
+
+.form-main-title2 {
+    color: rgba(74, 125, 232, 0.00);
+    font-size: 20px;
+    text-transform: fullsize-kana;
+    font-weight: bold;
+}
+
+.o-c-form {
+    border-left: 1px solid rgba(35, 33, 33, 0.7);
+    margin-left: 20px;
+}
+
+#form-footer {
+    /*background-color: rgba(51, 108, 228, 0.6);*/
+    background-color: rgba(35, 33, 33, 0.80);
+    /*margin: -1px -40px;*/
+    padding: 4px 0;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    height: 35px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+}
+
+    #form-footer a {
+        color: #fff;
+        text-decoration: none;
+        text-align: center;
+    }
+
+.btnSearch {
+    padding: 5px 0;
+    font-size: 18px;
+    color: #fff;
+    border: 1.5px solid #fff;
+    /*background-color: rgba(74, 125, 232, 1);*/
+    background-color: rgba(35, 33, 33, 0.80);
+    margin: 0 auto;
+    width: 13%;
+    border-radius: 5px;
+    position: absolute;
+    bottom: 39px;
+    left: 43.5%;
+}
+
+.form-info {
+    font-style: italic;
+    font-size: 16px;
+}
+
+#footer {
+    background: linear-gradient(#0083c1,#0091d4);
+    background: -moz-linear-gradient(#0083c1,#0091d4);
+    background: -o-linear-gradient(#0083c1,#0091d4);
+    color: #fff;
+    padding-top: 25px;
+    position: relative;
+    bottom: 0 !important;
+    left: 0;
+    height: 100px;
+    width: 100%;
+    /*margin-top: 50px;*/
+}
+
+.footer-item {
+    text-align: center;
+    font-size: 20px;
+    font-family: 'Segoe UI';
+    /*color: #4b4a4a;*/
+    color: #fff;
+    /*font-weight: bold;*/
+}
+
+#auto {
+    width: 100%;
+    height: 30px;
+}
+
+#auto-left {
+    width: 35px;
+}
+
+#auto-right {
+    width: 35px;
+}
+
+#auto-cent {
+    width: 94.6%;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 30px;
+    /*font-weight: bold;*/
+    font-family: Arial;
+}
+
+
+/*----------------------------------------------------------------*/
+.item-group {
+    width: 80%;
+    margin: auto;
+    font-family: 'Segoe UI' !important;
+    background-color: rgba(247, 247, 247, 0.4);
+    padding-top: 30px;
+    min-height: 475px;
+    padding-bottom: 30px;
+}
+
+.div-left, .div-right {
+    width: 50%;
+    padding: 0 10px;
+}
+
+.div-left {
+    float: left;
+}
+
+.div-right {
+    float: right;
+}
+
+.div-head {
+    width: 100%;
+    padding: 10px 0;
+    height: auto;
+}
+
+.div-chieudi, .div-tentuyen {
+    float: left;
+}
+
+.div-chieudi {
+    background: url('../../Desktop/images/search-header.png') no-repeat;
+    padding: 12px 15px;
+    font-size: 18px;
+    height: auto;
+    width: 120px;
+}
+
+.div-tentuyen {
+    margin-left: 20px;
+    height: 45px;
+    padding: 10px;
+}
+
+.diadiem {
+    text-transform: uppercase;
+    font-size: 20px !important;
+    padding: 0 10px;
+    color: #0091d4;
+}
+
+.tientrinh {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.tientrinh-so, .tientrinh-chu, .tientrinh-dau {
+    display: inline;
+    padding: 0 20px;
+    font-weight: 500;
+}
+
+.tientrinh-chu, .tientrinh-dau {
+    color: #d3cccc;
+}
+
+.tientrinh-chu {
+    font-weight: bold !important;
+}
+
+.tientrinh-dau {
+    font-size: 25px !important;
+}
+
+.tientrinh-so {
+    border-radius: 100%;
+    padding: 5px 13px;
+    background-color: #d3cccc;
+    color: #fff;
+}
+
+td {
+    padding: 1% 1% !important;
+    font-size: 18px;
+}
+
+tr {
+    border-bottom: 1px solid #cdcdcd !important;
+}
+
+    tr:hover {
+        background-color: rgba(35, 180, 245, 0.50);
+    }
+
+.btnChitiet {
+    border: none;
+    background: none;
+    text-decoration: underline;
+    font-size: 16px !important;
+}
+
+.btnChon {
+    font-size: 16px !important;
+}
+
+.div-list {
+    height: 500px;
+    overflow: scroll;
+    width: 100%;
+    border: 1px solid #cdcdcd;
+    border-radius: 5px;
+}
+
+.div-btn {
+    margin-top: 30px;
+}
+
+.div-thongtinchuyen {
+    font-family: 'Segoe UI';
+    color: #5f5c5c !important;
+    width: 100%;
+    height: auto;
+    padding: 10px 15px;
+    border: 1px solid #cdcdcd;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+.div-thongtinchuyen1 {
+    border-bottom: 1px solid #cdcdcd;
+    padding-bottom: 10px;
+}
+
+.thongtinchuyen {
+    padding: 0 10px;
+    font-weight: bold;
+}
+
+.thongtinchuyen2 {
+    float: right;
+}
+
+.div-thongtinchuyen2 {
+    padding-top: 10px;
+}
+
+.thongtin-formitem {
+    padding: 8px;
+    width: 100%;
+    border-radius: 5px;
+}
+
+.table-thanhtoan {
+    width: 100%;
+}
+
+    .table-thanhtoan th, .table-thanhtoan td {
+        padding: 5px;
+        width: 20%;
+        text-align: center;
+        border: 1px solid #cdcdcd;
+        border-radius: 5px;
+    }
+
+.tonggia {
+    padding: 5px 20px;
+    background-color: rgb(175, 214, 251);
+    margin: 10px -15px 0 -15px !important;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+
+/*lịch tàu chạy*/
+.div-tuyen {
+    width: 30%;
+    float: left;
+    padding: 0 2%;
+    text-align: center;
+}
+
+.div-lichtrinh {
+    width: 70%;
+    float: left;
+    padding: 0 2%;
+    text-align: center;
+}
+
+th {
+    padding: 10px 0;
+}
+
+
+/*-------Rule page, contact page, info page--------*/
+.rule {
+    color: #008ed0;
+}
+
+.enquiry {
+    width: 680px !important;
+    height: 150px !important;
+}
+
+.typetext {
+    padding: 8px 5px;
+    float: left;
+}
+.typetext2 {
+    padding: 8px 5px;
+    border: 1px solid #cfd1d1 !important;
+    background: #fffedf !important;
+    color: #5b5459 !important;
+    font-size: 14px;
+    text-align: center !important;
+}
+
+.typetext, textarea {
+    border: 1px solid #cfd1d1 !important;
+    background: #fffedf !important;
+    color: #5b5459 !important;
+    font-size: 14px;
+}
+
+.email {
+    width: 250px;
+}
+
+.email2 {
+    width: 280px;
+}
+
+.padd {
+    margin-left: 20px;
+}
+
+.tagA {
+}
+
+#rule_group {
+    text-align: justify;
+    padding: 20px;
+}
+
+/*Vy*/
+.btnSimple {
+    background: #4db0e7;
+    text-decoration: none;
+    cursor: pointer;
+    height: 35px;
+    color: #fff;
+    padding: 5px 20px;
+    border: none;
+    border-radius: 5px;
+    border-bottom: solid 2px #4393e0;
+    border-right: solid 1px #4393e0;
+    margin: 0 5px;
+}
+/**/
+
+
+
+/* manager admin */
+
+.div-manager-left {
+    width: 39%;
+    float: left;
+    padding-right: 1%;
+}
+
+.div-manager-right {
+    width: 59%;
+    float: left;
+    padding-left: 1%;
+}
+
+.table_manager {
+    width: 100% !important;
+    text-align: center;
+}
+
+    .table_manager td, .table_manager th {
+        border: 1px solid #cdcdcd;
+    }
+
+
+.radiobtn {
+    float: left !important;
+    margin-right: 15px;
+}
+
+.manager-item {
+    font-size: 25px;
+    padding: 10px 10px;
+    width: 400px;
+    margin: 15px 0;
+    background-color: #0091d4;
+    color: #fff;
+}
+
+.manager-item-left {
+    text-align: left;
+    float: left;
+    border-top-right-radius: 50px;
+    border-bottom-right-radius: 50px;
+    padding-left: 30px;
+}
+
+.manager-item-right {
+    text-align: right;
+    float: right;
+    border-top-left-radius: 50px;
+    border-bottom-left-radius: 50px;
+    padding-right: 30px;
+}
+.tientrinh h1{
+    color: #0091d4;
+}
+.error{
+    float: left;
+}
+.btnLogin{
+    background-color:#0083c1;
+    border:1px solid #fff;
+    border-radius: 5px;
+    font-size: 15px;
+    padding:5px 10px;
+    color:#fff;
+    font-weight:bold;
+    font-size: 16px;
+    margin-top:10px;
+}
+.btnLogin:hover{
+    cursor:pointer;
+}

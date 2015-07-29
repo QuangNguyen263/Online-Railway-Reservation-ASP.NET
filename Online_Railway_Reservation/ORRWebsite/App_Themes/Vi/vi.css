@@ -1,0 +1,304 @@
+﻿body {
+}
+
+/*master*/
+.contact:before{
+    content: "LIÊN LẠC";
+}
+
+.regulation:before{
+    content: "QUY ĐỊNH";
+}
+
+.hour:before{
+    content: "VỊ TRÍ CỦA BẠN";
+}
+
+.bookTicket:before{
+    content: "THÔNG TIN ĐẶT VÉ";
+}
+
+.searchTicket:before{
+    content: "TÌM VÉ";
+}
+
+/*default*/
+.form-head:before{
+    content:"TÌM VÉ TÀU";
+}
+
+.form1:before{
+    content: "1. Lịch trình";
+}
+
+.form2:before{
+    content: "2. Số lượng hàng khách";
+}
+
+.depature:before{
+    content: "Ga đi";
+}
+
+.depaturedate:before{
+    content: "Ngày đi";
+}
+
+.arrival:before{
+    content: "Ga về";
+}
+
+.returndate:before{
+    content: "Ngày về";
+}
+
+.adult:before{
+    content: "Người lớn (> 12 tuổi)";
+}
+
+.child:before{
+    content: "Trẻ em (2 - 12 tuổi)";
+}
+
+.baby:before{
+    content: "Em bé (< 2 tuổi)";
+}
+
+.form-info:before{
+    content: "Hướng dẫn đặt vé tàu";
+}
+
+/*Info_Ticket*/
+.findTicketInfo:before{
+    content: "TRA CỨU THÔNG TIN ĐẶT VÉ";
+}
+
+.codePrn:before{
+    content: "Mã PRN:";
+}
+.codePrn2:before{
+    content: "Email:";
+}
+.codePrn3:before{
+    content: "Số Điện Thoại:";
+}
+
+.forgetPrn:before{
+    content: "Quên mã PRN?";
+}
+
+.customerInfo:before{
+    content: "Thông tin khách hàng";
+}
+
+.fullName:before{
+    content: "Họ và Tên:";
+}
+
+.codeP:before{
+    content: "Mã PRN:";
+}
+
+.birth:before{
+    content: "Ngày Sinh";
+}
+
+.address:before{
+    content: "Địa chỉ";
+}
+
+.ticketID:before{
+    content: "Mã Vé";
+}
+
+.from:before{
+    content: "Từ";
+}
+
+.to:before{
+    content: "đến";
+}
+
+.trainName:before{
+    content: "Tên Tàu";
+}
+
+.coachType:before{
+    content: "Loại Toa";
+}
+
+.departureTime:before{
+    content: "Giờ Khởi Hành";
+}
+
+.passengerType:before{
+    content: "Loại Khách Hàng";
+}
+
+.price:before{
+    content: "Giá";
+}
+
+.status:before{
+    content: "Trạng Thái";
+}
+
+/*Info_Ticket_FindPRN*/
+.retrieveInfo:before{
+    content: "LẤY LẠI THÔNG TIN";
+}
+
+.phone:before{
+    content: "Số điện thoại:";
+}
+
+/*Done_Ticket*/
+.selectTrain:before{
+    content: "Chọn chuyến tàu";
+}
+
+.infoTrain:before{
+    content: "Thông tin chuyến tàu và thanh toán";
+}
+
+.complete:before{
+    content: "Hoàn thành !";
+}
+
+.mess:before{
+    content: "Các mã PRN đã được gửi đến email của bạn. Hãy kiểm tra và quản lý vé của bạn ở đây.";
+}
+
+/*Choose_Ticket*/
+.oneway:before {
+    content: "Chiều đi";
+}
+
+.returnJourney:before{
+    content: "Chiều về";
+}
+
+/*Book_ticket*/
+.infoTrip:before{
+    content: "Thông tin chuyến tàu";
+}
+
+.time:before{
+    content: "Thời gian";
+}
+
+.title:before{
+    content: "Giới tính";
+}
+
+.lastN:before{
+    content: "Họ (*)";
+}
+
+.firstN:before{
+    content: "Đệm và tên (*)";
+}
+
+.reconfirmE:before{
+    content: "Xác nhận Email (*)";
+}
+
+.infoPayment:before{
+    content: "Đăng nhập Internet Banking";
+}
+
+.bankName:before{
+    content: "Tài khoản ngân hàng (*)";
+}
+
+.pass:before{
+    content: "Mật khẩu (*)";
+}
+
+.cardCode:before{
+    content: "Mã thẻ (*)";
+}
+
+.infoGo:before{
+    content: "Thông tin thanh toán Lượt đi";
+}
+
+.class:before{
+    content: "Hạng toa";
+}
+
+.coachCode:before{
+    content: "Mã Toa";
+}
+
+.number:before{
+    content: "Số Lượng";
+}
+
+.money:before{
+    content: "Thành tiền";
+}
+
+.adults:before{
+    content: "Người lớn";
+}
+
+.childs:before{
+    content: "Trẻ em";
+}
+
+.babys:before{
+    content: "Em bé";
+}
+
+.infoReturn:before{
+    content: "Thông tin thanh toán Lượt Về";
+}
+
+.unit:before{
+    content: "Đơn vị tính: $";
+}
+
+.total:before{
+    content: "Tổng giá";
+}
+
+.day:before{
+    content: "Ngày:";
+}
+
+.idTrain:before{
+    content: "Mã tàu:";
+}
+
+/*contact*/
+.contactus:before{
+    content: "Liên Hệ Với Chúng Tôi";
+}
+
+.call:before{
+    content: "Gọi cho chúng tôi: 955 5800 800";
+}
+
+.register:before{
+    content: "Văn phòng đăng ký:";
+}
+
+.corporate:before{
+    content: "Văn phòng công ty:";
+}
+
+.talk:before{
+    content: "Gửi lời nhắn cho chúng tôi";
+}
+
+.nameU:before{
+    content: "Họ và Tên:";
+}
+
+.emailU:before{
+    content: "Email của bạn:";
+}
+
+.messenger:before{
+    content: "Nội dung:";
+}
